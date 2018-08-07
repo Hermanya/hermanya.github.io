@@ -3,7 +3,7 @@ import {Hero, ScrollDownIndicator, Checklist, Feature, Section, Testimony, CallT
 import {NavLink, Flex, Badge, BlockLink, Small, Absolute} from 'rebass'
 import { Link as RouterLink } from 'react-router-dom'
 
-const links = <Flex>
+const links = <Flex style={{overflow: 'hidden'}}>
   <NavLink children='Email' href='mailto:herman.starikov@gmail.com' />
   <NavLink children='Messenger' href='https://m.me/hermanhasawish' />
   <NavLink children='Telegram' href='http://t.me/hermanya' />
@@ -18,8 +18,8 @@ const links = <Flex>
 </Flex>
 
 const header = <Absolute zIndex={1} left={0} right={0} top={0}>
-  <Flex is='header' p={3} color='white'>
-    <NavLink href='/' fontSize={3} mr='auto'>Herman Starikov</NavLink>
+  <Flex is='header' p={3} color='whitesmoke'>
+    <NavLink href='/' fontSize={3} mr='auto' color='white'>Herman Starikov</NavLink>
     {links}
   </Flex>
 </Absolute>
@@ -28,6 +28,7 @@ const hero = <Hero
   bg='#5158BB'
   color='white'
   bgOpacity={0.85}
+  p={4}
   backgroundImage='https://media.licdn.com/dms/image/C4D16AQFqzvS-qDodpQ/profile-displaybackgroundimage-shrink_350_1400/0?e=1539216000&v=beta&t=0d8o3X0SgUhISxY-DDj7URBHoTpkcDD4qFIfxa7v4L8'
 >
   <Testimony
@@ -35,6 +36,7 @@ const hero = <Hero
     authorTitle='Software Developer'
     authorAvatar='https://media.licdn.com/dms/image/C4D03AQHrQu7jWlkkmQ/profile-displayphoto-shrink_200_200/0?e=1539216000&v=beta&t=zRR2PdoFS3UKcAIdZkEavcf5W-SJjd8bogrsEk9z5EA'
     style={{maxWidth: '32em'}}
+    bubbleBg='#f1f0f0'
   >
     👋 Hello there, nice to meet you! I live and work in Toronto 🇨🇦.
     I like workplace sitcoms, electronic music and long walks 🚶🏼‍♂️
@@ -71,7 +73,7 @@ export default () => <main>
         'Ontario Diploma in Software Development',
         '4 years of industry experience',
         'Open-source contributor'
-      ]} checkmark='️️☑️' m={3} />
+      ]} checkmark='️️☑️' m={3} color='black' />
     </Section>
     <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='dimgrey'>
       <Flex mb={[1, 4]}>
