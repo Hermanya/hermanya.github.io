@@ -6,7 +6,7 @@
   "scripts": {
     "start": "x0 source",
     "build": "x0 build source -d site",
-    "deploy": "gh-pages -d site"
+    "deploy": "gh-pages -d=site --branch=master"
   },
   "repository": {
     "type": "git",
