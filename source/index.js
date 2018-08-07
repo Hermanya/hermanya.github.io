@@ -47,7 +47,7 @@ const hero = <Hero
   <ScrollDownIndicator />
 </Hero>
 
-const footer = <Flex is='footer' alignItems='center' p={3} bg='whitesmoke' color='#5158BB'>
+const footer = <Flex is='footer' alignItems='center' p={3} bg='whitesmoke' color='dimgrey'>
   {links}
   <Small color='whitesmoke' ml='auto'>© Herman Starikov, 2018</Small>
 </Flex>
@@ -65,7 +65,7 @@ export default () => <main>
         <Feature icon='🥋' description='novice'>Judo</Feature>
       </Flex>
     </Section>
-    <Section heading='My brief' width={[1, 1, 1 / 2, 1 / 2]} bg='#5158BB' color='white'>
+    <Section heading='My brief' width={[1, 1, 1 / 2, 1 / 2]} bg='white' color='dimgrey'>
       <Checklist children={[
         'Fluent English & Russian',
         'Ontario Diploma in Software Development',
@@ -73,7 +73,7 @@ export default () => <main>
         'Open-source contributor'
       ]} checkmark='️️☑️' m={3} />
     </Section>
-    <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='#5158BB'>
+    <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='dimgrey'>
       <Flex mb={[1, 4]}>
         <img height={128} src='https://media.licdn.com/dms/image/C510BAQHUpKTwe_L_Hg/company-logo_400_400/0?e=1541635200&v=beta&t=BU1P4i-tfTa73IfHFbBJnD-gjRWh748Im0dAyXL080c' />
         <img height={128} src='https://media.licdn.com/dms/image/C510BAQEtDMzeMOhoRw/company-logo_400_400/0?e=1541635200&v=beta&t=q9fwaXxDYw4Oms4L9Z3xJqJbt9ZcNSHW5Rn0cV9SrZU' />
@@ -92,7 +92,7 @@ export default () => <main>
       width={1}
       bg='whitesmoke' color='black'
     >
-      <CallToAction is={RouterLink} to='/resume' bg='black'>résumé</CallToAction>
+      <CallToAction is={RouterLink} to='/resume' bg='#5158BB'>résumé</CallToAction>
     </Section>
   </Flex>
   {footer}
