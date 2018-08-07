@@ -1,6 +1,6 @@
 import React from 'react'
 import {Hero, ScrollDownIndicator, Checklist, Feature, Section, Testimony, CallToAction} from 'react-landing-page'
-import {NavLink, Flex, Badge, BlockLink, Small, Absolute} from 'rebass'
+import {NavLink, Flex, Badge, BlockLink, Small, Absolute, Provider} from 'rebass'
 import { Link as RouterLink } from 'react-router-dom'
 
 const links = <Flex style={{overflow: 'hidden'}}>
@@ -34,7 +34,7 @@ const hero = <Hero
   <Testimony
     authorName='Herman Starikov'
     authorTitle='Software Developer'
-    authorAvatar='https://media.licdn.com/dms/image/C4D03AQHrQu7jWlkkmQ/profile-displayphoto-shrink_200_200/0?e=1539216000&v=beta&t=zRR2PdoFS3UKcAIdZkEavcf5W-SJjd8bogrsEk9z5EA'
+    authorAvatar='./avatar.jpeg'
     style={{maxWidth: '32em'}}
     bubbleBg='#f1f0f0'
   >
@@ -49,53 +49,66 @@ const hero = <Hero
   <ScrollDownIndicator />
 </Hero>
 
+const skills = <Section width={1} heading='My skills' bg='whitesmoke' color='black'>
+  <Flex flexWrap='wrap' justifyContent='center'>
+    <Feature icon='🏓' description='apprentice'>Ping Pong</Feature>
+    <Feature icon='👨🏼‍💻' description='professional'>Multi-paradigm Development</Feature>
+    <Feature icon='✅' description='fanatic'>Unit & integration testing</Feature>
+    <Feature icon='🔁' description='teammate'>Agile Methodologies</Feature>
+    <Feature icon='🥋' description='novice'>Judo</Feature>
+  </Flex>
+</Section>
+
+const brief = <Section heading='My brief' width={[1, 1, 1 / 2, 1 / 2]} bg='white' color='dimgrey'>
+  <Checklist children={[
+    'Fluent English & Russian',
+    'Ontario Diploma in Software Development',
+    '4 years of industry experience',
+    'Open-source contributor'
+  ]} checkmark='️️☑️' m={3} color='black' />
+</Section>
+
+const work = <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='dimgrey'>
+  <Flex mb={[1, 4]}>
+    <img height={128} src='./logos/rangle.jpeg' />
+    <img height={128} src='./logos/uxp.jpeg' />
+  </Flex>
+  <Flex>
+    <img height={48} src='./logos/roche.jpeg' />
+    <img height={48} src='./logos/vodafone.jpeg' />
+    <img height={48} src='./logos/telia.jpeg' />
+    <img height={48} src='./logos/rogers.jpeg' />
+    <img height={48} src='./logos/lgi.jpeg' />
+    <img height={48} src='./logos/cwc.jpeg' />
+  </Flex>
+</Section>
+
 const footer = <Flex is='footer' alignItems='center' p={3} bg='whitesmoke' color='dimgrey'>
   {links}
   <Small color='whitesmoke' ml='auto'>© Herman Starikov, 2018</Small>
 </Flex>
 
-export default () => <main>
+const cta = <Section
+  heading='Want to hire me?'
+  width={1}
+  bg='whitesmoke' color='black'
+>
+  <CallToAction is={RouterLink} to='/resume' bg='#5158BB'>résumé</CallToAction>
+</Section>
+
+export default () => <Provider
+  theme={{
+    fonts: {
+      sans: '"Asap", Helvetica, sans-serif'
+    }
+  }}>
   {header}
   {hero}
   <Flex justifyContent='center' flexWrap='wrap'>
-    <Section width={1} heading='My skills' bg='whitesmoke' color='black'>
-      <Flex flexWrap='wrap' justifyContent='center'>
-        <Feature icon='🏓' description='apprentice'>Ping Pong</Feature>
-        <Feature icon='👨🏼‍💻' description='professional'>Multi-paradigm Development</Feature>
-        <Feature icon='✅' description='fanatic'>Unit & integration testing</Feature>
-        <Feature icon='🔁' description='teammate'>Agile Methodologies</Feature>
-        <Feature icon='🥋' description='novice'>Judo</Feature>
-      </Flex>
-    </Section>
-    <Section heading='My brief' width={[1, 1, 1 / 2, 1 / 2]} bg='white' color='dimgrey'>
-      <Checklist children={[
-        'Fluent English & Russian',
-        'Ontario Diploma in Software Development',
-        '4 years of industry experience',
-        'Open-source contributor'
-      ]} checkmark='️️☑️' m={3} color='black' />
-    </Section>
-    <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='dimgrey'>
-      <Flex mb={[1, 4]}>
-        <img height={128} src='https://media.licdn.com/dms/image/C510BAQHUpKTwe_L_Hg/company-logo_400_400/0?e=1541635200&v=beta&t=BU1P4i-tfTa73IfHFbBJnD-gjRWh748Im0dAyXL080c' />
-        <img height={128} src='https://media.licdn.com/dms/image/C510BAQEtDMzeMOhoRw/company-logo_400_400/0?e=1541635200&v=beta&t=q9fwaXxDYw4Oms4L9Z3xJqJbt9ZcNSHW5Rn0cV9SrZU' />
-      </Flex>
-      <Flex>
-        <img height={48} src='https://media.licdn.com/dms/image/C4E0BAQGhiZ1XjYO9hA/company-logo_200_200/0?e=1541635200&v=beta&t=W5Kj94z11IYNpFeKFxArbjAtnJfxJZj42oQh1arQCMQ' />
-        <img height={48} src='https://media.licdn.com/dms/image/C4D0BAQG4YAeUoNmg4w/company-logo_200_200/0?e=1541635200&v=beta&t=Ymm4_sH64SRhFicj3LRAbhRi9MyW_n3voHVXm5qiSrE' />
-        <img height={48} src='https://media.licdn.com/dms/image/C4E0BAQFbBsIWNqaqiw/company-logo_200_200/0?e=1541635200&v=beta&t=TClieXC6U7K9vJis1mq_D0DzVjt3-fFI2lahWUATACE' />
-        <img height={48} src='https://media.licdn.com/dms/image/C4E0BAQEu_8o2O06uKw/company-logo_200_200/0?e=1541635200&v=beta&t=Oa0i0BUQDb4p1q_SqEz-A_p8LUqv_9rpiSzlex0ThQI' />
-        <img height={48} src='https://media.licdn.com/dms/image/C4E0BAQGBgb-FPQP9Lw/company-logo_200_200/0?e=1541635200&v=beta&t=u0prZmpo4U_dEKCPazT3nptQNs6EW12o0l4ux_WmoxA' />
-        <img height={48} src='https://media.licdn.com/dms/image/C560BAQEVPCNBOq4TYA/company-logo_200_200/0?e=1541635200&v=beta&t=IsQfgKcbawin5V1i2BiU16KLKJGMtWncfJhayMjCJj0' />
-      </Flex>
-    </Section>
-    <Section
-      heading='Want to hire me?'
-      width={1}
-      bg='whitesmoke' color='black'
-    >
-      <CallToAction is={RouterLink} to='/resume' bg='#5158BB'>résumé</CallToAction>
-    </Section>
+    {skills}
+    {brief}
+    {work}
+    {cta}
   </Flex>
   {footer}
-</main>
+</Provider>

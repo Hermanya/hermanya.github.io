@@ -38,6 +38,7 @@
   },
   "x0": {
     "title": "Herman Starikov",
-    "static": true
+    "static": true,
+    "template": "source/template.js"
   }
 }
