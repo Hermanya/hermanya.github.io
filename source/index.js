@@ -34,7 +34,7 @@ const hero = <Hero
   <Testimony
     authorName='Herman Starikov'
     authorTitle='Software Developer'
-    authorAvatar='./avatar.jpeg'
+    authorAvatar='./images/avatar.jpeg'
     style={{maxWidth: '32em'}}
     bubbleBg='#f1f0f0'
   >
@@ -70,16 +70,16 @@ const brief = <Section heading='My brief' width={[1, 1, 1 / 2, 1 / 2]} bg='white
 
 const work = <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='dimgrey'>
   <Flex mb={[1, 4]}>
-    <img height={128} src='./logos/rangle.jpeg' />
-    <img height={128} src='./logos/uxp.jpeg' />
+    <img height={128} src='./images/rangle.jpeg' />
+    <img height={128} src='./images/uxp.jpeg' />
   </Flex>
   <Flex>
-    <img height={48} src='./logos/roche.jpeg' />
-    <img height={48} src='./logos/vodafone.jpeg' />
-    <img height={48} src='./logos/telia.jpeg' />
-    <img height={48} src='./logos/rogers.jpeg' />
-    <img height={48} src='./logos/lgi.jpeg' />
-    <img height={48} src='./logos/cwc.jpeg' />
+    <img height={48} src='./images/roche.jpeg' />
+    <img height={48} src='./images/vodafone.jpeg' />
+    <img height={48} src='./images/telia.jpeg' />
+    <img height={48} src='./images/rogers.jpeg' />
+    <img height={48} src='./images/lgi.jpeg' />
+    <img height={48} src='./images/cwc.jpeg' />
   </Flex>
 </Section>
 

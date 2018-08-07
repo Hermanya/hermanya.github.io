@@ -6,7 +6,7 @@
   "scripts": {
     "start": "x0 source",
     "build": "x0 build source -d site",
-    "deploy": "gh-pages -d site --branch master"
+    "deploy": "npm run build && cp -r source/images site/ && gh-pages -d site --branch master"
   },
   "repository": {
     "type": "git",
