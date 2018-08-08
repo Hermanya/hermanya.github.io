@@ -70,16 +70,16 @@ const brief = <Section heading='My brief' width={[1, 1, 1 / 2, 1 / 2]} bg='white
 
 const work = <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='dimgrey'>
   <Flex mb={[1, 4]}>
-    <img height={128} src='./images/rangle.jpeg' />
-    <img height={128} src='./images/uxp.jpeg' />
+    <img height={128} src='./images/rangle.jpeg' alt='Rangle.io logo' />
+    <img height={128} src='./images/uxp.jpeg' alt='UXP systems logo' />
   </Flex>
   <Flex>
-    <img height={48} src='./images/roche.jpeg' />
-    <img height={48} src='./images/vodafone.jpeg' />
-    <img height={48} src='./images/telia.jpeg' />
-    <img height={48} src='./images/rogers.jpeg' />
-    <img height={48} src='./images/lgi.jpeg' />
-    <img height={48} src='./images/cwc.jpeg' />
+    <img height={48} src='./images/roche.jpeg' alt='Roche logo' />
+    <img height={48} src='./images/vodafone.jpeg' alt='Vodafone logo' />
+    <img height={48} src='./images/telia.jpeg' alt='Telia sonera logo' />
+    <img height={48} src='./images/rogers.jpeg' alt='Rogers logo' />
+    <img height={48} src='./images/lgi.jpeg' alt='Liberty Global logo' />
+    <img height={48} src='./images/cwc.jpeg' alt='Cable Wireless Communicatins logo' />
   </Flex>
 </Section>
 
@@ -100,7 +100,19 @@ export default () => <Provider
   theme={{
     fonts: {
       sans: '"Asap", Helvetica, sans-serif'
-    }
+    },
+    fontSizes: [
+      16,
+      16,
+      16,
+      20,
+      24,
+      32,
+      48,
+      64,
+      72,
+      96
+    ]
   }}>
   {header}
   {hero}
