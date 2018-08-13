@@ -7,14 +7,16 @@ const links = <Flex style={{overflow: 'hidden'}}>
   <NavLink children='Email' href='mailto:herman.starikov@gmail.com' />
   <NavLink children='Messenger' href='https://m.me/hermanhasawish' />
   <NavLink children='Telegram' href='http://t.me/hermanya' />
-  <NavLink children='Reddit' href='https://reddit.com/u/hermanya' />
+  <NavLink children='Medium' href='https://medium.com/@hermanhasawish' />
   <NavLink children='ProductHunt' href='https://www.producthunt.com/@hermanhasawish' />
   <NavLink children='GitHub' href='https://github.com/hermanya' />
+  <NavLink children='CodePen' href='https://codepen.io/Hermanya' />
+  <NavLink children='StackOverflow' href='https://stackoverflow.com/users/7228427/herman-starikov' />
+  <NavLink children='Reddit' href='https://reddit.com/u/hermanya' />
   <NavLink children='Twitter' href='https://twitter.com/hermanhasawish' />
   <NavLink children='LinkedIn' href='https://linkedin.com/herman-starikov' />
   <NavLink children='Facebook' href='https://facebook.com/hermanhasawish' />
   <NavLink children='Instagram' href='https://instagram.com/hermanya' />
-  <NavLink children='Medium' href='https://medium.com/@hermanhasawish' />
 </Flex>
 
 const header = <Absolute zIndex={1} left={0} right={0} top={0}>
@@ -39,7 +41,7 @@ const hero = <Hero
     bubbleBg='#f1f0f0'
   >
     👋 Hello there, nice to meet you! I live and work in Toronto 🇨🇦.
-    I like workplace sitcoms, electronic music and long walks 🚶🏼‍♂️
+    I like workplace sitcoms, electronic music and programming 👨🏼‍💻
   </Testimony>
   <BlockLink mt={5}
     href='https://medium.com/@Hermanhasawish/7-features-to-make-github-a-better-social-network-b20ba0daa0d2'>
