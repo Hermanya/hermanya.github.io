@@ -1,18 +1,41 @@
 import React from 'react'
 import {Hero, ScrollDownIndicator, Checklist, Feature, Section, Testimony, CallToAction} from 'react-landing-page'
-import {NavLink, Flex, Badge, BlockLink, Small, Absolute, Provider} from 'rebass'
+import {
+  NavLink, Flex, Badge, BlockLink, Small, Absolute, Provider, Box} from 'rebass'
 import { Link as RouterLink } from 'react-router-dom'
+
+const theme = {
+  colors: {
+    primary: '#5158BB',
+    gray: '#f6f6ff'
+  },
+  fonts: {
+    sans: '"Asap", Helvetica, sans-serif'
+  },
+  fontSizes: [
+    16,
+    16,
+    16,
+    20,
+    24,
+    32,
+    48,
+    64,
+    72,
+    96
+  ]
+}
 
 const links = <Flex style={{overflow: 'hidden'}}>
   <NavLink children='Email' href='mailto:herman.starikov@gmail.com' />
   <NavLink children='Messenger' href='https://m.me/hermanhasawish' />
   <NavLink children='Telegram' href='http://t.me/hermanya' />
   <NavLink children='Medium' href='https://medium.com/@hermanhasawish' />
-  <NavLink children='ProductHunt' href='https://www.producthunt.com/@hermanhasawish' />
   <NavLink children='GitHub' href='https://github.com/hermanya' />
   <NavLink children='CodePen' href='https://codepen.io/Hermanya' />
   <NavLink children='StackOverflow' href='https://stackoverflow.com/users/7228427/herman-starikov' />
   <NavLink children='Reddit' href='https://reddit.com/u/hermanya' />
+  <NavLink children='ProductHunt' href='https://www.producthunt.com/@hermanhasawish' />
   <NavLink children='Twitter' href='https://twitter.com/hermanhasawish' />
   <NavLink children='LinkedIn' href='https://linkedin.com/herman-starikov' />
   <NavLink children='Facebook' href='https://facebook.com/hermanhasawish' />
@@ -20,14 +43,14 @@ const links = <Flex style={{overflow: 'hidden'}}>
 </Flex>
 
 const header = <Absolute zIndex={1} left={0} right={0} top={0}>
-  <Flex is='header' p={3} color='whitesmoke'>
+  <Flex is='header' p={3} color='gray'>
     <NavLink href='/' fontSize={3} mr='auto' color='white'>Herman Starikov</NavLink>
     {links}
   </Flex>
 </Absolute>
 
 const hero = <Hero
-  bg='#5158BB'
+  bg='primary'
   color='white'
   bgOpacity={0.85}
   p={4}
@@ -44,24 +67,54 @@ const hero = <Hero
     I like workplace sitcoms, electronic music and programming 👨🏼‍💻
   </Testimony>
   <BlockLink mt={5}
-    href='https://medium.com/@Hermanhasawish/7-features-to-make-github-a-better-social-network-b20ba0daa0d2'>
-      7 features to make GitHub a better Social Network
+    href='https://medium.com/@Hermanhasawish/theming-web-apps-with-hsl-css-filters-48558d4296a9'>
+      Theming web apps with HSL & CSS filters
     <Badge bg='black'>Latest writing</Badge>
   </BlockLink>
   <ScrollDownIndicator />
 </Hero>
 
-const skills = <Section width={1} heading='My skills' bg='whitesmoke' color='black'>
+const Icon = ({
+  children // eslint-disable-line
+}) => <Box p={3} bg='primary' style={{
+  borderRadius: '50%',
+  width: '2.25em',
+  filter: 'brightness(250%)',
+  display: 'inline-block'
+}}>
+  <div style={{
+    filter: 'grayscale(1000%) brightness(40%)'
+  }}>{children}</div>
+</Box>
+
+const skills = <Section width={1}
+  heading='My skills'
+  subhead='see endorsements on LinkedIn'
+  bg='gray' color='black'>
   <Flex flexWrap='wrap' justifyContent='center'>
-    <Feature icon='🏓' description='apprentice'>Ping Pong</Feature>
-    <Feature icon='👨🏼‍💻' description='professional'>Multi-paradigm Development</Feature>
-    <Feature icon='✅' description='fanatic'>Unit & integration testing</Feature>
-    <Feature icon='🔁' description='teammate'>Agile Methodologies</Feature>
-    <Feature icon='🥋' description='novice'>Judo</Feature>
+    <Feature icon={<Icon>🏓</Icon>}
+      description={<Badge style={{opacity: 0.5}}>Apprentice</Badge>}>
+      Ping Pong</Feature>
+    <Feature icon={<Icon>👨🏼‍💻</Icon>}
+      description={<Badge>Expert</Badge>}>
+      Multi-paradigm Development</Feature>
+    <Feature icon={<Icon>✅</Icon>}
+      description={<Badge>Fanatic</Badge>}>
+      Unit & integration Testing</Feature>
+    <Feature icon={<Icon>🌀</Icon>}
+      description={<Badge>Adept</Badge>}>
+      Agile Methodologies</Feature>
+    <Feature icon={<Icon>🥋</Icon>}
+      description={<Badge style={{opacity: 0.5}}>Novice</Badge>}>
+      Judo</Feature>
   </Flex>
 </Section>
 
-const brief = <Section heading='My brief' width={[1, 1, 1 / 2, 1 / 2]} bg='white' color='dimgrey'>
+const brief = <Section
+  heading='A bit about myself'
+  subhead='male, born in 1995'
+  width={[1, 1, 1 / 2, 1 / 2]}
+  bg='white'>
   <Checklist children={[
     'Fluent English & Russian',
     'Ontario Diploma in Software Development',
@@ -70,7 +123,12 @@ const brief = <Section heading='My brief' width={[1, 1, 1 / 2, 1 / 2]} bg='white
   ]} checkmark='️️☑️' m={3} color='black' />
 </Section>
 
-const work = <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='dimgrey'>
+const work = <Section
+  heading='Companies I have worked for'
+  subhead='and companies I have worked with'
+  width={[1, 1, 1 / 2, 1 / 2]}
+  bg='white'
+>
   <Flex mb={[1, 4]}>
     <img height={128} src='./images/rangle.jpeg' alt='Rangle.io logo' />
     <img height={128} src='./images/uxp.jpeg' alt='UXP systems logo' />
@@ -85,43 +143,41 @@ const work = <Section heading='My work' width={[1, 1, 1 / 2, 1 / 2]} color='dimg
   </Flex>
 </Section>
 
-const footer = <Flex is='footer' alignItems='center' p={3} bg='whitesmoke' color='dimgrey'>
+const footer = <Flex is='footer' alignItems='center' p={3} bg='gray' color='dimgrey'>
   {links}
-  <Small color='whitesmoke' ml='auto'>© Herman Starikov, 2018</Small>
+  <Small color='dimgrey' ml='auto'>© Herman Starikov, 2018</Small>
 </Flex>
 
 const cta = <Section
-  heading='Want to hire me?'
+  heading='Hiring software developers?'
+  subhead='I might be a great asset to your team'
   width={1}
-  bg='whitesmoke' color='black'
+  bg='gray' color='black'
 >
-  <CallToAction is={RouterLink} to='/resume' bg='#5158BB'>résumé</CallToAction>
+  <CallToAction is={RouterLink} to='/resume' bg='primary'>résumé</CallToAction>
 </Section>
 
+const Skew = ({children}) => // eslint-disable-line
+  <Box bg='white' w={1} style={{transform: 'skewY(5deg)'}}>
+    <Box bg='white' w={1} style={{transform: 'skewY(-10deg)'}}>
+      <Flex
+        justifyContent='center' flexWrap='wrap'
+        style={{transform: 'skewY(5deg)'}}>
+        {children}
+      </Flex>
+    </Box>
+  </Box>
+
 export default () => <Provider
-  theme={{
-    fonts: {
-      sans: '"Asap", Helvetica, sans-serif'
-    },
-    fontSizes: [
-      16,
-      16,
-      16,
-      20,
-      24,
-      32,
-      48,
-      64,
-      72,
-      96
-    ]
-  }}>
+  theme={theme}>
   {header}
   {hero}
   <Flex justifyContent='center' flexWrap='wrap'>
     {skills}
-    {brief}
-    {work}
+    <Skew>
+      {brief}
+      {work}
+    </Skew>
     {cta}
   </Flex>
   {footer}

@@ -20,7 +20,7 @@ ${meta.map(({ name, content }) => `<meta name='${name}' content='${content}'>`).
 ${links.map(({ rel, href }) => `<link rel='${rel}' href='${href}' />`).join('\n')}
 <style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif}</style>
 <meta name='description' content='Herman Starikov personal internet page'>
-<link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Asap:400,600" rel="stylesheet">
 ${css}
 </head>
 <div id=root>${html}</div>
