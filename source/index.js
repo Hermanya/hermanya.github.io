@@ -26,7 +26,7 @@ const theme = {
   ]
 }
 
-const links = <Flex style={{overflow: 'hidden'}}>
+const links = <Flex style={{overflow: 'auto'}}>
   <NavLink children='Email' href='mailto:herman.starikov@gmail.com' />
   <NavLink children='Messenger' href='https://m.me/hermanhasawish' />
   <NavLink children='Telegram' href='http://t.me/hermanya' />
@@ -36,8 +36,9 @@ const links = <Flex style={{overflow: 'hidden'}}>
   <NavLink children='StackOverflow' href='https://stackoverflow.com/users/7228427/herman-starikov' />
   <NavLink children='Reddit' href='https://reddit.com/u/hermanya' />
   <NavLink children='ProductHunt' href='https://www.producthunt.com/@hermanhasawish' />
-  <NavLink children='Twitter' href='https://twitter.com/hermanhasawish' />
   <NavLink children='LinkedIn' href='https://linkedin.com/herman-starikov' />
+  <NavLink children='Twitter' href='https://twitter.com/hermanhasawish' />
+  <NavLink children='Fritter' href='dat://fritter.hashbase.io/user/dat://5df1a286cd406a2234c89f8c37148b0fa2e397ca55eda919ca5c550d44841005' />
   <NavLink children='Facebook' href='https://facebook.com/hermanhasawish' />
   <NavLink children='Instagram' href='https://instagram.com/hermanya' />
 </Flex>
@@ -71,17 +72,28 @@ const hero = <Hero
       Theming web apps with HSL & CSS filters
     <Badge bg='black'>Latest writing</Badge>
   </BlockLink>
+  <BlockLink mt={2}
+    href='https://ui1.io/'>
+      Make a UI Kit for your next project
+    <Badge bg='black'>Latest pet project</Badge>
+  </BlockLink>
+  <BlockLink mt={2}
+    href='https://github.com/Hermanya/rebass-native'>
+      React-native UI component library
+    <Badge bg='black'>Latest JS library</Badge>
+  </BlockLink>
+
   <ScrollDownIndicator />
 </Hero>
 
 const Icon = ({
-  children // eslint-disable-line
+  children, ...props // eslint-disable-line
 }) => <Box p={3} bg='primary' style={{
   borderRadius: '50%',
   width: '2.25em',
   filter: 'brightness(250%)',
   display: 'inline-block'
-}}>
+}} {...props}>
   <div style={{
     filter: 'grayscale(1000%) brightness(40%)'
   }}>{children}</div>
@@ -93,7 +105,7 @@ const skills = <Section width={1}
   bg='gray' color='black'>
   <Flex flexWrap='wrap' justifyContent='center'>
     <Feature icon={<Icon>🏓</Icon>}
-      description={<Badge style={{opacity: 0.5}}>Apprentice</Badge>}>
+      description={<Badge style={{opacity: 0.7}}>Apprentice</Badge>}>
       Ping Pong</Feature>
     <Feature icon={<Icon>👨🏼‍💻</Icon>}
       description={<Badge>Expert</Badge>}>
@@ -107,6 +119,9 @@ const skills = <Section width={1}
     <Feature icon={<Icon>🥋</Icon>}
       description={<Badge style={{opacity: 0.5}}>Novice</Badge>}>
       Judo</Feature>
+    {/* <Feature icon={<Icon title='skateboard emoji coming late fall 2018'>🛹</Icon>}
+      description={<Badge style={{opacity: 0.6}}>Adept</Badge>}>
+      Skateboarding</Feature> */}
   </Flex>
 </Section>
 
