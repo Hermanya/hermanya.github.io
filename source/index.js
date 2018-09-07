@@ -3,6 +3,14 @@ import {Hero, ScrollDownIndicator, Checklist, Feature, Section, Testimony, CallT
 import {
   NavLink, Flex, Badge, BlockLink, Small, Absolute, Provider, Box} from 'rebass'
 import { Link as RouterLink } from 'react-router-dom'
+import { keyframes } from 'styled-components'
+import { fadeInUp, fadeInRight } from 'react-animations'
+const makeOneByOneAnimation = ({from, to}, index, all) =>
+  keyframes`${{
+    from,
+    [`${100 * index / all.length}%`]: to,
+    to
+  }}`
 
 const theme = {
   colors: {
@@ -26,22 +34,27 @@ const theme = {
   ]
 }
 
-const links = <Flex style={{overflow: 'auto'}}>
-  <NavLink children='Email' href='mailto:herman.starikov@gmail.com' />
-  <NavLink children='Messenger' href='https://m.me/hermanhasawish' />
-  <NavLink children='Telegram' href='http://t.me/hermanya' />
-  <NavLink children='Medium' href='https://medium.com/@hermanhasawish' />
-  <NavLink children='GitHub' href='https://github.com/hermanya' />
-  <NavLink children='CodePen' href='https://codepen.io/Hermanya' />
-  <NavLink children='StackOverflow' href='https://stackoverflow.com/users/7228427/herman-starikov' />
-  <NavLink children='Reddit' href='https://reddit.com/u/hermanya' />
-  <NavLink children='ProductHunt' href='https://www.producthunt.com/@hermanhasawish' />
-  <NavLink children='LinkedIn' href='https://linkedin.com/herman-starikov' />
-  <NavLink children='Twitter' href='https://twitter.com/hermanhasawish' />
-  <NavLink children='Fritter' href='dat://fritter.hashbase.io/user/dat://5df1a286cd406a2234c89f8c37148b0fa2e397ca55eda919ca5c550d44841005' />
-  <NavLink children='Facebook' href='https://facebook.com/hermanhasawish' />
-  <NavLink children='Instagram' href='https://instagram.com/hermanya' />
-</Flex>
+const links = <Flex style={{overflow: 'auto'}}>{[
+  {children: 'Email', href: 'mailto:herman.starikov@gmail.com'},
+  {children: 'Messenger', href: 'https://m.me/hermanhasawish'},
+  {children: 'Telegram', href: 'http://t.me/hermanya'},
+  {children: 'Medium', href: 'https://medium.com/@hermanhasawish'},
+  {children: 'GitHub', href: 'https://github.com/hermanya'},
+  {children: 'CodePen', href: 'https://codepen.io/Hermanya'},
+  {children: 'StackOverflow', href: 'https://stackoverflow.com/users/7228427/herman-starikov'},
+  {children: 'Reddit', href: 'https://reddit.com/u/hermanya'},
+  {children: 'ProductHunt', href: 'https://www.producthunt.com/@hermanhasawish'},
+  {children: 'LinkedIn', href: 'https://linkedin.com/herman-starikov'},
+  {children: 'Twitter', href: 'https://twitter.com/hermanhasawish'},
+  {children: 'Fritter', href: 'dat://fritter.hashbase.io/user/dat://5df1a286cd406a2234c89f8c37148b0fa2e397ca55eda919ca5c550d44841005'},
+  {children: 'Facebook', href: 'https://facebook.com/hermanhasawish'},
+  {children: 'Instagram', href: 'https://instagram.com/hermanya'}
+].map((props, index, all) =>
+  <NavLink {...props}
+    key={props.href}
+    css={`animation: 1s ${makeOneByOneAnimation(fadeInRight, all.length - index, all)};`}
+  />
+)}</Flex>
 
 const header = <Absolute zIndex={1} left={0} right={0} top={0}>
   <Flex is='header' p={3} color='gray'>
@@ -49,6 +62,26 @@ const header = <Absolute zIndex={1} left={0} right={0} top={0}>
     {links}
   </Flex>
 </Absolute>
+
+const latestLinks = [{
+  uri: 'https://medium.com/@Hermanhasawish/theming-web-apps-with-hsl-css-filters-48558d4296a9',
+  children: 'Theming web apps with HSL & CSS filters',
+  badge: 'Latest writing'
+}, {
+  uri: 'https://ui1.io/',
+  children: 'Make a UI Kit for your next project',
+  badge: 'Latest pet project'
+}, {
+  uri: 'https://github.com/Hermanya/rebass-native',
+  children: 'React-native UI component library',
+  badge: 'Latest JS library'
+}].map((link, index, all) => <BlockLink mt={2}
+  key={link.uri}
+  css={`animation: 1s ${makeOneByOneAnimation(fadeInUp, index, all)};`}
+  href={link.uri}>
+  {link.children}
+  <Badge bg='black'>{link.badge}</Badge>
+</BlockLink>)
 
 const hero = <Hero
   bg='primary'
@@ -63,26 +96,12 @@ const hero = <Hero
     authorAvatar='./images/avatar.jpeg'
     style={{maxWidth: '32em'}}
     bubbleBg='#f1f0f0'
+    mb={5}
   >
     👋 Hello there, nice to meet you! I live and work in Toronto 🇨🇦.
     I like workplace sitcoms, electronic music and programming 👨🏼‍💻
   </Testimony>
-  <BlockLink mt={5}
-    href='https://medium.com/@Hermanhasawish/theming-web-apps-with-hsl-css-filters-48558d4296a9'>
-      Theming web apps with HSL & CSS filters
-    <Badge bg='black'>Latest writing</Badge>
-  </BlockLink>
-  <BlockLink mt={2}
-    href='https://ui1.io/'>
-      Make a UI Kit for your next project
-    <Badge bg='black'>Latest pet project</Badge>
-  </BlockLink>
-  <BlockLink mt={2}
-    href='https://github.com/Hermanya/rebass-native'>
-      React-native UI component library
-    <Badge bg='black'>Latest JS library</Badge>
-  </BlockLink>
-
+  {latestLinks}
   <ScrollDownIndicator />
 </Hero>
 
