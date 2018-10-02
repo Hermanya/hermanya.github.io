@@ -93,7 +93,7 @@ const hero = <Hero
   <Testimony
     authorName='Herman Starikov'
     authorTitle='Software Developer'
-    authorAvatar='./images/avatar.jpeg'
+    authorAvatar='./images/avatar.png'
     style={{maxWidth: '32em'}}
     bubbleBg='#f1f0f0'
     mb={5}
@@ -192,7 +192,7 @@ const cta = <Section
 </Section>
 
 const Skew = ({children}) => // eslint-disable-line
-  <Box bg='white' w={1} style={{transform: 'skewY(5deg)'}}>
+  <Box bg='white' w={1} style={{transform: 'skewY(5deg)', width: '100%'}}>
     <Box bg='white' w={1} style={{transform: 'skewY(-10deg)'}}>
       <Flex
         justifyContent='center' flexWrap='wrap'

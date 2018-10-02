@@ -14,8 +14,8 @@ module.exports = ({
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <title>Herman Starikov</title>
-<meta property="og:image" content="./images/profile-pic.png">
-<link rel="shortcut icon" href="./images/profile-pic.png">
+<meta property="og:image" content="./images/avatar.jpeg">
+<link rel="shortcut icon" href="./images/favicon.png">
 ${meta.map(({ name, content }) => `<meta name='${name}' content='${content}'>`).join('\n')}
 ${links.map(({ rel, href }) => `<link rel='${rel}' href='${href}' />`).join('\n')}
 <style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif}</style>
