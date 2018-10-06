@@ -1,10 +1,10 @@
 import React from 'react'
 import {Hero, ScrollDownIndicator, Checklist, Feature, Section, Testimony, CallToAction} from 'react-landing-page'
 import {
-  NavLink, Flex, Badge, BlockLink, Small, Absolute, Provider, Box} from 'rebass'
+  NavLink, Flex, Badge, BlockLink, Small, Absolute, Provider, Box, Text, Image, Hide} from 'rebass'
 import { Link as RouterLink } from 'react-router-dom'
 import { keyframes } from 'styled-components'
-import { fadeInUp, fadeInRight } from 'react-animations'
+import { fadeInUp, fadeInRight, rotateIn } from 'react-animations'
 const makeOneByOneAnimation = ({from, to}, index, all) =>
   keyframes`${{
     from,
@@ -35,23 +35,25 @@ const theme = {
 }
 
 const links = <Flex style={{overflow: 'auto'}}>{[
-  {children: 'Email', href: 'mailto:herman.starikov@gmail.com'},
-  {children: 'Messenger', href: 'https://m.me/hermanhasawish'},
-  {children: 'Telegram', href: 'http://t.me/hermanya'},
-  {children: 'Medium', href: 'https://medium.com/@hermanhasawish'},
-  {children: 'GitHub', href: 'https://github.com/hermanya'},
-  {children: 'CodePen', href: 'https://codepen.io/Hermanya'},
-  {children: 'StackOverflow', href: 'https://stackoverflow.com/users/7228427/herman-starikov'},
-  {children: 'Reddit', href: 'https://reddit.com/u/hermanya'},
-  {children: 'ProductHunt', href: 'https://www.producthunt.com/@hermanhasawish'},
-  {children: 'LinkedIn', href: 'https://linkedin.com/herman-starikov'},
-  {children: 'Twitter', href: 'https://twitter.com/hermanhasawish'},
-  {children: 'Fritter', href: 'dat://fritter.hashbase.io/user/dat://5df1a286cd406a2234c89f8c37148b0fa2e397ca55eda919ca5c550d44841005'},
-  {children: 'Facebook', href: 'https://facebook.com/hermanhasawish'},
-  {children: 'Instagram', href: 'https://instagram.com/hermanya'}
+  {children: <i className='fas fa-at' title='email' />, href: 'mailto:herman.starikov@gmail.com'},
+  {children: <i className='fab fa-facebook-messenger' title='Messenger' />, href: 'https://m.me/hermanhasawish'},
+  {children: <i className='fab fa-telegram' title='Telegram' />, href: 'http://t.me/hermanya'},
+  {children: <i className='fab fa-medium' title='Medium' />, href: 'https://medium.com/@hermanhasawish'},
+  {children: <i className='fab fa-github' title='GitHub' />, href: 'https://github.com/hermanya'},
+  {children: <i className='fab fa-codepen' title='CodePen' />, href: 'https://codepen.io/Hermanya'},
+  {children: <i className='fab fa-stack-overflow' title='StackOverflow' />, href: 'https://stackoverflow.com/users/7228427/herman-starikov'},
+  {children: <i className='fab fa-reddit' title='Reddit' />, href: 'https://reddit.com/u/hermanya'},
+  {children: <i className='fab fa-product-hunt' title='product hunt' />, href: 'https://www.producthunt.com/@hermanhasawish'},
+  {children: <i className='fab fa-linkedin' title='linkedin' />, href: 'https://linkedin.com/herman-starikov'},
+  {children: <i className='fab fa-twitter' title='twitter' />, href: 'https://twitter.com/hermanhasawish'},
+  // {children: <i class="fas fa-at" title="fritter"></i>, href: 'dat://fritter.hashbase.io/user/dat://5df1a286cd406a2234c89f8c37148b0fa2e397ca55eda919ca5c550d44841005'},
+  {children: <i className='fab fa-facebook' title='facebook' />, href: 'https://facebook.com/hermanhasawish'},
+  {children: <i className='fab fa-instagram' title='instagram' />, href: 'https://instagram.com/hermanya'}
 ].map((props, index, all) =>
   <NavLink {...props}
     key={props.href}
+    fontSize={5}
+    fontWeight={0}
     css={`animation: 1s ${makeOneByOneAnimation(fadeInRight, all.length - index, all)};`}
   />
 )}</Flex>
@@ -66,15 +68,15 @@ const header = <Absolute zIndex={1} left={0} right={0} top={0}>
 const latestLinks = [{
   uri: 'https://medium.com/@Hermanhasawish/theming-web-apps-with-hsl-css-filters-48558d4296a9',
   children: 'Theming web apps with HSL & CSS filters',
-  badge: 'Latest writing'
+  badge: 'Writing'
 }, {
   uri: 'https://ui1.io/',
   children: 'Make a UI Kit for your next project',
-  badge: 'Latest pet project'
+  badge: 'Pet project'
 }, {
   uri: 'https://github.com/Hermanya/rebass-native',
   children: 'React-native UI component library',
-  badge: 'Latest JS library'
+  badge: 'JS library'
 }].map((link, index, all) => <BlockLink mt={2}
   key={link.uri}
   css={`animation: 1s ${makeOneByOneAnimation(fadeInUp, index, all)};`}
@@ -90,18 +92,25 @@ const hero = <Hero
   p={4}
   backgroundImage='https://media.licdn.com/dms/image/C4D16AQFqzvS-qDodpQ/profile-displaybackgroundimage-shrink_350_1400/0?e=1539216000&v=beta&t=0d8o3X0SgUhISxY-DDj7URBHoTpkcDD4qFIfxa7v4L8'
 >
-  <Testimony
-    authorName='Herman Starikov'
-    authorTitle='Software Developer'
-    authorAvatar='./images/avatar.png'
-    style={{maxWidth: '32em'}}
-    bubbleBg='#f1f0f0'
-    mb={5}
-  >
-    👋 Hello there, nice to meet you! I live and work in Toronto 🇨🇦.
-    I like workplace sitcoms, electronic music and programming 👨🏼‍💻
-  </Testimony>
-  {latestLinks}
+  <Flex style={{maxWidth: '75vh'}} bg='white' color='black'>
+    <Flex p={3} flexDirection='column' justifyContent='space-between'>
+      <p>
+        <Text fontSize={4}>
+          <Text css={`animation: 1s ${keyframes(rotateIn)};`}>👋</Text> I am Herman, a Software Developer based in Toronto, Canada 🇨🇦
+        </Text>
+        <Text>
+        Nice to meet you!
+        </Text>
+      </p>
+      <Box>
+        {latestLinks}
+      </Box>
+    </Flex>
+    <Hide small>
+      <Image src='./images/waist-up.png' />
+    </Hide>
+  </Flex>
+
   <ScrollDownIndicator />
 </Hero>
 
