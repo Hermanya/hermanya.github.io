@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-export default () => <Head>
+export const MyHead = () => <Head>
   <title>Herman Starikov</title>
   <meta property='og:image' content='/static/images/full-shot.jpg' />
   <meta name='description' content='Herman Starikov personal internet page' />
@@ -15,6 +15,38 @@ export default () => <Head>
   }
   .min-height-full-screen {
     min-height: 100vh;
+  }
+  .z-index-1 {
+    z-index: 1;
+  }
+  .z-index-2 {
+    z-index: 2;
+  }
+  .z-index-3 {
+    z-index: 3;
+  }
+
+  .delay-1 {
+    animation-delay: 0.1s;
+  }
+  .delay-2 {
+    animation-delay: 0.2s;
+  }
+  .delay-3 {
+    animation-delay: 0.3s;
+  }
+  .delay-4 {
+    animation-delay: 0.4s;
+  }
+
+  p::first-letter {
+      font-weight: bold;
+      color: var(--gray);
+  }
+
+  @keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(calc(-100% + 100vh)); }
   }
   `}
   </style>
