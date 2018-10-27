@@ -39,11 +39,6 @@ export const MyHead = () => <Head>
     animation-delay: 0.4s;
   }
 
-  p::first-letter {
-      font-weight: bold;
-      color: var(--gray);
-  }
-
   @keyframes mover {
     0% { transform: translateY(0); }
     100% { transform: translateY(calc(-100% + 100vh)); }
