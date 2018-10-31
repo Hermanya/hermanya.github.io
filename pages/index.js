@@ -17,7 +17,7 @@ export default () => (
       main={
         <div className='d-flex flex-column justify-content-center h-100'>
           <h1 className='display-4 mb-4'>
-            <span className='mr-3 d-inline-block animated rotateInUpLeft'>👋</span> I'm <strong>Herman</strong>,<br /> I make internet apps
+            <span className='mr-3 d-inline-block animated rotateInUpLeft'>👋</span> I'm <strong>Herman</strong>,<br /> I make apps on the web
           </h1>
           <p className='text-justify'>
           Noice to meet you! I'm a 👨🏼‍💻 Software Developer at <a href='https://rangle.io'>Rangle.io</a> by day
@@ -92,7 +92,7 @@ export default () => (
                 animation: 'mover linear 30s infinite  alternate'
               }}
               icons={[
-                'fas fa-terminal', 'fab fa-node', 'fas fa-sitemap', 'fas fa-barcode', 'fab fa-aws', 'fas fa-project-diagram']} />
+                'fas fa-terminal', 'fab fa-node', 'fas fa-sitemap', 'fab fa-aws', 'fas fa-project-diagram']} />
             <IconColumn
               style={{
                 animation: 'mover linear 30s infinite  alternate-reverse'
