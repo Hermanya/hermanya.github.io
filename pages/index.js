@@ -67,6 +67,7 @@ export default () => (
           <MySection text='Looking to hire a Software Developer?' cta='You can check my work experience' className='animated bounceInUp delay-2' >
             <MySocialLink href='https://linkedin.com/in/hermanstarikov' color='#0077b5' children={<i className='fab fa-linkedin' title='linkedin' />} />
             <MySocialLink href='https://angel.co/hermanya' color='#000' children={<i className='fab fa-angellist' title='angel list' />} />
+            <MySocialLink href='/resume' color='#000' children={<i className='far fa-file' title='resume' />} />
           </MySection>
 
           <MySection text='Curious what my life is like?' cta='See here' className='animated bounceInUp delay-3' >
