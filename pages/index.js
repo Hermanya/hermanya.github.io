@@ -20,13 +20,13 @@ export default () => (
             <span className='mr-3 d-inline-block animated rotateInUpLeft'>👋</span> I'm <strong>Herman</strong>,<br /> I make apps on the web
           </h1>
           <p className='text-justify'>
-          Noice to meet you! I'm a 👨🏼‍💻 Software Developer at <a href='https://rangle.io'>Rangle.io</a> by day
-          and a 👨🏿‍💻 Digital Maker by night. My latest pet project is <a href='https://ui1.io'>UI1.io</a>, it's a UI kit builder.
+          Noice to meet you! I'm a Software Developer at <a href='https://rangle.io'>Rangle.io</a> by day
+          and a Digital Maker by night. Recently I made: a <a href='https://ui1.io'>UI kit builder</a> and <a href="https://leananalytics.io">Lean Analytics</a>, a tool that makes A/B testing easy for React apps.
           </p>
           <p className='text-justify'>
           I am not super active on social, but when I make interesting stuff, I post it.
           If you are into cool internet apps, or just want to know what
-          Software Developer's life in Toronto is like, follow me on your social platform of choice.
+          Software Developer's life in Toronto is like, follow me on the social platform of your choice.
           </p>
 
           <MySection text='Do you have a question or want to say hi?' cta='Message me' className='animated bounceInUp'>
@@ -46,7 +46,12 @@ export default () => (
           }, {
             cta: 'Read my writing',
             children: <React.Fragment>
-              <MySocialLink href='https://medium.com/@hermanhasawish' color='#000' children={<i className='fab fa-medium' title='medium' />} />
+              <MySocialLink href='https://medium.com/@hermanhasawish' color='#000' children={
+              <span className='position-relative'>
+              <i className='fab fa-medium' title='medium' />
+              <NewLabel />
+              </span>
+              } />
               <MySocialLink href='https://twitter.com/hermanhasawish' color='#1da1f2' children={<i className='fab fa-twitter' title='twitter' />} />
             </React.Fragment>
           }, {
@@ -56,7 +61,6 @@ export default () => (
                 color='#ea4c89'
                 children={<span className='position-relative'>
                   <i className='fab fa-dribbble' title='Dribbble' />
-                  <NewLabel />
                 </span>} />
               <MySocialLink href='https://www.producthunt.com/@hermanhasawish/made'
                 color='#da552f'
