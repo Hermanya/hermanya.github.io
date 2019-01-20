@@ -3,12 +3,13 @@ import {
   MyHead,
   MySection, MySocialLink, NewLabel, Layout
 } from '../components'
-
-const IconColumn = ({icons = [], ...props}) => <div className='d-flex flex-column text-center' {...props} >
+import classNamed from 'classnamed-components'
+const Column = classNamed('div')`d-flex flex-column text-center`
+const IconColumn = ({ icons = [], ...props }) => <Column {...props}>
   {new Array(20).fill(1).map((_, i) => <i className={`${
     icons[i % icons.length]
   } fa-4x text-light mb-5`} key={i} />)}
-</div>
+</Column>
 
 export default () => (
   <React.Fragment>
@@ -16,14 +17,14 @@ export default () => (
     <Layout
       main={
         <div className='d-flex flex-column justify-content-center h-100'>
-          <h1 className='display-4 mb-4'>
-            <span className='mr-3 d-inline-block animated rotateInUpLeft'>👋</span> I'm <strong>Herman</strong>,<br /> I make apps on the web
+          <h1 className='display-4 mb-4 text-center text-md-left text-serif'>
+            <span className='mr-3 d-inline-block animated rotateInUpLeft'>👋</span> I'm <strong>Herman</strong>,<br /> <small>I make apps on the web</small>
           </h1>
-          <p className='text-justify'>
+          <p>
           Noice to meet you! I'm a Software Developer at <a href='https://rangle.io'>Rangle.io</a> by day
-          and a Digital Maker by night. Recently I made: a <a href='https://ui1.io'>UI kit builder</a> and <a href="https://leananalytics.io">Lean Analytics</a>, a tool that makes A/B testing easy for React apps.
+          and a Digital Maker by night. Recently I made: a <a href='https://ui1.io'>UI kit builder</a> and <a href='https://leananalytics.io'>Lean Analytics</a>, a tool that makes A/B testing easy for React apps.
           </p>
-          <p className='text-justify'>
+          <p>
           I am not super active on social, but when I make interesting stuff, I post it.
           If you are into cool internet apps, or just want to know what
           Software Developer's life in Toronto is like, follow me on the social platform of your choice.
@@ -47,10 +48,10 @@ export default () => (
             cta: 'Read my writing',
             children: <React.Fragment>
               <MySocialLink href='https://medium.com/@hermanhasawish' color='#000' children={
-              <span className='position-relative'>
-              <i className='fab fa-medium' title='medium' />
-              <NewLabel />
-              </span>
+                <span className='position-relative'>
+                  <i className='fab fa-medium' title='medium' />
+                  <NewLabel />
+                </span>
               } />
               <MySocialLink href='https://twitter.com/hermanhasawish' color='#1da1f2' children={<i className='fab fa-twitter' title='twitter' />} />
             </React.Fragment>
@@ -83,8 +84,8 @@ export default () => (
 
       aside={
         <React.Fragment>
-          <img src='/static/images/half-size-herman.png'
-            className='d-block mx-auto mw-100 z-index-2 mt-auto'
+          <img src='/static/images/small-half-size-herman.png'
+            className='d-block mx-auto mw-100 z-index-2 mt-auto animated fadeIn'
             alt='half-size photo of Herman Starikov'
             style={{
               filter: 'drop-shadow(8px 16px 16px rgba(0,0,0,0.25))'
@@ -97,13 +98,13 @@ export default () => (
                 animation: 'mover linear 30s infinite  alternate'
               }}
               icons={[
-                'fas fa-terminal', 'fab fa-node', 'fas fa-sitemap', 'fab fa-aws', 'fas fa-project-diagram']} />
+                'fab fa-node', 'fab fa-aws']} />
             <IconColumn
               style={{
                 animation: 'mover linear 30s infinite  alternate-reverse'
               }}
               icons={[
-                'fab fa-js', 'fab fa-css3', 'fab fa-html5', 'fas fa-code', 'fas fa-code-branch', 'fas fa-file-code'
+                'fab fa-react', 'fab fa-js'
               ]} />
           </div>
         </React.Fragment>

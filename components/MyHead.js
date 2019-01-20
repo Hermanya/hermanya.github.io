@@ -43,6 +43,20 @@ export const MyHead = () => <Head>
     0% { transform: translateY(0); }
     100% { transform: translateY(calc(-100% + 100vh)); }
   }
+
+  html {
+    font-size: 16px;
+  }
+  @media screen and (min-width: 320px) {
+    html {
+      font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    html {
+      font-size: 20px;
+    }
+  }
   `}
   </style>
 </Head>
