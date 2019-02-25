@@ -7797,7 +7797,7 @@ exports.default = (function (_a) {
                                 return [2 /*return*/, Promise.resolve()];
                             }
                             return [2 /*return*/, new Promise(function (resolve) {
-                                    ws = new WebSocket("ws://" + hostname + ":" + 60984);
+                                    ws = new WebSocket("ws://" + hostname + ":" + 65276);
                                     ws.onopen = function () { return resolve(); };
                                     ws.onclose = function () {
                                         setTimeout(function () { return __awaiter(_this, void 0, void 0, function () {
