@@ -79,6 +79,7 @@ export const Tree = memo(
 				<MyLink
 					as="a"
 					target="_blank"
+					rel="noreferrer"
 					href={href || '#'}
 					alignItems="center"
 					color={color}

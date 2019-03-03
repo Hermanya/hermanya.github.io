@@ -27,7 +27,7 @@ const Repo = ({repo, ...props}) => {
 			>
 				<Repo.Heading my={3}>
 					<Text lineHeight={1.25}>{repo.name.replace(/-/g, ' ')}</Text>
-					<Link href={repo.url} ml={[3, 4]} target="_blank">
+					<Link href={repo.url} ml={[3, 4]} target="_blank" rel="noreferrer">
 						<ExternalLink />
 					</Link>
 				</Repo.Heading>
@@ -222,7 +222,7 @@ const GitHub = props => {
 				})}
 			</Flex>
 			<Flex justifyContent="space-between">
-				<a href={`https://github.com/${login}/repositories`}>
+				<a href={`https://github.com/${login}/repositories`} rel="noreferrer">
 					<Text fontSize={0} color="#888" mb={4} mt={5}>
 						More repositories
 					</Text>

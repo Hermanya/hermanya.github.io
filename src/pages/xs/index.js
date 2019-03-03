@@ -34,7 +34,7 @@ const IntroPage = () => {
 	`);
 	return (
 		<>
-			<Seo title="Home" keywords={[]} />
+			<Seo title="Bio" keywords={['cool', 'internet', 'apps']} />
 			<Layout>
 				<Flex flexDirection="column" alignItems="center">
 					<Avatar fixed={data.placeholderImage.childImageSharp.fixed} />
