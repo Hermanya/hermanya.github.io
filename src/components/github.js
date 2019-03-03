@@ -13,7 +13,9 @@ const Repo = ({repo, ...props}) => {
 	return (
 		<Repo.Body {...props}>
 			<Flex flexDirection="column" mr={[3, 4]}>
-				<Repo.Emoji fontSize={['46px','46px', '80px']}>{repo.description.substr(0, 2)}</Repo.Emoji>
+				<Repo.Emoji fontSize={['46px', '46px', '80px']}>
+					{repo.description.substr(0, 2)}
+				</Repo.Emoji>
 				<Repo.Language mt={2}>{repo.primaryLanguage.name}</Repo.Language>
 			</Flex>
 			<Flex
@@ -120,6 +122,7 @@ const GitHub = props => {
 		query {
 			github {
 				user(login: "hermanya") {
+					login
 					bio
 					pinnedRepositories(first: 10) {
 						nodes {
@@ -152,7 +155,7 @@ const GitHub = props => {
 
 	const {
 		github: {
-			user: {bio, pinnedRepositories, repositories}
+			user: {login, bio, pinnedRepositories, repositories}
 		}
 	} = data;
 	const totalStars = repositories.nodes.reduce(
@@ -218,9 +221,16 @@ const GitHub = props => {
 					);
 				})}
 			</Flex>
-			<Text textAlign="right" fontSize={0} color="#888" mb={4} mt={5}>
-				In total, I have received {totalStars} stars.
-			</Text>
+			<Flex justifyContent="space-between">
+				<a href={`https://github.com/${login}/repositories`}>
+					<Text fontSize={0} color="#888" mb={4} mt={5}>
+						More repositories
+					</Text>
+				</a>
+				<Text fontSize={0} color="#888" mb={4} mt={5}>
+					In total, I have received {totalStars} stars.
+				</Text>
+			</Flex>
 		</Box>
 	);
 };

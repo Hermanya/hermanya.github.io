@@ -1,7 +1,7 @@
 import React, {memo, useState} from 'react';
 import {useSpring, animated} from 'react-spring';
 
-import {CornerRightDown, ChevronRight, X} from 'react-feather';
+import {ChevronRight, X, ChevronDown} from 'react-feather';
 import styled from 'styled-components';
 import {Flex, Box} from 'rebass';
 import {useMeasure, usePrevious} from '../hooks/hooks';
@@ -51,7 +51,7 @@ const Content = styled(animated.div)`
 	will-change: transform, opacity, height;
 	margin-left: 0.5em;
 	padding: 0px 0px 0px 1em;
-	border-left: 1px dashed rgba(0, 0, 0, 0.1);
+	// border-left: 1px dashed rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 `;
 export const Tree = memo(
@@ -71,7 +71,7 @@ export const Tree = memo(
 			? icon
 			: children
 			? isOpen
-				? CornerRightDown
+				? ChevronDown
 				: ChevronRight
 			: X;
 		return (
