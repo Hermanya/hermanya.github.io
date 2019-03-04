@@ -1,3 +1,7 @@
+require('dotenv').config({
+	path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
 	siteMetadata: {
 		title: "Herman Starikov's home page",
@@ -43,8 +47,7 @@ module.exports = {
 				// HTTP headers
 				headers: {
 					// Learn about environment variables: https://gatsby.app/env-vars
-					Authorization: `bearer ${'c79d61ef5f75dbb583601b605408c6a6512c8656' ||
-						process.env.GITHUB_TOKEN}`
+					Authorization: `bearer ${process.env.GITHUB_TOKEN}`
 				},
 				// Additional options to pass to node-fetch
 				fetchOptions: {}

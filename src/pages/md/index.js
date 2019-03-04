@@ -9,6 +9,7 @@ import Seo from '../../components/seo';
 import ExternalLinks from '../../components/external-links';
 import {ThreeD} from '../../components/spring';
 import hightlightEnglish from '../../components/highlight-english';
+import {ExternalLink} from '../../components/external-link';
 
 const Sidebar = styled(Flex)``;
 const Copy = styled(Box)`
@@ -53,8 +54,18 @@ const IntroPage = () => {
 			<Seo title="Home" keywords={[]} />
 			<Layout>
 				<Flex width={1}>
-					<Sidebar pt={6} px={4} width={1 / 4}>
+					<Sidebar
+						pt={6}
+						pb={4}
+						px={4}
+						width={1 / 4}
+						flexDirection="column"
+						justifyContent="space-between"
+					>
 						<ExternalLinks />
+						<ExternalLink href="https://github.com/Hermanya/hermanya.github.io/tree/develop">
+							View Page Source
+						</ExternalLink>
 					</Sidebar>
 					<Flex width={1} flexDirection="column" bg="#fafafa">
 						<Header color="white" px={4} pt={5}>

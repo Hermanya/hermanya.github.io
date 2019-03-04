@@ -3,11 +3,13 @@ import {graphql, useStaticQuery} from 'gatsby';
 import styled, {css} from 'styled-components';
 import {useTrail, animated} from 'react-spring';
 import {
-	ExternalLink,
+	ExternalLink as ExternalLinkIcon,
 	GitHub as GitHubIcon,
 	Star as StarIcon
 } from 'react-feather';
-import {Box, Flex, Text, Link} from 'rebass';
+import {Box, Flex, Text} from 'rebass';
+import {useTypingEffect} from 'use-typing-effect';
+import {ExternalLink} from './external-link';
 
 const Repo = ({repo, ...props}) => {
 	return (
@@ -27,9 +29,9 @@ const Repo = ({repo, ...props}) => {
 			>
 				<Repo.Heading my={3}>
 					<Text lineHeight={1.25}>{repo.name.replace(/-/g, ' ')}</Text>
-					<Link href={repo.url} ml={[3, 4]} target="_blank" rel="noreferrer">
-						<ExternalLink />
-					</Link>
+					<ExternalLink href={repo.url} ml={[3, 4]}>
+						<ExternalLinkIcon />
+					</ExternalLink>
 				</Repo.Heading>
 				<Text
 					css={css`
@@ -172,6 +174,8 @@ const GitHub = props => {
 		from: {opacity: 0, x: 20}
 	});
 
+	const typedBio = useTypingEffect([bio]);
+
 	return (
 		<Box style={{position: 'relative'}} {...props}>
 			<GitHubIcon
@@ -193,7 +197,7 @@ const GitHub = props => {
 				mb={5}
 				textAlign={['center', 'left']}
 			>
-				{bio}
+				{typedBio}
 			</Text>
 			<Flex flexWrap="wrap" alignItems="stretch" m={-4}>
 				{pinnedRepoTrail.map(({x, ...rest}, index) => {
@@ -221,13 +225,11 @@ const GitHub = props => {
 					);
 				})}
 			</Flex>
-			<Flex justifyContent="space-between">
-				<a href={`https://github.com/${login}/repositories`} rel="noreferrer">
-					<Text fontSize={0} color="#888" mb={4} mt={5}>
-						More repositories
-					</Text>
-				</a>
-				<Text fontSize={0} color="#888" mb={4} mt={5}>
+			<Flex justifyContent="space-between" mb={4} mt={5}>
+				<ExternalLink href={`https://github.com/${login}/repositories`}>
+					More repositories
+				</ExternalLink>
+				<Text fontSize={0} color="#888">
 					In total, I have received {totalStars} stars.
 				</Text>
 			</Flex>

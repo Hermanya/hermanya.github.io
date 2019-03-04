@@ -5,18 +5,13 @@ import {ChevronRight, X, ChevronDown} from 'react-feather';
 import styled from 'styled-components';
 import {Flex, Box} from 'rebass';
 import {useMeasure, usePrevious} from '../hooks/hooks';
-
+import {ExternalLink} from './external-link';
 // Const Shadow = styled(animated.div)`
 // 	box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
 // 	:hover {
 // 		box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
 // 	}
 // `;
-
-const MyLink = styled(Flex)`
-	color: ${props => props.color || 'black'};
-	text-decoration: none;
-`;
 
 export function ThreeD({style, ...otherProps}) {
 	const [props, set] = useSpring(() => ({
@@ -76,10 +71,7 @@ export const Tree = memo(
 			: X;
 		return (
 			<Flex flexDirection="column" {...otherProps}>
-				<MyLink
-					as="a"
-					target="_blank"
-					rel="noreferrer"
+				<ExternalLink
 					href={href || '#'}
 					alignItems="center"
 					color={color}
@@ -98,7 +90,7 @@ export const Tree = memo(
 						width="1em"
 					/>
 					<Box ml="2">{name}</Box>
-				</MyLink>
+				</ExternalLink>
 				<Content
 					style={{
 						opacity,
@@ -106,7 +98,7 @@ export const Tree = memo(
 					}}
 				>
 					<animated.div style={{transform}} {...bind}>
-						{children}
+						{isOpen && children}
 					</animated.div>
 				</Content>
 			</Flex>
