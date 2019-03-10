@@ -225,7 +225,7 @@ const GitHub = props => {
 					);
 				})}
 			</Flex>
-			<Flex justifyContent="space-between" mb={4} mt={5}>
+			<Flex justifyContent="space-between" alignItems="center" mb={4} mt={5}>
 				<ExternalLink href={`https://github.com/${login}/repositories`}>
 					More repositories
 				</ExternalLink>
