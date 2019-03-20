@@ -2,7 +2,7 @@ import React from 'react';
 import {Flex, Box, Text} from 'rebass';
 import {graphql, useStaticQuery} from 'gatsby';
 import Img from 'gatsby-image';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import Github from '../../components/github';
 import Layout from '../../components/layout';
 import Seo from '../../components/seo';
@@ -62,8 +62,14 @@ const IntroPage = () => {
 						flexDirection="column"
 						justifyContent="space-between"
 					>
-						<ExternalLinks />
-						<ExternalLink href="https://github.com/Hermanya/hermanya.github.io/tree/develop">
+						<ExternalLinks css={css`
+							position: sticky;
+							top: ${props => props.theme.space[6]}px;
+						`} />
+						<ExternalLink 
+							href="https://github.com/Hermanya/hermanya.github.io/tree/develop"
+							css={css`opacity: 0.5`}
+							>
 							View Page Source
 						</ExternalLink>
 					</Sidebar>

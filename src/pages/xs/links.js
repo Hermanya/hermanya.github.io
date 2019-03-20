@@ -3,11 +3,10 @@ import MobileNav from '../../components/mobile-nav';
 import Layout from '../../components/layout';
 import Seo from '../../components/seo';
 import ExternalLinks from '../../components/external-links';
-
 const LinksPage = () => (
-	<Layout>
+	<Layout flexDirection="column" width={1}>
 		<Seo title="Links" keywords={['social', 'navigation']} />
-		<ExternalLinks fontSize={4} />
+		<ExternalLinks fontSize={4} ml={4} />
 		<MobileNav />
 	</Layout>
 );
