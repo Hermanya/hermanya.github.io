@@ -13,8 +13,7 @@ const MobileNav = styled(Flex)`
 	left: 0;
 	right: 0;
 	z-index: 1;
-	// border-top: 1px solid #eee;
-	background: #ffffffee;
+	background: ${props => props.theme.colors.gray[9]}ee;
 	min-height: 3.5rem;
 	padding-bottom: env(safe-area-inset-bottom);
 `;
@@ -31,7 +30,16 @@ const NavLink = styled(Link)`
 	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-align: center;
-
+	color: ${props => props.theme.colors.blue[3]};
+	:hover {
+		color: ${props => props.theme.colors.blue[4]};
+	}
+	:visited {
+		color: ${props => props.theme.colors.purple[3]};
+	}
+	:hover:visited {
+		color: ${props => props.theme.colors.purple[4]};
+	}
 	svg {
 		display: block;
 		height: 32px;

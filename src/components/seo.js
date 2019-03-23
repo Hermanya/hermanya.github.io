@@ -69,14 +69,6 @@ function SEO({description, lang, meta, keywords, title}) {
 							href="https://unpkg.com/normalize.css@8.0.1/normalize.css"
 							rel="stylesheet"
 						/>
-						<style>
-							{`
-						html, body {
-							padding: 0;
-							margin: 0;
-						}
-						`}
-						</style>
 					</Helmet>
 				);
 			}}

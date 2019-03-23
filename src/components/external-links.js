@@ -21,7 +21,7 @@ export default props => (
 		<Tree open name="Pet projects">
 			<Tree name="UI1" href="https://ui1.io?ref=herman" icon={ShoppingBag} />
 			<Tree
-				color="rgb(132, 193, 135)"
+				color="green.4"
 				name="Lean Analytics"
 				href="https://leananalytics.io"
 				icon={BarChart2}

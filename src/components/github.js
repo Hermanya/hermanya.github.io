@@ -28,9 +28,15 @@ const Repo = ({repo, ...props}) => {
 				`}
 			>
 				<Repo.Heading my={3}>
-					<Text lineHeight={1.25}>{repo.name.replace(/-/g, ' ')}</Text>
-					<ExternalLink href={repo.url} ml={[3, 4]}>
-						<ExternalLinkIcon />
+					<ExternalLink
+						href={repo.url}
+						justifyContent="space-between"
+						width={1}
+					>
+						<Text lineHeight={1.25}>{repo.name.replace(/-/g, ' ')}</Text>
+						<Box ml={[3, 4]}>
+							<ExternalLinkIcon />
+						</Box>
 					</ExternalLink>
 				</Repo.Heading>
 				<Text
@@ -46,9 +52,11 @@ const Repo = ({repo, ...props}) => {
 				<Flex justifyContent="space-between" alignItems="center" mt="auto">
 					{/* <Text>{repo.licenseInfo && repo.licenseInfo.name}</Text> */}
 
-					<Flex alignItems="center">
-						<StarIcon color="goldenrod" size="1em" />
-						<Text ml={2}>{repo.stargazers.totalCount}</Text>
+					<Flex alignItems="center" color="orange.5">
+						<StarIcon size="1em" />
+						<Text ml={2} color="gray.0">
+							{repo.stargazers.totalCount}
+						</Text>
 					</Flex>
 				</Flex>
 			</Flex>
@@ -113,6 +121,11 @@ Repo.Language = styled(Box)`
 					background: #0076cd;
 					color: white;
 				`;
+			case 'HTML':
+				return css`
+					background: orangered;
+					color: white;
+				`;
 			default:
 				break;
 		}
@@ -174,7 +187,7 @@ const GitHub = props => {
 		from: {opacity: 0, x: 20}
 	});
 
-	const typedBio = useTypingEffect([bio]);
+	const typedBio = useTypingEffect([bio], {playbackRate: 0.5});
 
 	return (
 		<Box style={{position: 'relative'}} {...props}>

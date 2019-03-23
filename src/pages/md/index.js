@@ -24,9 +24,14 @@ const Copy = styled(Box)`
 `;
 
 const Header = styled(Flex)`
-	background-color: #8ec5fc;
-	background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+	background-color: ${props => props.theme.colors.blue[7]};
+	background-image: linear-gradient(
+		62deg,
+		${props => props.theme.colors.blue[5]} 0%,
+		${props => props.theme.colors.purple[6]} 100%
+	);
 `;
+// #8ec5fc
 
 const IntroPage = () => {
 	const data = useStaticQuery(graphql`
@@ -62,25 +67,29 @@ const IntroPage = () => {
 						flexDirection="column"
 						justifyContent="space-between"
 					>
-						<ExternalLinks css={css`
-							position: sticky;
-							top: ${props => props.theme.space[6]}px;
-						`} />
-						<ExternalLink 
+						<ExternalLinks
+							css={css`
+								position: sticky;
+								top: ${props => props.theme.space[6]}px;
+							`}
+						/>
+						<ExternalLink
 							href="https://github.com/Hermanya/hermanya.github.io/tree/develop"
-							css={css`opacity: 0.5`}
-							>
+							css={css`
+								opacity: 0.5;
+							`}
+						>
 							View Page Source
 						</ExternalLink>
 					</Sidebar>
-					<Flex width={1} flexDirection="column" bg="#fafafa">
+					<Flex width={1} flexDirection="column" color="gray.0" bg="gray.8">
 						<Header color="white" px={4} pt={5}>
 							<Box width={[0, 0, 1 / 3, 1 / 4]} alignSelf="flex-end" mr={4}>
 								<Img fluid={data.placeholderImage.childImageSharp.fluid} />
 							</Box>
 
 							<ThreeD>
-								<Copy p={4} bg="black">
+								<Copy p={4} bg="gray.0" color="gray.9">
 									<Text lineHeight={1.25} fontWeight="normal">
 										<Flex as="h1" flexWrap="wrap">
 											{hightlightEnglish(
@@ -105,7 +114,7 @@ const IntroPage = () => {
 
 						<Github pl={4} pr={[4, 4, 4, 0]} />
 					</Flex>
-					<Box width={[0, 0, 0, 1 / 4]} bg="#fafafa" />
+					<Box width={[0, 0, 0, 1 / 4]} bg="gray.8" />
 				</Flex>
 			</Layout>
 		</>
