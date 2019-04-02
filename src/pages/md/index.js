@@ -89,7 +89,7 @@ const IntroPage = () => {
 							</Box>
 
 							<ThreeD>
-								<Copy p={4} bg="gray.0" color="gray.9">
+								<Copy p={4} bg="gray.1" color="gray.9">
 									<Text lineHeight={1.25} fontWeight="normal">
 										<Flex as="h1" flexWrap="wrap">
 											{hightlightEnglish(

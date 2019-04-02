@@ -100,6 +100,7 @@ Repo.Emoji = styled(Text)`
 	vertical-align: middle;
 	text-align: center;
 	line-height: 80px;
+	filter: saturate(0.5);
 `;
 Repo.Language = styled(Box)`
 	font-weight: 600;
@@ -113,18 +114,18 @@ Repo.Language = styled(Box)`
 		switch (props.children) {
 			case 'JavaScript':
 				return css`
-					background: #fcdf00;
-					color: black;
+					background: ${props => props.theme.colors.orange[7]};
+					color: ${props => props.theme.colors.gray[0]};
 				`;
 			case 'TypeScript':
 				return css`
-					background: #0076cd;
-					color: white;
+					background: ${props => props.theme.colors.blue[3]};
+					color: ${props => props.theme.colors.gray[9]};
 				`;
 			case 'HTML':
 				return css`
-					background: orangered;
-					color: white;
+					background: ${props => props.theme.colors.red[4]};
+					color: ${props => props.theme.colors.gray[9]};
 				`;
 			default:
 				break;

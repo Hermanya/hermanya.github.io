@@ -23,10 +23,13 @@ body, html {
 
 const Layout = props => {
 	const systemDark = useMedia('(prefers-color-scheme: dark)');
+	const scaleLength = 10;
 	const colors = useColorSystem({
 		hueOffset: 0,
 		colorSchemePreference: systemDark ? 'inverted' : 'light',
-		luminanceRange: 100
+		luminanceRange: 100,
+		scaleLength,
+		getChroma: () => 80 // - ((Math.sin(((Math.PI / 2) * x) / scaleLength) + 1) / 2) * 100 * 0.25
 	});
 	return (
 		<ThemeProvider
