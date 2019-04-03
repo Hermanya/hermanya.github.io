@@ -52,12 +52,16 @@ const Repo = ({repo, ...props}) => {
 				<Flex justifyContent="space-between" alignItems="center" mt="auto">
 					{/* <Text>{repo.licenseInfo && repo.licenseInfo.name}</Text> */}
 
-					<Flex alignItems="center" color="orange.5">
+					<ExternalLink
+						href={repo.url + '/stargazers'}
+						alignItems="center"
+						color="orange.5"
+					>
 						<StarIcon size="1em" />
 						<Text ml={2} color="gray.0">
 							{repo.stargazers.totalCount}
 						</Text>
-					</Flex>
+					</ExternalLink>
 				</Flex>
 			</Flex>
 		</Repo.Body>

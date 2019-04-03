@@ -27,7 +27,7 @@ const Header = styled(Flex)`
 	background-color: ${props => props.theme.colors.blue[7]};
 	background-image: linear-gradient(
 		62deg,
-		${props => props.theme.colors.blue[5]} 0%,
+		${props => props.theme.colors.blue[6]} 0%,
 		${props => props.theme.colors.purple[6]} 100%
 	);
 `;
