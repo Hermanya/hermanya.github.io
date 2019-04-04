@@ -1,6 +1,6 @@
 import React from 'react';
 import MobileNav from '../../components/mobile-nav';
-import Layout from '../../components/layout';
+import Layout from '../../components/root';
 import Seo from '../../components/seo';
 import GitHub from '../../components/github';
 

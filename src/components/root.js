@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
 import {fontFamily} from 'styled-system';
-import {Flex} from 'rebass';
+import {Box} from 'rebass';
 import {useColorSystem} from 'use-color-system';
 import useMedia from 'use-media';
 import theme from '../theme';
 
-const Container = styled(Flex)`
+const Container = styled(Box)`
 	min-height: 100vh;
 	${fontFamily}
 `;
@@ -21,7 +21,7 @@ body, html {
 }
 `;
 
-const Layout = props => {
+const Root = props => {
 	const systemDark = useMedia('(prefers-color-scheme: dark)');
 	const scaleLength = 10;
 	const colors = useColorSystem({
@@ -40,22 +40,14 @@ const Layout = props => {
 		>
 			<>
 				<GlobalStyle />
-				<Container
-					mx="auto"
-					px={[4, 4, 0]}
-					py={[6, 6, 0]}
-					fontFamily="sans"
-					color="gray.0"
-					bg="gray.9"
-					{...props}
-				/>
+				<Container fontFamily="sans" color="gray.0" bg="gray.9" {...props} />
 			</>
 		</ThemeProvider>
 	);
 };
 
-Layout.propTypes = {
+Root.propTypes = {
 	children: PropTypes.node.isRequired
 };
 
-export default Layout;
+export default Root;

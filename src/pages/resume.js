@@ -2,7 +2,7 @@ import React from 'react';
 import remark from 'remark';
 import remark2react from 'remark-react';
 import {Flex} from 'rebass';
-import Layout from '../components/layout';
+import Layout from '../components/root';
 import Seo from '../components/seo';
 
 const resume = `

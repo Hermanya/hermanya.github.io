@@ -5,7 +5,7 @@ import {Flex, Text} from 'rebass';
 import {User, GitHub, Feather, Compass} from 'react-feather';
 import styled from 'styled-components';
 
-const MobileNav = styled(Flex)`
+const MobileNavContainer = styled(Flex)`
 	position: fixed;
 	justify-content: space-around;
 
@@ -47,8 +47,8 @@ const NavLink = styled(Link)`
 	}
 `;
 
-export default () => (
-	<MobileNav>
+const MobileNav = () => (
+	<MobileNavContainer>
 		<NavLink to="/">
 			<User />
 			<Text>Bio</Text>
@@ -65,5 +65,7 @@ export default () => (
 			<Feather />
 			<Text>Blog</Text>
 		</NavLink>
-	</MobileNav>
+	</MobileNavContainer>
 );
+
+export default MobileNav;

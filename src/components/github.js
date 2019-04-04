@@ -115,6 +115,7 @@ Repo.Language = styled(Box)`
 	text-align: center;
 	// font-family: monospace;
 	${props => {
+		console.log(props);
 		switch (props.children) {
 			case 'JavaScript':
 				return css`
