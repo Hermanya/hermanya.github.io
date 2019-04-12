@@ -23,7 +23,7 @@ const hightlightEnglish = (text, misspelledWords = [], keyWords = []) => {
 							<Text
 								key={`${String(sIndex)}-${String(index)}`}
 								as="span"
-								color="lime.6"
+								color="lime.5"
 								css={
 									misspelledWords.includes(word) &&
 									css`

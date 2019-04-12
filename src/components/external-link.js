@@ -8,6 +8,7 @@ export const ExternalLink = styled(Flex)`
 	:focus {
 		text-decoration: underline;
 		outline: none;
+		cursor: pointer;
 	}
 `;
 

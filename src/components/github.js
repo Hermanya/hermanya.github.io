@@ -2,101 +2,71 @@ import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
 import styled, {css} from 'styled-components';
 import {useTrail, animated} from 'react-spring';
-import {
-	ExternalLink as ExternalLinkIcon,
-	GitHub as GitHubIcon,
-	Star as StarIcon
-} from 'react-feather';
+import {Star as StarIcon} from 'react-feather';
 import {Box, Flex, Text} from 'rebass';
 import {useTypingEffect} from 'use-typing-effect';
+import {Composition} from 'atomic-layout';
 import {ExternalLink} from './external-link';
 
+const repoTemplate = `
+	pic title       
+	pic description 
+	pic links       
+`;
 const Repo = ({repo, ...props}) => {
 	return (
-		<Repo.Body {...props}>
-			<Flex flexDirection="column" mr={[3, 4]}>
-				<Repo.Emoji fontSize={['46px', '46px', '80px']}>
-					{repo.description.substr(0, 2)}
-				</Repo.Emoji>
-				<Repo.Language mt={2}>{repo.primaryLanguage.name}</Repo.Language>
-			</Flex>
-			<Flex
-				flexDirection="column"
-				width={1}
-				css={css`
-					// border-bottom: solid 1px #d0d0d0;
-				`}
-			>
-				<Repo.Heading my={3}>
-					<ExternalLink
-						href={repo.url}
-						justifyContent="space-between"
-						width={1}
-					>
-						<Text lineHeight={1.25}>{repo.name.replace(/-/g, ' ')}</Text>
-						<Box ml={[3, 4]}>
-							<ExternalLinkIcon />
-						</Box>
-					</ExternalLink>
-				</Repo.Heading>
-				<Text
-					css={css`
-						opacity: 0.6;
-					`}
-					mb={3}
-					fontSize={1}
-					lineHeight={1.75}
-				>
-					{repo.description.substr(2)}
-				</Text>
-				<Flex justifyContent="space-between" alignItems="center" mt="auto">
-					{/* <Text>{repo.licenseInfo && repo.licenseInfo.name}</Text> */}
-
-					<ExternalLink
-						href={repo.url + '/stargazers'}
-						alignItems="center"
-						color="orange.5"
-					>
-						<StarIcon size="1em" />
-						<Text ml={2} color="gray.0">
-							{repo.stargazers.totalCount}
-						</Text>
-					</ExternalLink>
-				</Flex>
-			</Flex>
-		</Repo.Body>
+		<Flex {...props}>
+			<Composition template={repoTemplate} gutter="1em">
+				{({Pic, Title, Description, Links}) => (
+					<>
+						<Pic as={Repo.Emoji} fontSize={['46px', '46px', '80px']}>
+							{repo.description.substr(0, 2)}
+						</Pic>
+						<Title>
+							<Flex alignItems="center">
+								<ExternalLink as={Repo.Heading} href={repo.url} color="gray.0">
+									{repo.name.replace(/-/g, ' ')}
+								</ExternalLink>
+								<Repo.Language ml={2}>
+									{repo.primaryLanguage.name}
+								</Repo.Language>
+							</Flex>
+						</Title>
+						<Description>
+							<Text
+								css={css`
+									opacity: 0.6;
+								`}
+								fontSize={1}
+								lineHeight={1.75}
+								my="-0.25em"
+							>
+								{repo.description.substr(2)}
+							</Text>
+						</Description>
+						<Links as={Flex}>
+							<ExternalLink
+								href={repo.url + '/stargazers'}
+								alignItems="center"
+								color="orange.5"
+							>
+								<StarIcon size="1em" />
+								<Text ml={2} color="gray.0">
+									{repo.stargazers.totalCount}
+								</Text>
+							</ExternalLink>
+						</Links>
+					</>
+				)}
+			</Composition>
+		</Flex>
 	);
 };
 
-Repo.Body = styled(Flex)`
-	// clip-path: polygon(
-	// 	0% 15%,
-	// 	15% 15%,
-	// 	15% 0%,
-	// 	85% 0%,
-	// 	85% 15%,
-	// 	100% 15%,
-	// 	100% 85%,
-	// 	85% 85%,
-	// 	85% 100%,
-	// 	15% 100%,
-	// 	15% 85%,
-	// 	0% 85%
-	// );
-	// box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
-	// :hover {
-	// 	box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
-	// }
-	border-radius: 0.5em;
-`;
-
 Repo.Heading = styled.h3`
 	text-transform: capitalize;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
 	font-weight: normal;
+	margin: 0;
 `;
 Repo.Emoji = styled(Text)`
 	height: 80px;
@@ -106,6 +76,28 @@ Repo.Emoji = styled(Text)`
 	line-height: 80px;
 	filter: saturate(0.5);
 `;
+const getLanguageColors = props => {
+	switch (props.children) {
+		case 'JavaScript':
+			return css`
+				background: ${props => props.theme.colors.orange[7]};
+				color: ${props => props.theme.colors.gray[0]};
+			`;
+		case 'TypeScript':
+			return css`
+				background: ${props => props.theme.colors.blue[3]};
+				color: ${props => props.theme.colors.gray[9]};
+			`;
+		case 'HTML':
+			return css`
+				background: ${props => props.theme.colors.red[4]};
+				color: ${props => props.theme.colors.gray[9]};
+			`;
+		default:
+			break;
+	}
+};
+
 Repo.Language = styled(Box)`
 	font-weight: 600;
 	font-size: 12px;
@@ -113,29 +105,7 @@ Repo.Language = styled(Box)`
 	border-radius: 2px;
 	padding: 3px 4px;
 	text-align: center;
-	// font-family: monospace;
-	${props => {
-		console.log(props);
-		switch (props.children) {
-			case 'JavaScript':
-				return css`
-					background: ${props => props.theme.colors.orange[7]};
-					color: ${props => props.theme.colors.gray[0]};
-				`;
-			case 'TypeScript':
-				return css`
-					background: ${props => props.theme.colors.blue[3]};
-					color: ${props => props.theme.colors.gray[9]};
-				`;
-			case 'HTML':
-				return css`
-					background: ${props => props.theme.colors.red[4]};
-					color: ${props => props.theme.colors.gray[9]};
-				`;
-			default:
-				break;
-		}
-	}}
+	${getLanguageColors}
 `;
 
 const GitHub = props => {
@@ -197,18 +167,18 @@ const GitHub = props => {
 
 	return (
 		<Box style={{position: 'relative'}} {...props}>
-			<GitHubIcon
+			{/* <GitHubIcon
 				size="100px"
 				color="#00000011"
 				strokeWidth={2}
 				style={{
 					position: 'absolute',
-					zIndex: -1,
-					top: '-2em',
-					left: '50%',
-					transform: 'rotate(-10deg) translateX(-50%)'
+					zIndex: 0,
+					top: '10px',
+					left: '0px',
+					transform: 'rotate(-10deg) translateZ(-1px)'
 				}}
-			/>
+			/> */}
 			<Text
 				as="h2"
 				fontWeight="normal"
@@ -218,11 +188,11 @@ const GitHub = props => {
 			>
 				{typedBio}
 			</Text>
-			<Flex flexWrap="wrap" alignItems="stretch" m={-4}>
+			<Flex flexWrap="wrap" alignItems="stretch">
 				{pinnedRepoTrail.map(({x, ...rest}, index) => {
 					const repo = pinnedRepositories.nodes[index];
 					return (
-						<Flex key={repo.id} p={3} width={[1, 1, 1 / 2]}>
+						<Flex key={repo.id} width={[1, 1, 1, 1, 1 / 2]} mb={[4, 5]}>
 							<animated.div
 								className="trails-text"
 								style={{
@@ -232,19 +202,13 @@ const GitHub = props => {
 									width: '100%'
 								}}
 							>
-								<Repo
-									repo={repo}
-									// Bg="#f0f0f0"
-									px={[2, 3]}
-									py={[1, 2]}
-									width={1}
-								/>
+								<Repo repo={repo} width={1} />
 							</animated.div>
 						</Flex>
 					);
 				})}
 			</Flex>
-			<Flex justifyContent="space-between" alignItems="center" mb={4} mt={5}>
+			<Flex justifyContent="space-between" alignItems="center" mb={[4]}>
 				<ExternalLink href={`https://github.com/${login}/repositories`}>
 					More repositories
 				</ExternalLink>

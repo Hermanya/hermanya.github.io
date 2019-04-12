@@ -11,7 +11,8 @@ import {
 	ExternalLink,
 	Facebook,
 	Instagram,
-	Twitter
+	Twitter,
+	Code
 } from 'react-feather';
 import React from 'react';
 import {Tree} from './spring';
@@ -25,6 +26,15 @@ export default props => (
 				name="Lean Analytics"
 				href="https://leananalytics.io"
 				icon={BarChart2}
+			/>
+		</Tree>
+		<Tree open name="Programming">
+			<Tree name="GitHub" href="https://github.com/hermanya" icon={GitHub} />
+			<Tree name="Codepen" href="https://codepen.io/Hermanya" icon={Codepen} />
+			<Tree
+				name="Stack overflow"
+				href="https://stackoverflow.com/users/7228427/herman-starikov"
+				icon={ExternalLink}
 			/>
 		</Tree>
 		<Tree open name="Contact">
@@ -41,27 +51,6 @@ export default props => (
 				icon={Twitter}
 			/>
 		</Tree>
-		<Tree name="For hire">
-			<Tree
-				name="Linkedin"
-				href="https://linkedin.com/in/hermanstarikov"
-				icon={Linkedin}
-			/>
-			<Tree
-				name="Resume"
-				href="https://hermanya.github.io/resume"
-				icon={FileText}
-			/>
-		</Tree>
-		<Tree name="Technology">
-			<Tree name="GitHub" href="https://github.com/hermanya" icon={GitHub} />
-			<Tree name="Codepen" href="https://codepen.io/Hermanya" icon={Codepen} />
-			<Tree
-				name="Stack overflow"
-				href="https://stackoverflow.com/users/7228427/herman-starikov"
-				icon={ExternalLink}
-			/>
-		</Tree>
 		<Tree name="Life">
 			<Tree
 				name="Instagram"
@@ -72,6 +61,18 @@ export default props => (
 				name="Facebook"
 				href="https://facebook.com/hermanhasawish"
 				icon={Facebook}
+			/>
+		</Tree>
+		<Tree name="For hire">
+			<Tree
+				name="Linkedin"
+				href="https://linkedin.com/in/hermanstarikov"
+				icon={Linkedin}
+			/>
+			<Tree
+				name="Resume"
+				href="https://hermanya.github.io/resume"
+				icon={FileText}
 			/>
 		</Tree>
 		<Tree name="Other">
@@ -87,5 +88,10 @@ export default props => (
 			/>
 			<Tree name="Angel" href="https://angel.co/hermanya" icon={ExternalLink} />
 		</Tree>
+		<Tree
+			name="Source code of this website"
+			href="https://github.com/Hermanya/hermanya.github.io/tree/develop"
+			icon={Code}
+		/>
 	</Tree>
 );
