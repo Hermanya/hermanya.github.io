@@ -25,7 +25,7 @@ export const Banner = styled(Flex)`
 	background-color: ${props => props.theme.colors.blue[7]};
 	background-image: linear-gradient(
 		62deg,
-		${props => props.theme.colors.blue[6]} 0%,
+		${props => props.theme.colors.blue[8]} 0%,
 		${props => props.theme.colors.purple[6]} 100%
 	);
 `;
@@ -62,8 +62,15 @@ export const Header = ({data, ...props}) => (
 );
 
 export const Avatar = styled(Img)`
-	border-radius: 16px;
+	border-radius: 4px;
 	${space}
+`;
+
+const StickyExternalLinks = styled(ExternalLinks)`
+	@media screen and (min-width: ${props => props.theme.breakpoints[0]}) {
+		position: sticky;
+		top: ${props => props.theme.space[4]}px;
+	}
 `;
 
 export default data => ({Portrait, Bio, Nav, Banner, Repos, Links}) => (
@@ -98,26 +105,21 @@ export default data => ({Portrait, Bio, Nav, Banner, Repos, Links}) => (
 		<Repos
 			as={GitHub}
 			px={[0, 0, 0, 4]}
+			pb={[4, 4, 0]}
 			color="gray.0"
 			bg={['gray.9', 'gray.9', 'gray.9', 'gray.8']}
 		/>
 		<Links
 			as={Flex}
-			pt={6}
-			pb={4}
-			px={4}
 			fontSize={[3, 3, 3, 2]}
 			bg="gray.9"
 			flexDirection="column"
 			justifyContent="space-between"
-			// css={css`
-			// 	@media screen and (min-width: 500px) {
-			// 		position: sticky;
-			// 		top: ${props => props.theme.space[6]}px;
-			// 	}
-			// `}
+			pt={6}
+			pb={4}
+			px={4}
 		>
-			<ExternalLinks />
+			<StickyExternalLinks />
 		</Links>
 	</>
 );

@@ -3,7 +3,8 @@ import {Composition} from 'atomic-layout';
 import indexComponents from '../components';
 import Root from '../components/root';
 import theme from '../theme';
-import {indexData, indexProps} from './desktop';
+import Seo from '../components/seo';
+import {indexData, indexProps} from '../desktop';
 
 const template = `
 	links
@@ -17,6 +18,7 @@ const LinksPage = () => {
 			// bg={{sm: 'gray.9', xl: 'gray.8'}}
 			bg={['gray.9', 'gray.9', 'gray.9', 'gray.8']}
 		>
+			<Seo title="Links" keywords={['social', 'navigation']} />
 			<Composition
 				padding={theme.space[4]}
 				gutter={theme.space[2]}

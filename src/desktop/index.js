@@ -1,4 +1,5 @@
 import {useStaticQuery, graphql} from 'gatsby';
+import theme from '../theme';
 
 export const indexData = (name = 'IndexQuery') =>
 	useStaticQuery(graphql`
@@ -40,12 +41,12 @@ const templateLg = `
 
 export const indexProps = {
 	paddingMd: 0,
-	gutterMd: 2,
+	gutterMd: theme.space[0],
 	templateColsMd: '18em auto',
 	templateRowsMd: 'auto auto',
 	templateMd,
 	paddingXl: 0,
-	gutterXl: 2,
+	gutterXl: theme.space[0],
 	templateColsXl: '18em auto 18em',
 	templateRowsXl: 'auto auto',
 	templateXl: templateLg

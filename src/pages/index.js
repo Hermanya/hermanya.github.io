@@ -3,7 +3,8 @@ import {Composition} from 'atomic-layout';
 import indexComponents from '../components';
 import Root from '../components/root';
 import theme from '../theme';
-import {indexData, indexProps} from './desktop';
+import Seo from '../components/seo';
+import {indexData, indexProps} from '../desktop';
 
 const template = `
 	portrait
@@ -15,6 +16,7 @@ const BioPage = () => {
 	const data = indexData();
 	return (
 		<Root bg={['gray.9', 'gray.9', 'gray.9', 'gray.8']}>
+			<Seo title="Home" keywords={['home']} />
 			<Composition
 				padding={theme.space[4]}
 				paddingTop={theme.space[6]}

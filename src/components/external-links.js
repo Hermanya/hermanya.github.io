@@ -51,18 +51,6 @@ export default props => (
 				icon={Twitter}
 			/>
 		</Tree>
-		<Tree name="Life">
-			<Tree
-				name="Instagram"
-				href="https://instagram.com/hermanya"
-				icon={Instagram}
-			/>
-			<Tree
-				name="Facebook"
-				href="https://facebook.com/hermanhasawish"
-				icon={Facebook}
-			/>
-		</Tree>
 		<Tree name="For hire">
 			<Tree
 				name="Linkedin"
@@ -76,6 +64,16 @@ export default props => (
 			/>
 		</Tree>
 		<Tree name="Other">
+			<Tree
+				name="Instagram"
+				href="https://instagram.com/hermanya"
+				icon={Instagram}
+			/>
+			<Tree
+				name="Facebook"
+				href="https://facebook.com/hermanhasawish"
+				icon={Facebook}
+			/>
 			<Tree
 				name="Product Hunt"
 				href="https://www.producthunt.com/@hermanhasawish/made"
@@ -92,6 +90,7 @@ export default props => (
 			name="Source code of this website"
 			href="https://github.com/Hermanya/hermanya.github.io/tree/develop"
 			icon={Code}
+			color="gray.4"
 		/>
 	</Tree>
 );

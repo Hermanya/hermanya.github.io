@@ -5,7 +5,7 @@ export default {
 	space: [0, 4, 8, 16, 32, 64, 128, 256],
 	fonts: {
 		sans: 'Ubuntu, system-ui, sans-serif',
-		mono: 'Ubuntu, monospace'
+		mono: `'Ubuntu Mono', monospace`
 	},
 	shadows: {
 		small: '0 0 4px rgba(0, 0, 0, .125)',
