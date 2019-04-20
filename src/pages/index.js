@@ -1,33 +1,47 @@
 import React from 'react';
-import {Composition} from 'atomic-layout';
 import indexComponents from '../components';
 import Root from '../components/root';
-import theme from '../theme';
 import Seo from '../components/seo';
-import {indexData, indexProps} from '../desktop';
-
-const template = `
-	portrait
-	bio
-	nav
-`;
+import {
+	indexData,
+	indexTemplateMd,
+	indexTemplateLg,
+	indexColumnsMd,
+	indexColumnsLg,
+	indexRowsMd,
+	indexRowsLg,
+	indexGapMd
+} from '../desktop';
+import Grid from '../components/grid';
 
 const BioPage = () => {
 	const data = indexData();
 	return (
-		<Root bg={['gray.9', 'gray.9', 'gray.9', 'gray.8']}>
+		<Root bg={['gray.9', 'gray.8']}>
 			<Seo title="Home" keywords={['home']} />
-			<Composition
-				padding={theme.space[4]}
-				paddingTop={theme.space[6]}
-				gutter={theme.space[2]}
-				template={template}
-				templateCols="auto"
-				templateRows="125px auto 0"
-				{...indexProps}
+			<Grid
+				p={[4, 0]}
+				pt={[6, 0]}
+				gridGap={[2, indexGapMd]}
+				gridTemplateAreas={[
+					`
+						"bio"
+						"mobileNav"
+					`,
+					indexTemplateMd,
+					indexTemplateMd,
+					indexTemplateLg
+				]}
+				gridTemplateColumns={[
+					'100%',
+					indexColumnsMd,
+					indexColumnsMd,
+					indexColumnsLg
+				]}
+				gridTemplateRows={['auto 0', indexRowsMd, indexRowsMd, indexRowsLg]}
 			>
-				{indexComponents(data)}
-			</Composition>
+				{indexComponents({data, bioDisplay: ['flex', 'none']})}
+			</Grid>
 		</Root>
 	);
 };

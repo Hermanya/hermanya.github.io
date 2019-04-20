@@ -1,14 +1,22 @@
 import React from 'react';
-import {Composition} from 'atomic-layout';
 import indexComponents from '../components';
 import Root from '../components/root';
-import theme from '../theme';
 import Seo from '../components/seo';
-import {indexData, indexProps} from '../desktop';
+import {
+	indexData,
+	indexTemplateMd,
+	indexTemplateLg,
+	indexColumnsMd,
+	indexColumnsLg,
+	indexRowsMd,
+	indexRowsLg,
+	indexGapMd
+} from '../desktop';
+import Grid from '../components/grid';
 
 const template = `
-	links
-	nav
+	"links"
+	"nav"
 `;
 
 const LinksPage = () => {
@@ -16,19 +24,29 @@ const LinksPage = () => {
 	return (
 		<Root
 			// bg={{sm: 'gray.9', xl: 'gray.8'}}
-			bg={['gray.9', 'gray.9', 'gray.9', 'gray.8']}
+			bg={['gray.9', 'gray.8']}
 		>
 			<Seo title="Links" keywords={['social', 'navigation']} />
-			<Composition
-				padding={theme.space[4]}
-				gutter={theme.space[2]}
-				template={template}
-				templateCols="auto"
-				templateRows="auto 0"
-				{...indexProps}
+			<Grid
+				p={[4, 0]}
+				pt={[6, 0]}
+				gridGap={[2, indexGapMd]}
+				gridTemplateAreas={[
+					template,
+					indexTemplateMd,
+					indexTemplateMd,
+					indexTemplateLg
+				]}
+				gridTemplateColumns={[
+					'auto',
+					indexColumnsMd,
+					indexColumnsMd,
+					indexColumnsLg
+				]}
+				gridTemplateRows={['auto 0', indexRowsMd, indexRowsMd, indexRowsLg]}
 			>
-				{indexComponents(data)}
-			</Composition>
+				{indexComponents({data, linksDisplay: 'block'})}
+			</Grid>
 		</Root>
 	);
 };

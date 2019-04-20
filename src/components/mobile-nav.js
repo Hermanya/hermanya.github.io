@@ -4,11 +4,11 @@ import {Link} from 'gatsby';
 import {Flex, Text} from 'rebass';
 import {User, GitHub, Feather, Compass} from 'react-feather';
 import styled from 'styled-components';
+import {gridArea, display} from 'styled-system';
 
 const MobileNavContainer = styled(Flex)`
 	position: fixed;
 	justify-content: space-around;
-
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -16,6 +16,8 @@ const MobileNavContainer = styled(Flex)`
 	background: ${props => props.theme.colors.gray[9]}ee;
 	min-height: 3.5rem;
 	padding-bottom: env(safe-area-inset-bottom);
+	${gridArea}
+	${display}
 `;
 
 const NavLink = styled(Link)`
@@ -47,8 +49,8 @@ const NavLink = styled(Link)`
 	}
 `;
 
-const MobileNav = () => (
-	<MobileNavContainer>
+const MobileNav = props => (
+	<MobileNavContainer {...props}>
 		<NavLink to="/">
 			<User />
 			<Text>Bio</Text>

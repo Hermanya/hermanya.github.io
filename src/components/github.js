@@ -3,60 +3,48 @@ import {graphql, useStaticQuery} from 'gatsby';
 import styled, {css} from 'styled-components';
 import {useTrail, animated} from 'react-spring';
 import {Star as StarIcon} from 'react-feather';
-import {Box, Flex, Text} from 'rebass';
+import {Box, Text} from 'rebass';
 import {useTypingEffect} from 'use-typing-effect';
-import {Composition} from 'atomic-layout';
-import theme from '../theme';
+import {gridArea} from 'styled-system';
 import {ExternalLink} from './external-link';
+import Grid from './grid';
 
-const repoTemplate = `
-	pic title       
-	pic description 
-	pic links       
-`;
 const Repo = ({repo, ...props}) => {
 	return (
-		<Composition template={repoTemplate} gutter="1em" {...props}>
-			{({Pic, Title, Description, Links}) => (
-				<>
-					<Pic as={Repo.Emoji} fontSize={['46px', '46px', '80px']}>
-						{repo.description.substr(0, 2)}
-					</Pic>
-					<Title>
-						<Flex alignItems="center">
-							<ExternalLink as={Repo.Heading} href={repo.url} color="gray.0">
-								{repo.name.replace(/-/g, ' ')}
-							</ExternalLink>
-							<Repo.Language ml={2}>{repo.primaryLanguage.name}</Repo.Language>
-						</Flex>
-					</Title>
-					<Description>
-						<Text
-							css={css`
-								opacity: 0.6;
-							`}
-							fontSize={1}
-							lineHeight={1.75}
-							my="-0.25em"
-						>
-							{repo.description.substr(2)}
-						</Text>
-					</Description>
-					<Links as={Flex}>
-						<ExternalLink
-							href={repo.url + '/stargazers'}
-							alignItems="center"
-							color="orange.5"
-						>
-							<StarIcon size="1em" />
-							<Text ml={2} color="gray.0">
-								{repo.stargazers.totalCount}
-							</Text>
-						</ExternalLink>
-					</Links>
-				</>
-			)}
-		</Composition>
+		<Grid
+			gridTemplateAreas={`
+				"pic title"
+				"pic description"
+				"pic links"
+			`}
+			gridGap="1em"
+			{...props}
+		>
+			<Repo.Emoji gridArea="pic" fontSize={['46px', '46px', '80px']}>
+				{repo.description.substr(0, 2)}
+			</Repo.Emoji>
+			<Repo.Heading gridArea="title" alignItems="center">
+				<ExternalLink href={repo.url} color="gray.0">
+					{repo.name.replace(/-/g, ' ')}
+				</ExternalLink>
+				<Repo.Language ml={2}>{repo.primaryLanguage.name}</Repo.Language>
+			</Repo.Heading>
+			<Repo.Description gridArea="description">
+				{repo.description.substr(2)}
+			</Repo.Description>
+			<Repo.Links gridArea="links">
+				<ExternalLink
+					href={repo.url + '/stargazers'}
+					alignItems="center"
+					color="orange.5"
+				>
+					<StarIcon size="1em" />
+					<Text ml={2} color="gray.0">
+						{repo.stargazers.totalCount}
+					</Text>
+				</ExternalLink>
+			</Repo.Links>
+		</Grid>
 	);
 };
 
@@ -64,7 +52,19 @@ Repo.Heading = styled.h3`
 	text-transform: capitalize;
 	font-weight: normal;
 	margin: 0;
+	display: flex;
+	align-items: center;
+	${gridArea}
 `;
+
+Repo.Description = styled.p`
+	margin: 0;
+	font-size: ${props => props.theme.fontSizes[1]};
+	line-height: 1.75;
+	opacity: 0.6;
+	${gridArea}
+`;
+
 Repo.Emoji = styled(Text)`
 	height: 80px;
 	width: 80px;
@@ -72,7 +72,13 @@ Repo.Emoji = styled(Text)`
 	text-align: center;
 	line-height: 80px;
 	filter: saturate(0.5);
+	${gridArea}
 `;
+
+Repo.Links = styled.div`
+	${gridArea}
+`;
+
 const getLanguageColors = props => {
 	switch (props.children) {
 		case 'JavaScript':
@@ -102,19 +108,21 @@ Repo.Language = styled(Box)`
 	border-radius: 2px;
 	padding: 3px 4px;
 	text-align: center;
+	font-weight: normal;
+	letter-spacing: 1px;
 	${getLanguageColors}
 `;
 
 const githubAreas = `
-	bio
-	r
-	more
-	totalStars
+	"bio"
+	"repos"
+	"more"
+	"totalStars"
 `;
 const githubAreasMd = `
-	bio  bio bio
-	r    r   r
-	more .   totalStars
+	"bio   bio   bio"
+	"repos repos repos"
+	"more  .     totalStars"
 `;
 
 const GitHub = props => {
@@ -175,71 +183,76 @@ const GitHub = props => {
 	const typedBio = useTypingEffect([bio], {playbackRate: 0.5});
 
 	return (
-		<Composition
-			gutter={theme.space[4]}
-			padding={theme.space[4]}
-			areas={githubAreas}
-			paddingMd={theme.space[4]}
-			areasMd={githubAreasMd}
-			gutterMd={theme.space[5]}
+		<Grid
+			gridGap={[4, 4, 5]}
+			gridTemplateAreas={[githubAreas, githubAreasMd]}
 			{...props}
 		>
-			{({Bio, R, More, TotalStars}) => (
-				<>
-					<Bio>
-						<Text
-							as="h2"
-							fontWeight="normal"
-							m={0}
-							textAlign={['center', 'left']}
-						>
-							{typedBio}
-						</Text>
-					</Bio>
-					<R>
-						<Composition
-							autoRows
-							areas="area"
-							areasLg="area area"
-							gutter={theme.space[4]}
-							gutterLg={theme.space[5]}
-						>
-							{() => {
-								return pinnedRepoTrail.map(({x, ...rest}, index) => {
-									const repo = pinnedRepositories.nodes[index];
-									return (
-										<animated.div
-											key={repo.id}
-											className="trails-text"
-											style={{
-												...rest,
-												transform: x.interpolate(
-													x => `translate3d(0,${x}px,0)`
-												),
-												display: 'flex',
-												width: '100%'
-											}}
-										>
-											<Repo repo={repo} />
-										</animated.div>
-									);
-								});
+			<GitHub.Bio
+				gridArea="bio"
+				as="h2"
+				fontWeight="normal"
+				m={0}
+				textAlign={['center', 'left']}
+			>
+				{typedBio}
+			</GitHub.Bio>
+			<GitHub.Repos
+				gridAutoRows
+				gridArea="repos"
+				gridTemplateAreas={[
+					'"area"',
+					'"area"',
+					'"area area"',
+					'"area area area"'
+				]}
+				gridGap={[4, 4, 5]}
+			>
+				{pinnedRepoTrail.map(({x, ...rest}, index) => {
+					const repo = pinnedRepositories.nodes[index];
+					return (
+						<animated.div
+							key={repo.id}
+							className="trails-text"
+							style={{
+								...rest,
+								transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+								display: 'flex',
+								width: '100%'
 							}}
-						</Composition>
-					</R>
-					<More
-						as={ExternalLink}
-						href={`https://github.com/${login}/repositories`}
-					>
-						More repositories
-					</More>
-					<TotalStars as={Text} fontSize={0} color="gray.5">
-						In total, I have received {totalStars} stars.
-					</TotalStars>
-				</>
-			)}
-		</Composition>
+						>
+							<Repo repo={repo} />
+						</animated.div>
+					);
+				})}
+			</GitHub.Repos>
+			<GitHub.More
+				gridArea="more"
+				href={`https://github.com/${login}/repositories`}
+			>
+				More repositories
+			</GitHub.More>
+			<GitHub.TotalStars gridArea="totalStars" fontSize={0} color="gray.5">
+				In total, I have received {totalStars} stars.
+			</GitHub.TotalStars>
+		</Grid>
 	);
 };
+
+GitHub.Bio = styled(Text)`
+	${gridArea}
+`;
+
+GitHub.Repos = styled(Grid)`
+	${gridArea}
+`;
+
+GitHub.More = styled(ExternalLink)`
+	${gridArea}
+`;
+
+GitHub.TotalStars = styled(Text)`
+	${gridArea}
+`;
 
 export default GitHub;

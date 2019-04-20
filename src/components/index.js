@@ -1,7 +1,7 @@
 import React from 'react';
 import {Flex, Box, Text} from 'rebass';
 import Img from 'gatsby-image';
-import {space} from 'styled-system';
+import {gridArea, space, display} from 'styled-system';
 import styled from 'styled-components';
 
 import ExternalLinks from './external-links';
@@ -28,7 +28,32 @@ export const Banner = styled(Flex)`
 		${props => props.theme.colors.blue[8]} 0%,
 		${props => props.theme.colors.purple[6]} 100%
 	);
+	${gridArea}
+	${display}
 `;
+
+const DescriptionAndBio = ({data}) => (
+	<>
+		<Text lineHeight={1.25} fontWeight="normal">
+			<Flex as="h1" flexWrap="wrap">
+				{hightlightEnglish(
+					data.site.siteMetadata.description,
+					data.site.siteMetadata.misspelledWords,
+					data.site.siteMetadata.keyWords
+				)}
+			</Flex>
+		</Text>
+		<Text lineHeight={1.75} fontWeight="normal">
+			<Flex as="p" flexWrap="wrap">
+				{hightlightEnglish(
+					data.site.siteMetadata.bio,
+					data.site.siteMetadata.misspelledWords,
+					data.site.siteMetadata.keyWords
+				)}
+			</Flex>
+		</Text>
+	</>
+);
 
 export const Header = ({data, ...props}) => (
 	<Banner {...props}>
@@ -37,25 +62,8 @@ export const Header = ({data, ...props}) => (
 		</Box>
 
 		<ThreeD>
-			<Copy p={4} bg="gray.1" color="gray.9">
-				<Text lineHeight={1.25} fontWeight="normal">
-					<Flex as="h1" flexWrap="wrap">
-						{hightlightEnglish(
-							data.site.siteMetadata.description,
-							data.site.siteMetadata.misspelledWords,
-							data.site.siteMetadata.keyWords
-						)}
-					</Flex>
-				</Text>
-				<Text lineHeight={1.75} fontWeight="normal">
-					<Flex flexWrap="wrap" mt={4}>
-						{hightlightEnglish(
-							data.site.siteMetadata.bio,
-							data.site.siteMetadata.misspelledWords,
-							data.site.siteMetadata.keyWords
-						)}
-					</Flex>
-				</Text>
+			<Copy p={4} bg="gray.7" color="gray.1">
+				<DescriptionAndBio data={data} />
 			</Copy>
 		</ThreeD>
 	</Banner>
@@ -63,63 +71,75 @@ export const Header = ({data, ...props}) => (
 
 export const Avatar = styled(Img)`
 	border-radius: 4px;
+	${gridArea}
 	${space}
+	${display}
 `;
 
-const StickyExternalLinks = styled(ExternalLinks)`
+const StickyLinks = styled(ExternalLinks)`
 	@media screen and (min-width: ${props => props.theme.breakpoints[0]}) {
 		position: sticky;
 		top: ${props => props.theme.space[4]}px;
 	}
 `;
 
-export default data => ({Portrait, Bio, Nav, Banner, Repos, Links}) => (
+const Links = styled(Flex)`
+	${gridArea}
+	${display}
+`;
+
+const Bio = styled(Flex)`
+	${gridArea}
+	${display}
+`;
+
+export default ({
+	data,
+	bioDisplay = 'none !important',
+	gitHubDisplay = ['none', 'grid'],
+	linksDisplay = ['none', 'block']
+}) => (
 	<>
-		<Portrait
-			as={Avatar}
-			fixed={data.meSmilingDown.childImageSharp.fixed}
-			m="auto"
-		/>
-		<Bio as={Flex} flexDirection="column" alignItems="center" px={3}>
-			<Text lineHeight={1.25} fontWeight="normal">
-				<Flex as="h1" flexWrap="wrap">
-					{hightlightEnglish(
-						data.site.siteMetadata.description,
-						data.site.siteMetadata.misspelledWords,
-						data.site.siteMetadata.keyWords
-					)}
-				</Flex>
-			</Text>
-			<Text lineHeight={1.75} fontWeight="normal">
-				<Flex as="p" flexWrap="wrap">
-					{hightlightEnglish(
-						data.site.siteMetadata.bio,
-						data.site.siteMetadata.misspelledWords,
-						data.site.siteMetadata.keyWords
-					)}
-				</Flex>
-			</Text>
+		<Bio
+			gridArea="bio"
+			display={bioDisplay}
+			flexDirection="column"
+			alignItems="center"
+			px={3}
+		>
+			<Avatar fixed={data.meSmilingDown.childImageSharp.fixed} m="auto" />
+			<DescriptionAndBio data={data} />
 		</Bio>
-		<Nav as={MobileNav} />
-		<Banner as={Header} px={4} pt={5} color="gray.0" bg="gray.8" data={data} />
-		<Repos
-			as={GitHub}
-			px={[0, 0, 0, 4]}
-			pb={[4, 4, 0]}
+		<MobileNav gridArea="mobileNav" display={['flex', 'none']} />
+		<Header
+			gridArea="banner"
+			px={[0, 0, 4]}
+			pt={[0, 4, 5]}
+			color="gray.0"
+			bg="gray.8"
+			data={data}
+			display={['none', 'flex']}
+		/>
+		<GitHub
+			gridArea="repos"
+			px={[0, 4]}
+			py={[0, 4]}
 			color="gray.0"
 			bg={['gray.9', 'gray.9', 'gray.9', 'gray.8']}
+			display={gitHubDisplay}
 		/>
 		<Links
-			as={Flex}
-			fontSize={[3, 3, 3, 2]}
+			gridArea="links"
+			fontSize={[3, 2, 2, 3]}
 			bg="gray.9"
 			flexDirection="column"
 			justifyContent="space-between"
-			pt={6}
-			pb={4}
-			px={4}
+			pt={[0, 6]}
+			pb={[0, 4]}
+			px={[0, 4]}
+			display={linksDisplay}
 		>
-			<StickyExternalLinks />
+			<StickyLinks />
 		</Links>
 	</>
 );

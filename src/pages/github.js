@@ -1,31 +1,49 @@
 import React from 'react';
-import {Composition} from 'atomic-layout';
 import indexComponents from '../components';
 import Root from '../components/root';
-import theme from '../theme';
 import Seo from '../components/seo';
-import {indexData, indexProps} from '../desktop';
+import Grid from '../components/grid';
+import {
+	indexData,
+	indexTemplateMd,
+	indexTemplateLg,
+	indexColumnsMd,
+	indexColumnsLg,
+	indexRowsMd,
+	indexRowsLg,
+	indexGapMd
+} from '../desktop';
 
 const template = `
-	repos
-	nav
+	"repos"
+	"mobileNav"
 `;
 
 const GithubPage = () => {
 	const data = indexData();
 	return (
-		<Root bg={['gray.9', 'gray.9', 'gray.9', 'gray.8']}>
+		<Root bg={['gray.9', 'gray.8']}>
 			<Seo title="Links" keywords={['open source', 'repos', 'github']} />
-			<Composition
-				padding={theme.space[4]}
-				gutter={theme.space[2]}
-				template={template}
-				templateCols="auto"
-				templateRows="125px auto 0"
-				{...indexProps}
+			<Grid
+				p={[4, 0]}
+				pb={[5, 0]}
+				gridGap={[2, indexGapMd]}
+				gridTemplateAreas={[
+					template,
+					indexTemplateMd,
+					indexTemplateMd,
+					indexTemplateLg
+				]}
+				gridTemplateColumns={[
+					'100%',
+					indexColumnsMd,
+					indexColumnsMd,
+					indexColumnsLg
+				]}
+				gridTemplateRows={['auto 0', indexRowsMd, indexRowsMd, indexRowsLg]}
 			>
-				{indexComponents(data)}
-			</Composition>
+				{indexComponents({data, gitHubDisplay: 'grid'})}
+			</Grid>
 		</Root>
 	);
 };
