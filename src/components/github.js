@@ -6,6 +6,7 @@ import {Star as StarIcon} from 'react-feather';
 import {Box, Flex, Text} from 'rebass';
 import {useTypingEffect} from 'use-typing-effect';
 import {Composition} from 'atomic-layout';
+import theme from '../theme';
 import {ExternalLink} from './external-link';
 
 const repoTemplate = `
@@ -188,12 +189,23 @@ const GitHub = props => {
 			>
 				{typedBio}
 			</Text>
-			<Flex flexWrap="wrap" alignItems="stretch">
-				{pinnedRepoTrail.map(({x, ...rest}, index) => {
-					const repo = pinnedRepositories.nodes[index];
-					return (
-						<Flex key={repo.id} width={[1, 1, 1, 1, 1 / 2]} mb={[4, 5]}>
+
+			<Composition
+				autoRows
+				areas="area"
+				areasMd="area area"
+				areasLg="area area"
+				gutter={theme.space[2]}
+				gutterSm={theme.space[3]}
+				gutterMd={theme.space[4]}
+				gutterLg={theme.space[5]}
+			>
+				{() => {
+					return pinnedRepoTrail.map(({x, ...rest}, index) => {
+						const repo = pinnedRepositories.nodes[index];
+						return (
 							<animated.div
+								key={repo.id}
 								className="trails-text"
 								style={{
 									...rest,
@@ -204,10 +216,11 @@ const GitHub = props => {
 							>
 								<Repo repo={repo} width={1} />
 							</animated.div>
-						</Flex>
-					);
-				})}
-			</Flex>
+						);
+					});
+				}}
+			</Composition>
+			<Flex flexWrap="wrap" alignItems="stretch" />
 			<Flex justifyContent="space-between" alignItems="center" mb={[4]}>
 				<ExternalLink href={`https://github.com/${login}/repositories`}>
 					More repositories
