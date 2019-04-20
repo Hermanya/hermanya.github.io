@@ -87,10 +87,10 @@ export default props => (
 			<Tree name="Angel" href="https://angel.co/hermanya" icon={ExternalLink} />
 		</Tree>
 		<Tree
-			name="Source code of this website"
+			name="Source Code"
 			href="https://github.com/Hermanya/hermanya.github.io/tree/develop"
 			icon={Code}
-			color="gray.4"
+			color="gray.5"
 		/>
 	</Tree>
 );

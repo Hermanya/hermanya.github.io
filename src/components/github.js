@@ -16,51 +16,47 @@ const repoTemplate = `
 `;
 const Repo = ({repo, ...props}) => {
 	return (
-		<Flex {...props}>
-			<Composition template={repoTemplate} gutter="1em">
-				{({Pic, Title, Description, Links}) => (
-					<>
-						<Pic as={Repo.Emoji} fontSize={['46px', '46px', '80px']}>
-							{repo.description.substr(0, 2)}
-						</Pic>
-						<Title>
-							<Flex alignItems="center">
-								<ExternalLink as={Repo.Heading} href={repo.url} color="gray.0">
-									{repo.name.replace(/-/g, ' ')}
-								</ExternalLink>
-								<Repo.Language ml={2}>
-									{repo.primaryLanguage.name}
-								</Repo.Language>
-							</Flex>
-						</Title>
-						<Description>
-							<Text
-								css={css`
-									opacity: 0.6;
-								`}
-								fontSize={1}
-								lineHeight={1.75}
-								my="-0.25em"
-							>
-								{repo.description.substr(2)}
-							</Text>
-						</Description>
-						<Links as={Flex}>
-							<ExternalLink
-								href={repo.url + '/stargazers'}
-								alignItems="center"
-								color="orange.5"
-							>
-								<StarIcon size="1em" />
-								<Text ml={2} color="gray.0">
-									{repo.stargazers.totalCount}
-								</Text>
+		<Composition template={repoTemplate} gutter="1em" {...props}>
+			{({Pic, Title, Description, Links}) => (
+				<>
+					<Pic as={Repo.Emoji} fontSize={['46px', '46px', '80px']}>
+						{repo.description.substr(0, 2)}
+					</Pic>
+					<Title>
+						<Flex alignItems="center">
+							<ExternalLink as={Repo.Heading} href={repo.url} color="gray.0">
+								{repo.name.replace(/-/g, ' ')}
 							</ExternalLink>
-						</Links>
-					</>
-				)}
-			</Composition>
-		</Flex>
+							<Repo.Language ml={2}>{repo.primaryLanguage.name}</Repo.Language>
+						</Flex>
+					</Title>
+					<Description>
+						<Text
+							css={css`
+								opacity: 0.6;
+							`}
+							fontSize={1}
+							lineHeight={1.75}
+							my="-0.25em"
+						>
+							{repo.description.substr(2)}
+						</Text>
+					</Description>
+					<Links as={Flex}>
+						<ExternalLink
+							href={repo.url + '/stargazers'}
+							alignItems="center"
+							color="orange.5"
+						>
+							<StarIcon size="1em" />
+							<Text ml={2} color="gray.0">
+								{repo.stargazers.totalCount}
+							</Text>
+						</ExternalLink>
+					</Links>
+				</>
+			)}
+		</Composition>
 	);
 };
 
@@ -107,6 +103,18 @@ Repo.Language = styled(Box)`
 	padding: 3px 4px;
 	text-align: center;
 	${getLanguageColors}
+`;
+
+const githubAreas = `
+	bio
+	r
+	more
+	totalStars
+`;
+const githubAreasMd = `
+	bio  bio bio
+	r    r   r
+	more .   totalStars
 `;
 
 const GitHub = props => {
@@ -167,69 +175,70 @@ const GitHub = props => {
 	const typedBio = useTypingEffect([bio], {playbackRate: 0.5});
 
 	return (
-		<Box style={{position: 'relative'}} {...props}>
-			{/* <GitHubIcon
-				size="100px"
-				color="#00000011"
-				strokeWidth={2}
-				style={{
-					position: 'absolute',
-					zIndex: 0,
-					top: '10px',
-					left: '0px',
-					transform: 'rotate(-10deg) translateZ(-1px)'
-				}}
-			/> */}
-			<Text
-				as="h2"
-				fontWeight="normal"
-				mt={4}
-				mb={5}
-				textAlign={['center', 'left']}
-			>
-				{typedBio}
-			</Text>
-
-			<Composition
-				autoRows
-				areas="area"
-				areasMd="area area"
-				areasLg="area area"
-				gutter={theme.space[2]}
-				gutterSm={theme.space[3]}
-				gutterMd={theme.space[4]}
-				gutterLg={theme.space[5]}
-			>
-				{() => {
-					return pinnedRepoTrail.map(({x, ...rest}, index) => {
-						const repo = pinnedRepositories.nodes[index];
-						return (
-							<animated.div
-								key={repo.id}
-								className="trails-text"
-								style={{
-									...rest,
-									transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
-									display: 'flex',
-									width: '100%'
-								}}
-							>
-								<Repo repo={repo} width={1} />
-							</animated.div>
-						);
-					});
-				}}
-			</Composition>
-			<Flex flexWrap="wrap" alignItems="stretch" />
-			<Flex justifyContent="space-between" alignItems="center" mb={[4]}>
-				<ExternalLink href={`https://github.com/${login}/repositories`}>
-					More repositories
-				</ExternalLink>
-				<Text fontSize={0} color="#888">
-					In total, I have received {totalStars} stars.
-				</Text>
-			</Flex>
-		</Box>
+		<Composition
+			gutter={theme.space[4]}
+			padding={theme.space[4]}
+			areas={githubAreas}
+			paddingMd={theme.space[4]}
+			areasMd={githubAreasMd}
+			gutterMd={theme.space[5]}
+			{...props}
+		>
+			{({Bio, R, More, TotalStars}) => (
+				<>
+					<Bio>
+						<Text
+							as="h2"
+							fontWeight="normal"
+							m={0}
+							textAlign={['center', 'left']}
+						>
+							{typedBio}
+						</Text>
+					</Bio>
+					<R>
+						<Composition
+							autoRows
+							areas="area"
+							areasLg="area area"
+							gutter={theme.space[4]}
+							gutterLg={theme.space[5]}
+						>
+							{() => {
+								return pinnedRepoTrail.map(({x, ...rest}, index) => {
+									const repo = pinnedRepositories.nodes[index];
+									return (
+										<animated.div
+											key={repo.id}
+											className="trails-text"
+											style={{
+												...rest,
+												transform: x.interpolate(
+													x => `translate3d(0,${x}px,0)`
+												),
+												display: 'flex',
+												width: '100%'
+											}}
+										>
+											<Repo repo={repo} />
+										</animated.div>
+									);
+								});
+							}}
+						</Composition>
+					</R>
+					<More
+						as={ExternalLink}
+						href={`https://github.com/${login}/repositories`}
+					>
+						More repositories
+					</More>
+					<TotalStars as={Text} fontSize={0} color="gray.5">
+						In total, I have received {totalStars} stars.
+					</TotalStars>
+				</>
+			)}
+		</Composition>
 	);
 };
 

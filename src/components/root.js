@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
-import {fontFamily} from 'styled-system';
+import {fontFamily, fontSize} from 'styled-system';
 import {Box} from 'rebass';
 import {useColorSystem} from 'use-color-system';
 import useMedia from 'use-media';
@@ -10,6 +10,7 @@ import theme from '../theme';
 const Container = styled(Box)`
 	min-height: 100vh;
 	${fontFamily}
+	${fontSize}
 `;
 
 const GlobalStyle = createGlobalStyle`
