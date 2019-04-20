@@ -5035,7 +5035,7 @@ fs-extra@^5.0.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^7.0.0:
+fs-extra@^7.0.0, fs-extra@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
@@ -5177,6 +5177,14 @@ gatsby-plugin-react-helmet@^3.0.6:
   integrity sha512-y8YRZ660HOsplv9LN/RVxXJquRukvgcoMhGba40NzeocIKcVjkHdk0lrpWKGdxReuLlFQEn4KrX7EbbKN1/ylg==
   dependencies:
     "@babel/runtime" "^7.0.0"
+
+gatsby-plugin-robots-txt@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-robots-txt/-/gatsby-plugin-robots-txt-1.4.0.tgz#2da3fb60a307f83b34a9fbdd85fdb4e6a53e431a"
+  integrity sha512-9wFH7bl90jpBEUo2rkXeXHtQy3CqZD/85F9rW6JeyJhbtTFOdnjdx9/Up3zJkxeLblwR1I5+VxHAzp/3jEyb7g==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    generate-robotstxt "^6.0.0"
 
 gatsby-plugin-sharp@^2.0.20:
   version "2.0.20"
@@ -5434,6 +5442,18 @@ gauge@~2.7.3:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
+
+generate-robotstxt@^6.0.0:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/generate-robotstxt/-/generate-robotstxt-6.0.1.tgz#526231e7d8e89addfa3a78d18642128313ff51e0"
+  integrity sha512-qSFNXROMLHjEbl6yPo9WQv0onfOqq3x28lFHUWERNgGGApk0XlHrZmnxaeLzCILGaj+PesBHwzqR14+bHvHLVw==
+  dependencies:
+    cosmiconfig "^5.0.0"
+    fs-extra "^7.0.1"
+    ip-regex "^4.0.0"
+    is-absolute-url "^2.1.0"
+    meow "^5.0.0"
+    resolve-from "^4.0.0"
 
 get-caller-file@^1.0.1:
   version "1.0.3"
@@ -6514,6 +6534,11 @@ ip-regex@^2.1.0:
   resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-2.1.0.tgz#fa78bf5d2e6913c911ce9f819ee5146bb6d844e9"
   integrity sha1-+ni/XS5pE8kRzp+BnuUUa7bYROk=
 
+ip-regex@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-4.1.0.tgz#5ad62f685a14edb421abebc2fff8db94df67b455"
+  integrity sha512-pKnZpbgCTfH/1NLIlOduP/V+WRXzC2MOz3Qo8xmxk8C5GudJLgK5QyLVXOSWy3ParAH7Eemurl3xjv/WXYFvMA==
+
 ip@^1.1.0, ip@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
@@ -6529,7 +6554,7 @@ irregular-plurals@^2.0.0:
   resolved "https://registry.yarnpkg.com/irregular-plurals/-/irregular-plurals-2.0.0.tgz#39d40f05b00f656d0b7fa471230dd3b714af2872"
   integrity sha512-Y75zBYLkh0lJ9qxeHlMjQ7bSbyiSqNW/UOPWDmzC7cXskL1hekSITh1Oc6JV0XCWWZ9DE8VYSB71xocLk3gmGw==
 
-is-absolute-url@^2.0.0:
+is-absolute-url@^2.0.0, is-absolute-url@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-absolute-url/-/is-absolute-url-2.1.0.tgz#50530dfb84fcc9aa7dbe7852e83a37b93b9f2aa6"
   integrity sha1-UFMN+4T8yap9vnhS6Do3uTufKqY=

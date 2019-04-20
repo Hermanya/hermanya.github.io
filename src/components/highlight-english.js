@@ -7,7 +7,7 @@ const hightlightEnglish = (text, misspelledWords = [], keyWords = []) => {
 	return sentenses.map((sentense, sIndex) => {
 		if (sentense.endsWith('!')) {
 			return (
-				<Text key={`${String(sIndex)}-!`} as="span" color="magenta.5" mr={1}>
+				<Text key={`${String(sIndex)}-!`} as="span" color="magenta.6" mr={1}>
 					{sentense}
 				</Text>
 			);

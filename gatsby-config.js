@@ -4,6 +4,7 @@ require('dotenv').config({
 
 module.exports = {
 	siteMetadata: {
+		siteUrl: 'https://hermanya.github.io',
 		title: "Herman Starikov's website",
 		description: `Hi! My name is Herman Starikov. I live in Toronto and make apps on the internet.`,
 		author: '@hermanya',
@@ -58,6 +59,7 @@ module.exports = {
 			options: {
 				// Add any options here
 			}
-		}
+		},
+		'gatsby-plugin-robots-txt'
 	]
 };
