@@ -184,7 +184,7 @@ const GitHub = props => {
 
 	return (
 		<Grid
-			gridGap={[4, 4, 5]}
+			gridGap={[3, 4, 4]}
 			gridTemplateAreas={[githubAreas, githubAreasMd]}
 			{...props}
 		>
@@ -200,13 +200,8 @@ const GitHub = props => {
 			<GitHub.Repos
 				gridAutoRows
 				gridArea="repos"
-				gridTemplateAreas={[
-					'"area"',
-					'"area"',
-					'"area area"',
-					'"area area area"'
-				]}
-				gridGap={[4, 4, 5]}
+				gridTemplateColumns="repeat(auto-fit,minmax(320px,1fr))"
+				gridGap={{sm: 3, lg: 4}}
 			>
 				{pinnedRepoTrail.map(({x, ...rest}, index) => {
 					const repo = pinnedRepositories.nodes[index];

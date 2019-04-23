@@ -1,6 +1,13 @@
+const breakpoints = ['40em', '52em', '64em', '80em'];
+
+// aliases
+breakpoints.sm = breakpoints[0];
+breakpoints.md = breakpoints[1];
+breakpoints.lg = breakpoints[2];
+breakpoints.xl = breakpoints[3];
+
 export default {
-	breakpoints: ['52em', '64em', '76em'],
-	// breakpoints: ['576px', '576px', '768px', '992px', '1200px'],
+	breakpoints,
 	fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
 	space: [0, 4, 8, 16, 32, 64, 128, 256],
 	fonts: {
