@@ -30,15 +30,23 @@ const BioPage = () => {
 					`,
 					indexTemplateMd,
 					indexTemplateMd,
+					indexTemplateMd,
 					indexTemplateLg
 				]}
 				gridTemplateColumns={[
 					'100%',
 					indexColumnsMd,
 					indexColumnsMd,
+					indexColumnsMd,
 					indexColumnsLg
 				]}
-				gridTemplateRows={['auto 0', indexRowsMd, indexRowsMd, indexRowsLg]}
+				gridTemplateRows={[
+					'auto 0',
+					indexRowsMd,
+					indexRowsMd,
+					indexRowsMd,
+					indexRowsLg
+				]}
 			>
 				{indexComponents({data, bioDisplay: ['flex', 'none']})}
 			</Grid>

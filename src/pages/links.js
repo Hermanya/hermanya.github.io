@@ -35,15 +35,23 @@ const LinksPage = () => {
 					template,
 					indexTemplateMd,
 					indexTemplateMd,
+					indexTemplateMd,
 					indexTemplateLg
 				]}
 				gridTemplateColumns={[
 					'auto',
 					indexColumnsMd,
 					indexColumnsMd,
+					indexColumnsMd,
 					indexColumnsLg
 				]}
-				gridTemplateRows={['auto 0', indexRowsMd, indexRowsMd, indexRowsLg]}
+				gridTemplateRows={[
+					'auto 0',
+					indexRowsMd,
+					indexRowsMd,
+					indexRowsMd,
+					indexRowsLg
+				]}
 			>
 				{indexComponents({data, linksDisplay: 'block'})}
 			</Grid>

@@ -106,6 +106,7 @@ export default ({
 			flexDirection="column"
 			alignItems="center"
 			px={3}
+			pb={3}
 		>
 			<Avatar fixed={data.meSmilingDown.childImageSharp.fixed} m="auto" />
 			<DescriptionAndBio data={data} />
@@ -130,12 +131,12 @@ export default ({
 		/>
 		<Links
 			gridArea="links"
-			fontSize={[3, 2, 2, 3]}
+			fontSize={[3, 2]}
 			bg="gray.9"
 			flexDirection="column"
 			justifyContent="space-between"
 			pt={[0, 6]}
-			pb={[0, 4]}
+			pb={[3, 4]}
 			px={[0, 4]}
 			display={linksDisplay}
 		>

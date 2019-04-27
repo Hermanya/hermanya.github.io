@@ -6,9 +6,9 @@ module.exports = {
 	siteMetadata: {
 		siteUrl: 'https://hermanya.github.io',
 		title: "Herman Starikov's website",
-		description: `Hi! My name is Herman Starikov. I live in Toronto and make apps on the internet.`,
+		description: `Hi! My name is Herman Starikov. I'm a web developer in Toronto and these days I'm primarily focused on React.`,
 		author: '@hermanya',
-		bio: `If you are into cool internet apps, or just want to know what Software Developer's life in Tronno is like, follow me on the social platform of your choice.`,
+		bio: `If you are into React or modern JavaScript things, or just want to know what Web Developer's life in Tronno is like, follow me on the social platform of your choice.`,
 		misspelledWords: ['Tronno'],
 		keyWords: ['follow', 'cool', 'internet', 'apps']
 	},
