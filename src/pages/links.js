@@ -22,10 +22,7 @@ const template = `
 const LinksPage = () => {
 	const data = indexData();
 	return (
-		<Root
-			// bg={{sm: 'gray.9', xl: 'gray.8'}}
-			bg={['gray.9', 'gray.8']}
-		>
+		<Root bg={['gray.9', 'gray.8']}>
 			<Seo title="Links" keywords={['social', 'navigation']} />
 			<Grid
 				p={[4, 0]}
