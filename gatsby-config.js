@@ -17,6 +17,41 @@ module.exports = {
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
+				name: `reviews`,
+				path: `${__dirname}/src/reviews`
+			}
+		},
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [
+					{
+						resolve: `gatsby-remark-images`,
+						options: {
+							maxWidth: 590
+						}
+					},
+					'gatsby-remark-autolink-headers',
+					{
+						resolve: 'gatsby-remark-prismjs',
+						options: {
+							inlineCodeMarker: '÷'
+						}
+					},
+					'gatsby-remark-copy-linked-files',
+					'gatsby-remark-smartypants',
+					{
+						resolve: 'gatsby-remark-external-links',
+						options: {
+							target: '_blank'
+						}
+					}
+				]
+			}
+		},
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
 				name: `images`,
 				path: `${__dirname}/src/images`
 			}

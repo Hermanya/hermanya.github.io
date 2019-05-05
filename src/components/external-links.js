@@ -17,7 +17,7 @@ import {
 import React from 'react';
 import {Tree} from './spring';
 
-export default props => (
+const ExternalLinks = props => (
 	<Tree open name="Links" {...props}>
 		<Tree open name="Pet projects">
 			<Tree name="UI1" href="https://ui1.io?ref=herman" icon={ShoppingBag} />
@@ -94,3 +94,5 @@ export default props => (
 		/>
 	</Tree>
 );
+
+export default ExternalLinks;

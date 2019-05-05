@@ -1,3 +1,8 @@
+---
+path: "/review/atomic-layout-vs-styled-system"
+date: "2017-11-07"
+title: "Atomic-layout vs styled-system"
+---
 # Atomic-layout vs styled-system
 
 ## Atomic-layout
@@ -18,7 +23,7 @@ Another thing that could be better about `atomic-layout` is the API. It seems to
 
 When I was integrating `atomic-layout` onto my website I browsed the GitHub page of the project quite a lot. And found [this issue](styled-system-issue), which I found curious. I'm a big fan of `styled-system`. My website is built with it. And funny enough at first I was upset that `atomic-layout` does not automatically integrate with my breakpoints from `styled-system`. I never thought of `styled-system` as a competitor for `atomic-layout`. Mainly because I use `Rebass` and it does not have a grid component, so I assumed that the grid is out of `styled-systems`'s domain, but turns out it's not. It turns out I can implement my own grid component, very similar to `atomic-layout`, in just about 30 lines of code:
 
-```
+``` js
 import styled from 'styled-components';
 import {
     gridAutoColumns,
@@ -50,7 +55,7 @@ export default Grid;
 
 If you are not familiar with `styled-system`, what we have here is a bunch of "mixins" if you will, that expose certain react props relevant to the CSS grid APIs. Note that I added `space` for padding only, because who needs margins anymore? And `display` is for hiding elements that are not in the current template. This part I'm not quite happy about, but this is the best I could think of for now.
 
-```
+``` js
 - const repoTemplate = `
 -       emoji title
 -       emoji description
@@ -60,7 +65,7 @@ If you are not familiar with `styled-system`, what we have here is a bunch of "m
 
 The new `Grid` requires templates in a slightly different format: the double quotes are required. But on the flip side, the template is no longer space sensitive and can be inlined into props. 
 
-```
+``` jsx
 -               <Composition template={repoTemplate} gutter={theme.space[4]} {...props}>
 -                       {({Emoji, Title, Description, Links}) => (
 -                               <>
