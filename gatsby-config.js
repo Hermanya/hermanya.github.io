@@ -6,11 +6,11 @@ module.exports = {
 	siteMetadata: {
 		siteUrl: 'https://hermanya.github.io',
 		title: "Herman Starikov's website",
-		description: `Hi! My name is Herman Starikov. I'm a web developer in Toronto and these days I'm primarily focused on React.`,
+		description: `Hi! I'm a Web Developer in Toronto and these days I specialize in React.`,
 		author: '@hermanya',
-		bio: `If you are into React or modern JavaScript things, or just want to know what Web Developer's life in Tronno is like, follow me on the social platform of your choice.`,
+		bio: `If you are into React or modern JavaScript things, or just want to know what a Web Developer's life in Tronno is like, follow me on the social platform of your choice.`,
 		misspelledWords: ['Tronno'],
-		keyWords: ['follow', 'cool', 'internet', 'apps']
+		keyWords: ['React', 'cool', 'internet', 'apps']
 	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
@@ -25,6 +25,18 @@ module.exports = {
 			resolve: `gatsby-transformer-remark`,
 			options: {
 				plugins: [
+					{
+						resolve: `gatsby-remark-prettier`,
+						options: {
+							// Look for local .prettierrc file.
+							// The same as `prettier.resolveConfig(process.cwd())`
+							// usePrettierrc: true,
+							// Overwrite prettier options, check out https://prettier.io/docs/en/options.html
+							prettierOptions: {
+								printWidth: 30
+							}
+						}
+					},
 					{
 						resolve: `gatsby-remark-images`,
 						options: {
@@ -95,6 +107,7 @@ module.exports = {
 				// Add any options here
 			}
 		},
-		'gatsby-plugin-robots-txt'
+		'gatsby-plugin-robots-txt',
+		'gatsby-plugin-sitemap'
 	]
 };

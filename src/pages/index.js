@@ -4,13 +4,10 @@ import Root from '../components/root';
 import Seo from '../components/seo';
 import {
 	indexData,
-	indexTemplateMd,
-	indexTemplateLg,
-	indexColumnsMd,
-	indexColumnsLg,
-	indexRowsMd,
-	indexRowsLg,
-	indexGapMd
+	indexTemplates,
+	indexColumns,
+	indexRows,
+	indexGaps
 } from '../desktop';
 import Grid from '../components/grid';
 
@@ -22,31 +19,16 @@ const BioPage = () => {
 			<Grid
 				p={[4, 0]}
 				pt={[6, 0]}
-				gridGap={[2, indexGapMd]}
+				gridGap={[2, ...indexGaps]}
 				gridTemplateAreas={[
 					`
 						"bio"
 						"mobileNav"
 					`,
-					indexTemplateMd,
-					indexTemplateMd,
-					indexTemplateMd,
-					indexTemplateLg
+					...indexTemplates
 				]}
-				gridTemplateColumns={[
-					'100%',
-					indexColumnsMd,
-					indexColumnsMd,
-					indexColumnsMd,
-					indexColumnsLg
-				]}
-				gridTemplateRows={[
-					'auto 0',
-					indexRowsMd,
-					indexRowsMd,
-					indexRowsMd,
-					indexRowsLg
-				]}
+				gridTemplateColumns={['100%', ...indexColumns]}
+				gridTemplateRows={['auto 0', ...indexRows]}
 			>
 				{indexComponents({data, bioDisplay: ['flex', 'none']})}
 			</Grid>

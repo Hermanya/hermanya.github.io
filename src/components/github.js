@@ -6,7 +6,7 @@ import {Star as StarIcon} from 'react-feather';
 import {Box, Text} from 'rebass';
 import {useTypingEffect} from 'use-typing-effect';
 import {gridArea} from 'styled-system';
-import {ExternalLink} from './external-link';
+import NavLink from './nav-link';
 import Grid from './grid';
 
 const Repo = ({repo, ...props}) => {
@@ -24,16 +24,16 @@ const Repo = ({repo, ...props}) => {
 				{repo.description.substr(0, 2)}
 			</Repo.Emoji>
 			<Repo.Heading gridArea="title" alignItems="center">
-				<ExternalLink href={repo.url} color="gray.0">
+				<NavLink href={repo.url} color="gray.0">
 					{repo.name.replace(/-/g, ' ')}
-				</ExternalLink>
+				</NavLink>
 				<Repo.Language ml={2}>{repo.primaryLanguage.name}</Repo.Language>
 			</Repo.Heading>
 			<Repo.Description gridArea="description">
 				{repo.description.substr(2)}
 			</Repo.Description>
 			<Repo.Links gridArea="links">
-				<ExternalLink
+				<NavLink
 					href={repo.url + '/stargazers'}
 					alignItems="center"
 					color="orange.5"
@@ -42,7 +42,7 @@ const Repo = ({repo, ...props}) => {
 					<Text ml={2} color="gray.0">
 						{repo.stargazers.totalCount}
 					</Text>
-				</ExternalLink>
+				</NavLink>
 			</Repo.Links>
 		</Grid>
 	);
@@ -242,7 +242,7 @@ GitHub.Repos = styled(Grid)`
 	${gridArea}
 `;
 
-GitHub.More = styled(ExternalLink)`
+GitHub.More = styled(NavLink)`
 	${gridArea}
 `;
 

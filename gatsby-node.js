@@ -3,12 +3,13 @@ const path = require('path');
 exports.createPages = ({actions, graphql}) => {
 	const {createPage} = actions;
 
-	const blogPostTemplate = path.resolve(`src/templates/blog-template.js`);
+	const blogPostTemplate = path.resolve(`src/templates/blog-post-template.js`);
+	// const blogTemplate = path.resolve(`src/templates/blog-template.js`);
 
 	return graphql(`
 		{
 			allMarkdownRemark(
-				sort: {order: DESC, fields: [frontmatter___date]}
+				sort: {order: DESC, fields: [frontmatter___created]}
 				limit: 1000
 			) {
 				edges {
@@ -32,5 +33,11 @@ exports.createPages = ({actions, graphql}) => {
 				context: {} // additional data can be passed via context
 			});
 		});
+
+		// createPage({
+		// 	path: '/blog',
+		// 	component: blogTemplate,
+		// 	context: {} // additional data can be passed via context
+		// });
 	});
 };

@@ -4,7 +4,7 @@ import {Link} from 'gatsby';
 import {Flex, Text} from 'rebass';
 import {User, GitHub, Feather, Compass} from 'react-feather';
 import styled from 'styled-components';
-import {gridArea, display} from 'styled-system';
+import {gridArea, display, color} from 'styled-system';
 
 const MobileNavContainer = styled(Flex)`
 	position: fixed;
@@ -16,6 +16,7 @@ const MobileNavContainer = styled(Flex)`
 	background: ${props => props.theme.colors.gray[9]}ee;
 	min-height: 3.5rem;
 	padding-bottom: env(safe-area-inset-bottom);
+	backdrop-filter: blur(1px);
 	${gridArea}
 	${display}
 `;
@@ -32,6 +33,8 @@ const NavLink = styled(Link)`
 	-webkit-text-decoration: none;
 	text-decoration: none;
 	text-align: center;
+	background: none;
+	border: 0;
 	color: ${props => props.theme.colors.blue[3]};
 	:hover {
 		color: ${props => props.theme.colors.blue[4]};
@@ -47,13 +50,14 @@ const NavLink = styled(Link)`
 		height: 32px;
 		margin: 0 auto;
 	}
+	${color}
 `;
 
 const MobileNav = props => (
 	<MobileNavContainer {...props}>
 		<NavLink to="/">
 			<User />
-			<Text>Bio</Text>
+			<Text>About</Text>
 		</NavLink>
 		<NavLink to="/links">
 			<Compass />
@@ -63,7 +67,7 @@ const MobileNav = props => (
 			<GitHub />
 			<Text>OSS</Text>
 		</NavLink>
-		<NavLink as="a" href="https://medium.com/@hermanhasawish">
+		<NavLink to="/blog">
 			<Feather />
 			<Text>Blog</Text>
 		</NavLink>
@@ -71,3 +75,12 @@ const MobileNav = props => (
 );
 
 export default MobileNav;
+
+export const BlogMobileNav = ({linksShown, setLinksShown, ...props}) => (
+	<MobileNavContainer {...props}>
+		<NavLink as="button" onClick={() => setLinksShown(!linksShown)}>
+			<Compass />
+			<Text>{linksShown ? 'Hide' : 'Links'}</Text>
+		</NavLink>
+	</MobileNavContainer>
+);

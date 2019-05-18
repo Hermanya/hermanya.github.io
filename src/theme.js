@@ -1,18 +1,13 @@
-const breakpoints = ['40em', '52em', '64em', '80em'];
-
-// aliases
-breakpoints.sm = breakpoints[0];
-breakpoints.md = breakpoints[1];
-breakpoints.lg = breakpoints[2];
-breakpoints.xl = breakpoints[3];
+const breakpoints = ['50em', '100em', '120em'];
 
 export default {
 	breakpoints,
 	fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
 	space: [0, 4, 8, 16, 32, 64, 128, 256],
 	fonts: {
-		sans: 'Ubuntu, system-ui, sans-serif',
-		mono: `'Ubuntu Mono', monospace`
+		sans:
+			'-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol',
+		mono: `SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace`
 	},
 	shadows: {
 		small: '0 0 4px rgba(0, 0, 0, .125)',

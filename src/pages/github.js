@@ -5,13 +5,10 @@ import Seo from '../components/seo';
 import Grid from '../components/grid';
 import {
 	indexData,
-	indexTemplateMd,
-	indexTemplateLg,
-	indexColumnsMd,
-	indexColumnsLg,
-	indexRowsMd,
-	indexRowsLg,
-	indexGapMd
+	indexTemplates,
+	indexRows,
+	indexColumns,
+	indexGaps
 } from '../desktop';
 
 const template = `
@@ -27,28 +24,10 @@ const GithubPage = () => {
 			<Grid
 				p={[4, 0]}
 				pb={[5, 0]}
-				gridGap={[2, indexGapMd]}
-				gridTemplateAreas={[
-					template,
-					indexTemplateMd,
-					indexTemplateMd,
-					indexTemplateMd,
-					indexTemplateLg
-				]}
-				gridTemplateColumns={[
-					'100%',
-					indexColumnsMd,
-					indexColumnsMd,
-					indexColumnsMd,
-					indexColumnsLg
-				]}
-				gridTemplateRows={[
-					'auto 0',
-					indexRowsMd,
-					indexRowsMd,
-					indexRowsMd,
-					indexRowsLg
-				]}
+				gridGap={[2, ...indexGaps]}
+				gridTemplateAreas={[template, ...indexTemplates]}
+				gridTemplateColumns={['100%', ...indexColumns]}
+				gridTemplateRows={['auto 0', ...indexRows]}
 			>
 				{indexComponents({data, gitHubDisplay: 'grid'})}
 			</Grid>

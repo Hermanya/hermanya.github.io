@@ -4,14 +4,17 @@ import Img from 'gatsby-image';
 import {gridArea, space, display} from 'styled-system';
 import styled from 'styled-components';
 
-import ExternalLinks from './external-links';
-import {ThreeD} from './spring';
+import {ThreeD} from './thee-d';
 import hightlightEnglish from './highlight-english';
 import GitHub from './github';
 import MobileNav from './mobile-nav';
+import SidebarNav from './sidebar-nav';
+
+import Blog from './blog';
+import MyExternalLinks from './my-external-links';
 
 export const Copy = styled(Box)`
-	max-width: 32em;
+	max-width: 40em;
 	border-radius: 0.5em 0.5em 0 0;
 	transition: 0.5s;
 	:hover {
@@ -57,7 +60,7 @@ const DescriptionAndBio = ({data}) => (
 
 export const Header = ({data, ...props}) => (
 	<Banner {...props}>
-		<Box width={[0, 0, 1 / 3, 1 / 4]} alignSelf="flex-end" mr={4}>
+		<Box width={[0, 1 / 4, 1 / 4]} alignSelf="flex-end" mr={4}>
 			<Img fluid={data.meLookingRight.childImageSharp.fluid} />
 		</Box>
 
@@ -76,18 +79,6 @@ export const Avatar = styled(Img)`
 	${display}
 `;
 
-const StickyLinks = styled(ExternalLinks)`
-	@media screen and (min-width: ${props => props.theme.breakpoints[0]}) {
-		position: sticky;
-		top: ${props => props.theme.space[4]}px;
-	}
-`;
-
-const Links = styled(Flex)`
-	${gridArea}
-	${display}
-`;
-
 const Bio = styled(Flex)`
 	${gridArea}
 	${display}
@@ -97,7 +88,8 @@ export default ({
 	data,
 	bioDisplay = 'none !important',
 	gitHubDisplay = ['none', 'grid'],
-	linksDisplay = ['none', 'block']
+	linksDisplay = ['none', 'block'],
+	blogDisplay = ['none', 'grid']
 }) => (
 	<>
 		<Bio
@@ -114,7 +106,7 @@ export default ({
 		<MobileNav gridArea="mobileNav" display={['flex', 'none']} />
 		<Header
 			gridArea="banner"
-			px={[0, 0, 4]}
+			px={[0, 4]}
 			pt={[0, 4, 5]}
 			color="gray.0"
 			bg="gray.8"
@@ -129,18 +121,18 @@ export default ({
 			bg={['gray.9', 'gray.9', 'gray.9', 'gray.8']}
 			display={gitHubDisplay}
 		/>
-		<Links
+		<SidebarNav
 			gridArea="links"
-			fontSize={[3, 2]}
-			bg="gray.9"
-			flexDirection="column"
-			justifyContent="space-between"
-			pt={[0, 6]}
-			pb={[3, 4]}
-			px={[0, 4]}
 			display={linksDisplay}
-		>
-			<StickyLinks />
-		</Links>
+			links={MyExternalLinks}
+		/>
+		<Blog
+			gridArea="blog"
+			gridGap={4}
+			px={[0, 4]}
+			py={[0, 4]}
+			gridAutoRows="min-content"
+			display={blogDisplay}
+		/>
 	</>
 );

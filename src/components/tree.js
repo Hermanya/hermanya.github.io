@@ -1,46 +1,11 @@
 import React, {memo, useState} from 'react';
 import {useSpring, animated} from 'react-spring';
-
-import {ChevronRight, X, ChevronDown} from 'react-feather';
+import {Link} from 'gatsby';
+import {ChevronRight, ExternalLink, ChevronDown} from 'react-feather';
 import styled from 'styled-components';
-import {Flex, Box} from 'rebass';
+import {Flex, Text} from 'rebass';
 import {useMeasure, usePrevious} from '../hooks/hooks';
-import {ExternalLink} from './external-link';
-// Const Shadow = styled(animated.div)`
-// 	box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
-// 	:hover {
-// 		box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
-// 	}
-// `;
-
-export function ThreeD({style, ...otherProps}) {
-	const [props, set] = useSpring(() => ({
-		xys: [0, 0, 1],
-		config: {mass: 5, tension: 350, friction: 40}
-	}));
-	const [{ref}, {top, left, width, height}] = useMeasure();
-
-	// Original: const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1]
-	const calc = (x, y) => [
-		-((top + height / 2 - y) / (height / 2)) * 10,
-		-((left + width / 2 - x) / (width / 2)) * 10,
-		1.1
-	];
-	const trans = (x, y, s) =>
-		`perspective(1000px) rotateX(${x}deg) rotateY(${-y}deg) scale(${s})`;
-	return (
-		<animated.div
-			ref={ref}
-			style={{
-				transform: props.xys.interpolate(trans),
-				...style
-			}}
-			onMouseLeave={() => set({xys: [0, 0, 1]})}
-			onMouseMove={({pageX: x, pageY: y}) => set({xys: calc(x, y)})}
-			{...otherProps}
-		/>
-	);
-}
+import NavLink from './nav-link';
 
 const Content = styled(animated.div)`
 	will-change: transform, opacity, height;
@@ -68,12 +33,13 @@ export const Tree = memo(
 			? isOpen
 				? ChevronDown
 				: ChevronRight
-			: X;
+			: ExternalLink;
 		return (
 			<Flex flexDirection="column" {...otherProps}>
-				<ExternalLink
+				<NavLink
+					as={(href || '').startsWith('/') ? Link : 'a'}
 					href={href || '#'}
-					alignItems="center"
+					to={href || '#'}
 					color={color}
 					mb={2}
 					onClick={event => {
@@ -89,8 +55,10 @@ export const Tree = memo(
 						height="1em"
 						width="1em"
 					/>
-					<Box ml="2">{name}</Box>
-				</ExternalLink>
+					<Text ml="2" textAlign="left">
+						{name}
+					</Text>
+				</NavLink>
 				<Content
 					style={{
 						opacity,

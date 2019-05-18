@@ -62,10 +62,6 @@ function Seo({description, lang, meta, keywords, title}) {
 							.concat(meta)}
 					>
 						<link
-							href="https://fonts.googleapis.com/css?family=Ubuntu"
-							rel="stylesheet"
-						/>
-						<link
 							href="https://fonts.googleapis.com/css?family=Ubuntu+Mono"
 							rel="stylesheet"
 						/>

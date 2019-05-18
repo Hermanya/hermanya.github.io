@@ -2,37 +2,37 @@ import React from 'react';
 import indexComponents from '../components';
 import Root from '../components/root';
 import Seo from '../components/seo';
+import Grid from '../components/grid';
 import {
 	indexData,
 	indexTemplates,
-	indexColumns,
 	indexRows,
+	indexColumns,
 	indexGaps
 } from '../desktop';
-import Grid from '../components/grid';
 
 const template = `
-	"links"
-	"nav"
+	"blog"
+	"mobileNav"
 `;
 
-const LinksPage = () => {
+const BlogPage = () => {
 	const data = indexData();
 	return (
 		<Root bg={['gray.9', 'gray.8']}>
-			<Seo title="Links" keywords={['social', 'navigation']} />
+			<Seo title="Links" keywords={['blog', 'posts', 'reviews']} />
 			<Grid
 				p={[4, 0]}
-				pt={[6, 0]}
+				pb={[5, 0]}
 				gridGap={[2, ...indexGaps]}
 				gridTemplateAreas={[template, ...indexTemplates]}
-				gridTemplateColumns={['auto', ...indexColumns]}
+				gridTemplateColumns={['100%', ...indexColumns]}
 				gridTemplateRows={['auto 0', ...indexRows]}
 			>
-				{indexComponents({data, linksDisplay: 'block'})}
+				{indexComponents({data, blogDisplay: 'grid'})}
 			</Grid>
 		</Root>
 	);
 };
 
-export default LinksPage;
+export default BlogPage;

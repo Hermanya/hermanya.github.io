@@ -8,16 +8,16 @@ import {
 	BarChart2,
 	GitHub,
 	Codepen,
-	ExternalLink,
+	NavLink,
 	Facebook,
 	Instagram,
 	Twitter,
 	Code
 } from 'react-feather';
 import React from 'react';
-import {Tree} from './spring';
+import {Tree} from './tree';
 
-const ExternalLinks = props => (
+const MyExternalLinks = props => (
 	<Tree open name="Links" {...props}>
 		<Tree open name="Pet projects">
 			<Tree name="UI1" href="https://ui1.io?ref=herman" icon={ShoppingBag} />
@@ -34,7 +34,7 @@ const ExternalLinks = props => (
 			<Tree
 				name="Stack overflow"
 				href="https://stackoverflow.com/users/7228427/herman-starikov"
-				icon={ExternalLink}
+				icon={NavLink}
 			/>
 		</Tree>
 		<Tree open name="Contact">
@@ -77,14 +77,14 @@ const ExternalLinks = props => (
 			<Tree
 				name="Product Hunt"
 				href="https://www.producthunt.com/@hermanhasawish/made"
-				icon={ExternalLink}
+				icon={NavLink}
 			/>
 			<Tree
 				name="Dribbble"
 				href="https://dribbble.com/hermanya"
-				icon={ExternalLink}
+				icon={NavLink}
 			/>
-			<Tree name="Angel" href="https://angel.co/hermanya" icon={ExternalLink} />
+			<Tree name="Angel" href="https://angel.co/hermanya" icon={NavLink} />
 		</Tree>
 		<Tree
 			name="Source Code"
@@ -95,4 +95,4 @@ const ExternalLinks = props => (
 	</Tree>
 );
 
-export default ExternalLinks;
+export default MyExternalLinks;

@@ -7,6 +7,8 @@ import {useColorSystem} from 'use-color-system';
 import useMedia from 'use-media';
 import theme from '../theme';
 
+import {createPrismTheme} from './prism-theme';
+
 const Container = styled(Box)`
 	min-height: 100vh;
 	${fontFamily}
@@ -14,11 +16,28 @@ const Container = styled(Box)`
 `;
 
 const GlobalStyle = createGlobalStyle`
+* {
+	box-sizing: border-box;
+}
 body, html {
   padding: 0; 
   margin: 0;
   background: ${props => props.theme.colors.gray[9]};
   color: ${props => props.theme.colors.gray[0]};
+}
+a {
+	text-decoration: none;
+	text-align: center;
+	color: ${props => props.theme.colors.blue[3]};
+}
+a:hover {
+	color: ${props => props.theme.colors.blue[4]};
+}
+a:visited {
+	color: ${props => props.theme.colors.purple[3]};
+}
+a:hover:visited {
+	color: ${props => props.theme.colors.purple[4]};
 }
 `;
 
@@ -32,6 +51,7 @@ const Root = props => {
 		scaleLength,
 		getChroma: () => 80 // - ((Math.sin(((Math.PI / 2) * x) / scaleLength) + 1) / 2) * 100 * 0.25
 	});
+	const PrismTheme = createPrismTheme(colors);
 	return (
 		<ThemeProvider
 			theme={{
@@ -41,6 +61,7 @@ const Root = props => {
 		>
 			<>
 				<GlobalStyle />
+				<PrismTheme />
 				<Container fontFamily="sans" color="gray.0" bg="gray.9" {...props} />
 			</>
 		</ThemeProvider>

@@ -1,13 +1,19 @@
 ---
 path: "/review/atomic-layout-vs-styled-system"
-date: "2017-11-07"
+created: "2019-04-21"
+updated: "2019-05-05"
 title: "Atomic-layout vs styled-system"
+description: "In depth comparison of React CSS grid libraries"
+discuss_on_github: "https://github.com/kettanaito/atomic-layout/issues/144"
+previous_post: "./gatsby-blog-for-a-developer"
+previous_post_title: "My New Blog"
 ---
-# Atomic-layout vs styled-system
+
+*This post was originally published [on GitHub](https://github.com/kettanaito/atomic-layout/issues/144).*
 
 ## Atomic-layout
 
-I have recently refactored [my website](my-website) from Rebass `Flex`-based layouts to `atomic-layout` and then to `styled-system`. Why did I do it? I'm new to CSS grid, but I have heard [good things](css-grid-changes-everything) about it. And I've been following [Kettanaito](kettanaito) for a while now, and he has been working on `atomic-layout` for about a year. I always wanted to try building something with `atomic-layout`, but the opportunity did not present itself until I decided to rebuild my website.
+I have recently refactored [my website](my-website) from Rebass `Flex`-based layouts to `atomic-layout` and then to `styled-system`. Why did I do it? I'm new to CSS grid, but I have heard [good things](css-grid-changes-everything) about it. And I've been following [Kettanaito](kettanaito) for a while now, he is working on `atomic-layout` for about a year. I always wanted to try building something with `atomic-layout`, but the opportunity did not present itself until I decided to rebuild my website.
 
 Overall, I'm glad I started my CSS grid journey from `atomic-layout`. This library has great docs powered by Gitbook, another project I admire and have actually contributed to. The docs start with the motivation section, where Kettanaito outlines the core principals of composition and responsiveness in `atomic-layout`. And that makes sense, but in retrospective, I think the #1 motivation was different for me. 
 
@@ -55,7 +61,7 @@ export default Grid;
 
 If you are not familiar with `styled-system`, what we have here is a bunch of "mixins" if you will, that expose certain react props relevant to the CSS grid APIs. Note that I added `space` for padding only, because who needs margins anymore? And `display` is for hiding elements that are not in the current template. This part I'm not quite happy about, but this is the best I could think of for now.
 
-``` js
+``` diff
 - const repoTemplate = `
 -       emoji title
 -       emoji description
@@ -65,30 +71,32 @@ If you are not familiar with `styled-system`, what we have here is a bunch of "m
 
 The new `Grid` requires templates in a slightly different format: the double quotes are required. But on the flip side, the template is no longer space sensitive and can be inlined into props. 
 
-``` jsx
--               <Composition template={repoTemplate} gutter={theme.space[4]} {...props}>
--                       {({Emoji, Title, Description, Links}) => (
--                               <>
--                                       <Emoji as={Repo.Emoji}>
--                                               {repo.description.substr(0, 2)}
--                                       </Emoji>
-+               <Grid
-+                       gridTemplateAreas={`
-+                               "emoji title"
-+                               "emoji description"
-+                               "emoji links"
-+                       `}
-+                       gridGap={4}
-+                       {...props}
-+               >
-+                       <Emoji gridArea="emoji">
-+                               {repo.description.substr(0, 2)}
-+                       </Emoji>
+``` diff
+- <Composition 
+-     template={repoTemplate} 
+-     gutter={theme.space[4]} 
+- >
+-     {({Emoji, Title, Description, Links}) => (
+-          <>
+-              <Emoji as={Repo.Emoji}>
+-                  {repo.description.substr(0, 2)}
+-              </Emoji>
++  <Grid
++      gridTemplateAreas={`
++          "emoji title"
++          "emoji description"
++          "emoji links"
++      `}
++      gridGap={4}
++  >
++      <Emoji gridArea="emoji">
++          {repo.description.substr(0, 2)}
++      </Emoji>
 ```
 
 As you can see here, that API is a little different, but not too much. The `template` became `gridTemplateAreas`, the `gutter` turned into `gridGap`. And there are no more wrapper components so I need to add `gridArea` from `styled-system` as you can see below, but on the other hand, I don't need to namespace the `Emoji` component anymore.
 
-```
+``` diff
 - Repo.Emoji = styled.p`
 + const Emoji = styled.p`
 +    ${gridArea}
@@ -96,30 +104,31 @@ As you can see here, that API is a little different, but not too much. The `temp
 
 And to give you another example, here is a dynamic grid of repos you can see on [my website](my-website-repos).
 
-```
--        {({Repos, More, TotalStars, Bio}) => (
--                <Repos>
--                       <Composition
--                               autoRows
--                               areas="area"
--                               areasLg="area area"
--                               areasXl="area area area"
--                               gutter={theme.space[4]}
--                               gutterLg={theme.space[5]}
--                       >
--                               {() => pinnedRepoTrail.map(({x, ...rest}, index) => {
-+                <Grid
-+                       gridAutoRows
-+                       gridArea="repos"
-+                       gridTemplateAreas={[
-+                               '"area"',
-+                               '"area"',
-+                               '"area area"',
-+                               '"area area area"'
-+                       ]}
-+                          gridGap={{sm: 4, lg: 5}}
-+                >
-+                       {pinnedRepoTrail.map(({x, ...rest}, index) => {
+``` diff
+- {({Repos, More, TotalStars, Bio}) => (
+-     <Repos>
+-         <Composition
+-             autoRows
+-             areas="area"
+-             areasLg="area area"
+-             areasXl="area area area"
+-             gutter={theme.space[4]}
+-             gutterLg={theme.space[5]}
+-         >
+-             {() => 
+-             pinnedRepoTrail.map(({x, ...rest}, index) => {
++  <Grid
++      gridAutoRows
++      gridArea="repos"
++      gridTemplateAreas={[
++          '"area"',
++          '"area"',
++          '"area area"',
++          '"area area area"'
++      ]}
++      gridGap={{sm: 4, lg: 5}}
++  >
++      {pinnedRepoTrail.map(({x, ...rest}, index) => {
 ```
 
 ## Summary

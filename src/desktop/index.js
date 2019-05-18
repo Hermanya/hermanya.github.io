@@ -1,5 +1,4 @@
 import {useStaticQuery, graphql} from 'gatsby';
-import theme from '../theme';
 
 export const indexData = () =>
 	useStaticQuery(graphql`
@@ -29,30 +28,19 @@ export const indexData = () =>
 		}
 	`);
 
-export const indexTemplateMd = `
+export const indexTemplates = [
+	`
 	"links banner"
+	"links blog"
 	"links repos"
-`;
-
-export const indexTemplateLg = `
+`,
+	`
 	"links banner ."
+	"links blog  ."
 	"links repos  ."
-`;
+`
+];
 
-export const indexRowsMd = 'auto auto';
-export const indexColumnsMd = '18em auto';
-export const indexGapMd = 0;
-
-export const indexRowsLg = 'auto auto';
-export const indexColumnsLg = '18em auto 18em';
-
-export const indexProps = {
-	paddingMd: 0,
-	gutterMd: theme.space[0],
-	templateColsMd: '18em auto',
-	templateRowsMd: 'auto auto',
-	paddingXl: 0,
-	gutterXl: theme.space[0],
-	templateColsXl: '18em auto 18em',
-	templateRowsXl: 'auto auto'
-};
+export const indexRows = ['auto auto', 'auto auto'];
+export const indexColumns = ['18em auto', '18em auto 18em'];
+export const indexGaps = [0];
