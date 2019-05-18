@@ -28,6 +28,7 @@ const Article = styled('article')`
 Article.Title = styled.h1`
 	margin: 0;
 	border-bottom: 0.1em solid ${props => props.theme.colors.orange[5]};
+	text-align: left;
 	${space};
 `;
 
@@ -66,6 +67,7 @@ export default function BlogPostTemplate({
 				gridArea="sidebar"
 				display={[linksShown ? 'flex' : 'none', 'flex']}
 				position="fixed"
+				right={0}
 				width={['100%', '18em']}
 				alignItems={['center', 'initial']}
 				justifyContent={['center', 'space-between']}
@@ -94,8 +96,8 @@ export default function BlogPostTemplate({
 					Scroll horizontally <ArrowRight />
 				</Tip>
 			</SidebarNav>
-			<Article pl={[4, '22em']} pr={[4, 4, 5]} py={[4, 4, 3]}>
-				<Article.Title mt={6}>{frontmatter.title}</Article.Title>
+			<Article pr={[4, '22em']} pl={[4, 4, 5]} py={[4, 4, 3]}>
+				<Article.Title>{frontmatter.title}</Article.Title>
 				<p>
 					Posted on <time>{frontmatter.created}</time>.
 					{frontmatter.updated && (

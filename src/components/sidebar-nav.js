@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {gridArea, display, position, width, flex} from 'styled-system';
+import {gridArea, display, position, width, flex, right} from 'styled-system';
 import {Flex} from 'rebass';
 
 const StickyLinks = styled.div`
@@ -20,6 +20,7 @@ const Links = styled(Flex)`
 	${gridArea}
 	${display}
 	${position}
+	${right}
 	${width}
 	${flex}
 `;
