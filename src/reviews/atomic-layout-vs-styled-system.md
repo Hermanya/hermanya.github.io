@@ -138,8 +138,8 @@ This concludes my comparison. I think both approaches are very worthy, and the m
 Overall I'm very happy with the CSS grid, and I hope to use it more in the future.
 
 
-[my-website](https://hermanya.github.io)
-[my-website-repos](https://hermanya.github.io/github/)
+[my-website](https://starikov.dev)
+[my-website-repos](https://starikov.dev/github/)
 [css-grid-changes-everything](https://www.youtube.com/watch?v=txZq7Laz7_4)
 [kettanaito](https://github.com/kettanaito)
 [styled-system-issue](https://github.com/kettanaito/atomic-layout/issues/144)

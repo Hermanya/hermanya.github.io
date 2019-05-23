@@ -57,11 +57,7 @@ const MyExternalLinks = props => (
 				href="https://linkedin.com/in/hermanstarikov"
 				icon={Linkedin}
 			/>
-			<Tree
-				name="Resume"
-				href="https://hermanya.github.io/resume"
-				icon={FileText}
-			/>
+			<Tree name="Resume" href="https://starikov.dev/resume" icon={FileText} />
 		</Tree>
 		<Tree name="Other">
 			<Tree
