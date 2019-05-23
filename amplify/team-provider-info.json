@@ -1,0 +1,14 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "starikovdev-20190522225427-authRole",
+            "UnauthRoleArn": "arn:aws:iam::317189602285:role/starikovdev-20190522225427-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::317189602285:role/starikovdev-20190522225427-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "starikovdev-20190522225427-deployment",
+            "UnauthRoleName": "starikovdev-20190522225427-unauthRole",
+            "StackName": "starikovdev-20190522225427",
+            "StackId": "arn:aws:cloudformation:us-east-1:317189602285:stack/starikovdev-20190522225427/14c45e00-7d06-11e9-bd44-0a3a983b5e88"
+        }
+    }
+}
