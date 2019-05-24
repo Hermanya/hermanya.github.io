@@ -47,7 +47,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-	color: ${colors.gray[4]};
+	color: ${colors.gray[3]};
 }
 
 .namespace {
@@ -59,12 +59,12 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: ${colors.magenta[5]};
+	color: ${colors.magenta[3]};
 }
 
 .token.boolean,
 .token.number {
-	color: ${colors.purple[5]};
+	color: ${colors.purple[3]};
 }
 
 .token.selector,
@@ -73,7 +73,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-    color: ${colors.lime[5]};
+    color: ${colors.lime[3]};
     /* text-shadow: 0 0 2px ${colors.gray[5]}, 0 0 5px${
 	colors.lime[7]
 }, 0 0 10px #fff3; */
@@ -85,23 +85,23 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-	color: ${colors.gray[4]};
+	color: ${colors.gray[3]};
 }
 
 .token.atrule,
 .token.attr-value,
 .token.function,
 .token.class-name {
-	color: ${colors.orange[5]};
+	color: ${colors.orange[3]};
 }
 
 .token.keyword {
-	color: ${colors.cyan[5]};
+	color: ${colors.cyan[3]};
 }
 
 .token.regex,
 .token.important {
-	color: ${colors.red[5]};
+	color: ${colors.red[3]};
 }
 
 .token.important,

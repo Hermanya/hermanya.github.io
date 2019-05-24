@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {useStaticQuery, graphql, Link} from 'gatsby';
 import {space, gridArea} from 'styled-system';
-import {useTypingEffect} from 'use-typing-effect';
 import {Text} from 'rebass';
 import Grid from './grid';
 import NavLink from './nav-link';
@@ -63,17 +62,10 @@ const Description = styled.p`
 const Blog = props => {
 	const data = useStaticQuery(pageQuery);
 
-	const typedHeading = useTypingEffect(
-		['I review projects that I found on GitHub.'],
-		{
-			playbackRate: 0.5
-		}
-	);
-
 	return (
 		<Container {...props}>
 			<Text as="h2" fontWeight="normal" m={0} textAlign={['center', 'left']}>
-				{typedHeading}
+				I review projects that I found on GitHub.
 			</Text>
 			{data.allMarkdownRemark.edges.map(({node}) => {
 				return (

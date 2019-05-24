@@ -7,7 +7,7 @@ const hightlightEnglish = (text, misspelledWords = [], keyWords = []) => {
 	return sentenses.map((sentense, sIndex) => {
 		if (sentense.endsWith('!')) {
 			return (
-				<Text key={`${String(sIndex)}-!`} as="span" color="magenta.5" mr={1}>
+				<Text key={`${String(sIndex)}-!`} as="span" color="magenta.4" mr={1}>
 					{sentense}
 				</Text>
 			);
@@ -23,14 +23,14 @@ const hightlightEnglish = (text, misspelledWords = [], keyWords = []) => {
 							<Text
 								key={`${String(sIndex)}-${String(index)}`}
 								as="span"
-								color="lime.5"
+								color="lime.4"
 								css={
 									misspelledWords.includes(word) &&
 									css`
 										text-decoration-line: underline;
 										text-decoration-style: wavy;
 										text-decoration-color: ${props =>
-											props.theme.colors.red[5]};
+											props.theme.colors.red[3]};
 									`
 								}
 								mr={1}
@@ -45,7 +45,7 @@ const hightlightEnglish = (text, misspelledWords = [], keyWords = []) => {
 							<Text
 								key={`${String(sIndex)}-${String(index)}`}
 								as="span"
-								color="blue.5"
+								color="blue.4"
 								mr={1}
 							>
 								{word}

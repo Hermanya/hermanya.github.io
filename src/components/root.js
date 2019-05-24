@@ -28,16 +28,16 @@ body, html {
 a {
 	text-decoration: none;
 	text-align: center;
-	color: ${props => props.theme.colors.blue[3]};
+	color: ${props => props.theme.colors.blue[2]};
 }
 a:hover {
-	color: ${props => props.theme.colors.blue[4]};
+	color: ${props => props.theme.colors.blue[3]};
 }
 a:visited {
-	color: ${props => props.theme.colors.purple[3]};
+	color: ${props => props.theme.colors.purple[2]};
 }
 a:hover:visited {
-	color: ${props => props.theme.colors.purple[4]};
+	color: ${props => props.theme.colors.purple[3]};
 }
 `;
 
@@ -48,8 +48,8 @@ const Root = props => {
 		hueOffset: 0,
 		colorSchemePreference: systemDark ? 'inverted' : 'light',
 		luminanceRange: 100,
-		scaleLength,
-		getChroma: () => 80 // - ((Math.sin(((Math.PI / 2) * x) / scaleLength) + 1) / 2) * 100 * 0.25
+		scaleLength
+		// getChroma: () => 80 // - ((Math.sin(((Math.PI / 2) * x) / scaleLength) + 1) / 2) * 100 * 0.25
 	});
 	const PrismTheme = createPrismTheme(colors);
 	return (

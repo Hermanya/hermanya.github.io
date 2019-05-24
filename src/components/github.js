@@ -4,7 +4,6 @@ import styled, {css} from 'styled-components';
 import {useTrail, animated} from 'react-spring';
 import {Star as StarIcon} from 'react-feather';
 import {Box, Text} from 'rebass';
-import {useTypingEffect} from 'use-typing-effect';
 import {gridArea} from 'styled-system';
 import NavLink from './nav-link';
 import Grid from './grid';
@@ -180,8 +179,6 @@ const GitHub = props => {
 		from: {opacity: 0, x: 20}
 	});
 
-	const typedBio = useTypingEffect([bio], {playbackRate: 0.5});
-
 	return (
 		<Grid
 			gridGap={[4]}
@@ -195,7 +192,7 @@ const GitHub = props => {
 				m={0}
 				textAlign={['center', 'left']}
 			>
-				{typedBio}
+				{bio}
 			</GitHub.Bio>
 			<GitHub.Repos
 				gridAutoRows

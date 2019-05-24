@@ -2,7 +2,7 @@ import React from 'react';
 import {Flex, Box, Text} from 'rebass';
 import Img from 'gatsby-image';
 import {gridArea, space, display} from 'styled-system';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import {ThreeD} from './thee-d';
 import hightlightEnglish from './highlight-english';
@@ -28,8 +28,8 @@ export const Banner = styled(Flex)`
 	background-color: ${props => props.theme.colors.blue[7]};
 	background-image: linear-gradient(
 		62deg,
-		${props => props.theme.colors.blue[8]} 0%,
-		${props => props.theme.colors.purple[6]} 100%
+		${props => props.theme.colors.blue[7]} 0%,
+		${props => props.theme.colors.purple[5]} 100%
 	);
 	${gridArea}
 	${display}
@@ -61,7 +61,12 @@ const DescriptionAndBio = ({data}) => (
 export const Header = ({data, ...props}) => (
 	<Banner {...props}>
 		<Box width={[0, 1 / 4, 1 / 4]} alignSelf="flex-end" mr={4}>
-			<Img fluid={data.meLookingRight.childImageSharp.fluid} />
+			<Img
+				fluid={data.meLookingRight.childImageSharp.fluid}
+				css={css`
+					filter: saturate(0.8);
+				`}
+			/>
 		</Box>
 
 		<ThreeD>
