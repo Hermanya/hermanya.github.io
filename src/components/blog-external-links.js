@@ -1,7 +1,7 @@
 import {
 	ExternalLink,
 	GitHub,
-	Pencil,
+	Edit,
 	ArrowRight,
 	ArrowLeft,
 	User
@@ -41,7 +41,7 @@ const BlogLinks = ({discussions, next, previous, path, ...props}) => (
 		<Tree
 			name="Edit"
 			href={`https://github.com/Hermanya/hermanya.github.io/edit/develop/src${path}.md`}
-			icon={Pencil}
+			icon={Edit}
 			color="gray.5"
 		/>
 	</Tree>
