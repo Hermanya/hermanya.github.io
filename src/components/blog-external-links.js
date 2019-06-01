@@ -1,7 +1,7 @@
 import {
 	ExternalLink,
 	GitHub,
-	Code,
+	Pencil,
 	ArrowRight,
 	ArrowLeft,
 	User
@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import {Tree} from './tree';
 
-const BlogLinks = ({discussions, next, previous, ...props}) => (
+const BlogLinks = ({discussions, next, previous, path, ...props}) => (
 	<Tree open name="Links" {...props}>
 		<Tree name="About author" href="/" icon={User} />
 		<Tree open name="Discuss">
@@ -20,7 +20,7 @@ const BlogLinks = ({discussions, next, previous, ...props}) => (
 						return (
 							<Tree
 								key={link}
-								href="https://github.com/hermanya"
+								href={link}
 								icon={GitHub}
 								name="GitHub"
 							/>
@@ -40,8 +40,8 @@ const BlogLinks = ({discussions, next, previous, ...props}) => (
 		</Tree>
 		<Tree
 			name="Edit"
-			href="https://github.com/Hermanya/hermanya.github.io/tree/develop"
-			icon={Code}
+			href={`https://github.com/Hermanya/hermanya.github.io/edit/develop/src${path}.md`}
+			icon={Pencil}
 			color="gray.5"
 		/>
 	</Tree>

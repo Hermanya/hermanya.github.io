@@ -1,5 +1,5 @@
 ---
-path: "/review/gatsby-blog-for-a-developer"
+path: "/reviews/gatsby-blog-for-a-developer"
 created: "2019-05-31"
 title: "Gatsby Blog for a Developer"
 description: "What gatsby plugins I used for my blog."

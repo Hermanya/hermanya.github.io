@@ -73,6 +73,7 @@ export default function BlogPostTemplate({
 				justifyContent={['center', 'space-between']}
 				links={props => (
 					<BlogLinks
+						path={frontmatter.path}
 						discussions={Object.keys(frontmatter)
 							.filter(key => key.startsWith('discuss_'))
 							.map(key => frontmatter[key])}

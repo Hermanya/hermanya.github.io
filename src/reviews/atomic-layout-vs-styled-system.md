@@ -1,5 +1,5 @@
 ---
-path: "/review/atomic-layout-vs-styled-system"
+path: "/reviews/atomic-layout-vs-styled-system"
 created: "2019-04-21"
 updated: "2019-05-05"
 title: "Atomic-layout vs styled-system"
