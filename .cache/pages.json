@@ -1,0 +1,62 @@
+[
+    {
+        "componentChunkName": "component---src-pages-index-js",
+        "jsonName": "index",
+        "path": "/"
+    },
+    {
+        "componentChunkName": "component---src-pages-404-js",
+        "jsonName": "404-html-516",
+        "path": "/404.html"
+    },
+    {
+        "componentChunkName": "component---src-pages-404-js",
+        "jsonName": "404-22d",
+        "path": "/404/"
+    },
+    {
+        "componentChunkName": "component---src-pages-til-js",
+        "jsonName": "til-093",
+        "path": "/TIL/"
+    },
+    {
+        "componentChunkName": "component---src-pages-blog-js",
+        "jsonName": "blog-f7a",
+        "path": "/blog/"
+    },
+    {
+        "componentChunkName": "component---cache-dev-404-page-js",
+        "jsonName": "dev-404-page-5f9",
+        "path": "/dev-404-page/"
+    },
+    {
+        "componentChunkName": "component---src-pages-github-js",
+        "jsonName": "github-af5",
+        "path": "/github/"
+    },
+    {
+        "componentChunkName": "component---src-pages-links-js",
+        "jsonName": "links-5ea",
+        "path": "/links/"
+    },
+    {
+        "componentChunkName": "component---src-pages-resume-js",
+        "jsonName": "resume-e4f",
+        "path": "/resume/"
+    },
+    {
+        "componentChunkName": "component---src-templates-blog-post-template-js",
+        "jsonName": "review-atomic-layout-vs-styled-system-cf6",
+        "path": "/review/atomic-layout-vs-styled-system"
+    },
+    {
+        "componentChunkName": "component---src-templates-blog-post-template-js",
+        "jsonName": "review-gatsby-blog-for-a-developer-c27",
+        "path": "/review/gatsby-blog-for-a-developer"
+    },
+    {
+        "componentChunkName": "component---src-pages-uses-js",
+        "jsonName": "uses-253",
+        "path": "/uses/"
+    }
+]
