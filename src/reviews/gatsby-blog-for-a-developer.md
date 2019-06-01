@@ -1,6 +1,6 @@
 ---
 path: "/review/gatsby-blog-for-a-developer"
-created: "2019-05-06"
+created: "2019-05-31"
 title: "Gatsby Blog for a Developer"
 description: "What gatsby plugins I used for my blog."
 discuss_on_github: "https://github.com/Hermanya/hermanya.github.io/issues/2"
