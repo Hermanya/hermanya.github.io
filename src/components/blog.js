@@ -35,6 +35,7 @@ const pageQuery = graphql`
 						path
 						title
 						description
+						unpublished
 					}
 				}
 			}
@@ -67,12 +68,16 @@ const Blog = props => {
 			<Text as="h2" fontWeight="normal" m={0} textAlign={['center', 'left']}>
 				I review projects that I found on GitHub.
 			</Text>
-			{data.allMarkdownRemark.edges.map(({node}) => {
+			{data.allMarkdownRemark.edges
+			.map(edge => edge.node)
+			.filter(node => !node.frontmatter.unpublished)
+			.map((node) => {
 				return (
 					<Post key={node.frontmatter.path}>
 						<NavLink as={Link} to={node.frontmatter.path}>
 							<Heading>{node.frontmatter.title}</Heading>
 						</NavLink>
+						{node.frontmatter.published}
 						<div>{node.frontmatter.created}</div>
 						{/* <div>{node.frontmatter.updated}</div> */}
 						<Description>{node.frontmatter.description}</Description>

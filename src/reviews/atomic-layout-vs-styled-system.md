@@ -5,7 +5,7 @@ updated: "2019-05-05"
 title: "Atomic-layout vs styled-system"
 description: "In depth comparison of React CSS grid libraries."
 discuss_on_github: "https://github.com/kettanaito/atomic-layout/issues/144"
-previous_post: "./gatsby-blog-for-a-developer"
+previous_post: "/reviews/gatsby-blog-for-a-developer"
 previous_post_title: "Gatsby Blog for a Developer"
 ---
 
