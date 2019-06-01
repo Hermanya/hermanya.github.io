@@ -28,8 +28,8 @@ export const Banner = styled(Flex)`
 	background-color: ${props => props.theme.colors.blue[7]};
 	background-image: linear-gradient(
 		62deg,
-		${props => props.theme.colors.blue[7]} 0%,
-		${props => props.theme.colors.purple[5]} 100%
+		${props => props.theme.colors.blue[6]} 0%,
+		${props => props.theme.colors.purple[4]} 100%
 	);
 	${gridArea}
 	${display}
@@ -64,7 +64,7 @@ export const Header = ({data, ...props}) => (
 			<Img
 				fluid={data.meLookingRight.childImageSharp.fluid}
 				css={css`
-					filter: saturate(0.8);
+					/* filter: saturate(0.99); */
 				`}
 			/>
 		</Box>
