@@ -127,6 +127,7 @@ export const pageQuery = graphql`
 				path
 				title
 				discuss_on_github
+				discuss_on_reddit
 				next_post
 				next_post_title
 				previous_post

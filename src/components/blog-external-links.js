@@ -28,7 +28,15 @@ const BlogLinks = ({discussions, next, previous, path, ...props}) => (
 					}
 
 					return (
-						<Tree key={link} name="Link" href={link} icon={ExternalLink} />
+						<Tree 
+							key={link}
+							name={
+								<span style={{textTransform: 'capitalize'}}>
+									{new URL(link).hostname.replace('www.', '').replace('.com', '')}
+								</span>
+							} 
+							href={link}
+							icon={ExternalLink} />
 					);
 				})}
 		</Tree>

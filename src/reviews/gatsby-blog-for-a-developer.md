@@ -4,13 +4,14 @@ created: "2019-05-31"
 title: "Gatsby Blog for a Developer"
 description: "What gatsby plugins I used for my blog."
 discuss_on_github: "https://github.com/Hermanya/hermanya.github.io/issues/2"
+discuss_on_reddit: "https://www.reddit.com/r/gatsbyjs/comments/bvgfv0/review_of_the_plugins_i_used_to_build_my_blog/"
 next_post: "./atomic-layout-vs-styled-system"
 next_post_title: "Atomic-layout vs styled-system"
 ---
 
 So long [Medium](https://medium.com/@hermanhasawish).
 
-I'm starting a new blog. [My first post](/atomic-layout-vs-styled-system) is a comparison of [atomic-layout](https://github.com/kettanaito/atomic-layout) and [styled-system](https://styled-system.com/)'s CSS grid. Initially, I posted this review in an issue on GitHub but then I realized that I enjoy reviewing and comparing libraries, so I set up this blog as a dedicated space for such reviews. In this post, I will go over some of the Gatsby plugins that I used to build this page.
+I'm starting a new blog. [My first post](/reviews/atomic-layout-vs-styled-system) is a comparison of [atomic-layout](https://github.com/kettanaito/atomic-layout) and [styled-system](https://styled-system.com/)'s CSS grid. Initially, I posted this review in an issue on GitHub but then I realized that I enjoy reviewing and comparing libraries, so I set up this blog as a dedicated space for such reviews. In this post, I will go over some of the Gatsby plugins that I used to build this page.
 
 I started by using [gatsby-source-filesystem](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/) and [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/). This is [the recommended way](https://www.gatsbyjs.org/docs/adding-markdown-pages/) to set up a markdown blog. Initially, I was considering not going this way, and try to either use [MDX](https://github.com/ChristopherBiscardi/gatsby-mdx) or maybe even write posts in raw javascript. But markdown is nice and now that I think about it the flexibility that I would get by going these alternative routes would probably not pay off.
 
