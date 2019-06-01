@@ -12,15 +12,15 @@ import {Tree} from './tree';
 const BlogLinks = ({discussions, next, previous, path, ...props}) => (
 	<Tree open name="Links" {...props}>
 		<Tree name="About author" href="/" icon={User} />
-		<Tree open name="Discuss">
+		<Tree open name="Comments">
 			{discussions
 				.filter(_ => _)
-				.map(link => {
-					if (link.startsWith('https://github.com')) {
+				.map(({text, url}) => {
+					if (url.startsWith('https://github.com')) {
 						return (
 							<Tree
-								key={link}
-								href={link}
+								key={url}
+								href={url}
 								icon={GitHub}
 								name="GitHub"
 							/>
@@ -29,13 +29,13 @@ const BlogLinks = ({discussions, next, previous, path, ...props}) => (
 
 					return (
 						<Tree 
-							key={link}
+							key={url}
 							name={
 								<span style={{textTransform: 'capitalize'}}>
-									{new URL(link).hostname.replace('www.', '').replace('.com', '')}
+									{text}
 								</span>
 							} 
-							href={link}
+							href={url}
 							icon={ExternalLink} />
 					);
 				})}

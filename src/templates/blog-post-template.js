@@ -75,8 +75,11 @@ export default function BlogPostTemplate({
 					<BlogLinks
 						path={frontmatter.path}
 						discussions={Object.keys(frontmatter)
-							.filter(key => key.startsWith('discuss_'))
-							.map(key => frontmatter[key])}
+							.filter(key => key.startsWith('discuss_on_'))
+							.map(key => ({
+								text: key.slice('discuss_on_'.length),
+								url: frontmatter[key]
+							}))}
 						next={
 							frontmatter.next_post && {
 								link: frontmatter.next_post,
@@ -128,6 +131,7 @@ export const pageQuery = graphql`
 				title
 				discuss_on_github
 				discuss_on_reddit
+				discuss_on_spectrum
 				next_post
 				next_post_title
 				previous_post
