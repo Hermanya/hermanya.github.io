@@ -54,7 +54,7 @@ export default function BlogPostTemplate({
 	const [linksShown, setLinksShown] = useState(false);
 	return (
 		<Root bg={['gray.9', 'gray.8']}>
-			<Seo title="Home" keywords={['home']} />
+			<Seo title={frontmatter.title} keywords={[]} />
 
 			<BlogMobileNav
 				gridArea="mobileNav"
