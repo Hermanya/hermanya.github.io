@@ -40,7 +40,7 @@ module.exports = {
 					{
 						resolve: `gatsby-remark-images`,
 						options: {
-							maxWidth: 590
+							maxWidth: 300
 						}
 					},
 					'gatsby-remark-autolink-headers',
