@@ -2,7 +2,8 @@
 path: "/review/gatsby-blog-for-a-developer"
 created: "2019-05-06"
 title: "Gatsby Blog for a Developer"
-description: "What gatsby plugins I used on my blog."
+description: "What gatsby plugins I used for my blog."
+discuss_on_github: "https://github.com/Hermanya/hermanya.github.io/issues/2"
 next_post: "./atomic-layout-vs-styled-system"
 next_post_title: "Atomic-layout vs styled-system"
 ---
