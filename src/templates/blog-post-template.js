@@ -76,7 +76,7 @@ export default function BlogPostTemplate({
 						path={frontmatter.path}
 						discussions={Object.keys(frontmatter)
 							.filter(key => key.startsWith('discuss_on_'))
-							.map(key => ({
+							.map(key => frontmatter[key] && ({
 								text: key.slice('discuss_on_'.length),
 								url: frontmatter[key]
 							}))}
