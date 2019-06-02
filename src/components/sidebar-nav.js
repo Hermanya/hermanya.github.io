@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {gridArea, display, position, width, flex, right} from 'styled-system';
 import {Flex} from 'rebass';
 
@@ -15,7 +15,7 @@ const Links = styled(Flex)`
 	background: ${props => props.theme.colors.gray[9]};
 	@supports (-webkit-backdrop-filter: blur(8px)) {
 		background ${props => props.theme.colors.gray[9]}88;
-		-webkit-backdrop-filter: blur(8px);	
+		${props => props.linksShown? css`-webkit-backdrop-filter: blur(8px);`: css``}
 	}
 	${gridArea}
 	${display}

@@ -71,6 +71,7 @@ export default function BlogPostTemplate({
 				width={['100%', '18em']}
 				alignItems={['center', 'initial']}
 				justifyContent={['center', 'space-between']}
+				linksShown={linksShown}
 				links={props => (
 					<BlogLinks
 						path={frontmatter.path}
