@@ -50,7 +50,7 @@ const BlogLinks = ({discussions, next, previous, path, ...props}) => (
 			name="Edit"
 			href={`https://github.com/Hermanya/hermanya.github.io/edit/develop/src${path}.md`}
 			icon={Edit}
-			color="gray.7"
+			color="gray.3"
 		/>
 	</Tree>
 );
