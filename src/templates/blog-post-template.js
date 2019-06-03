@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {graphql} from 'gatsby';
 import {space, display, color} from 'styled-system';
 
@@ -101,7 +101,12 @@ export default function BlogPostTemplate({
 					Scroll horizontally <ArrowRight />
 				</Tip>
 			</SidebarNav>
-			<Article pr={[4, '22em']} pl={[4, 4, 5]} py={[4, 4, 3]}>
+			<Article pr={[4, '22em']} pl={[4, 4, 5]} py={[4, 4, 3]} css={css`
+				${!linksShown && `
+				overflow: scroll;
+				-webkit-overflow-scrolling: touch;
+				`}
+			`}>
 				<Article.Title>{frontmatter.title}</Article.Title>
 				<p>
 					Posted on <time>{frontmatter.created}</time>.
