@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useStaticQuery, graphql, Link} from 'gatsby';
-import {space, gridArea} from 'styled-system';
-import {Text} from 'rebass';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import { space, gridArea } from 'styled-system';
+import { Text } from 'rebass';
 import Grid from './grid';
 import NavLink from './nav-link';
 
@@ -24,7 +24,7 @@ const Post = styled('div')`
 const pageQuery = graphql`
 	{
 		allMarkdownRemark(
-			sort: {order: DESC, fields: [frontmatter___created]}
+			sort: { order: DESC, fields: [frontmatter___created] }
 			limit: 1000
 		) {
 			edges {
@@ -69,21 +69,21 @@ const Blog = props => {
 				I review projects that I found on GitHub.
 			</Text>
 			{data.allMarkdownRemark.edges
-			.map(edge => edge.node)
-			.filter(node => !node.frontmatter.unpublished)
-			.map((node) => {
-				return (
-					<Post key={node.frontmatter.path}>
-						<NavLink as={Link} to={node.frontmatter.path}>
-							<Heading>{node.frontmatter.title}</Heading>
-						</NavLink>
-						{node.frontmatter.published}
-						<div>{node.frontmatter.created}</div>
-						{/* <div>{node.frontmatter.updated}</div> */}
-						<Description>{node.frontmatter.description}</Description>
-					</Post>
-				);
-			})}
+				.map(edge => edge.node)
+				.filter(node => !node.frontmatter.unpublished)
+				.map(node => {
+					return (
+						<Post key={node.frontmatter.path}>
+							<NavLink as={Link} to={node.frontmatter.path}>
+								<Heading>{node.frontmatter.title}</Heading>
+							</NavLink>
+							{node.frontmatter.published}
+							<div>{node.frontmatter.created}</div>
+							{/* <div>{node.frontmatter.updated}</div> */}
+							<Description>{node.frontmatter.description}</Description>
+						</Post>
+					);
+				})}
 		</Container>
 	);
 };

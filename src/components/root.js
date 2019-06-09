@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
-import {fontFamily, fontSize} from 'styled-system';
-import {Box} from 'rebass';
-import {useColorSystem} from 'use-color-system';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { fontFamily, fontSize } from 'styled-system';
+import { Box } from 'rebass';
+import { useColorSystem } from 'use-color-system';
 import useMedia from 'use-media';
 import theme from '../theme';
 
-import {createPrismTheme} from './prism-theme';
+import { createPrismTheme } from './prism-theme';
 
 const Container = styled(Box)`
 	min-height: 100vh;

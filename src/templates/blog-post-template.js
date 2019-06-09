@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
-import styled, {css} from 'styled-components';
-import {graphql} from 'gatsby';
-import {space, display, color} from 'styled-system';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
+import { graphql } from 'gatsby';
+import { space, display, color } from 'styled-system';
 
-import {ArrowRight} from 'react-feather';
+import { ArrowRight } from 'react-feather';
 import Root from '../components/root';
 import Seo from '../components/seo';
 
-import {BlogMobileNav} from '../components/mobile-nav';
+import { BlogMobileNav } from '../components/mobile-nav';
 import SidebarNav from '../components/sidebar-nav';
 import BlogLinks from '../components/blog-external-links';
 
@@ -27,8 +27,10 @@ const Article = styled('article')`
 
 Article.Title = styled.h1`
 	margin: 0;
+	padding-bottom: 0.5em;
 	border-bottom: 0.1em solid ${props => props.theme.colors.orange[5]};
 	text-align: left;
+	line-height: 1.5;
 	${space};
 `;
 
@@ -49,11 +51,11 @@ const Tip = styled.div`
 export default function BlogPostTemplate({
 	data // this prop will be injected by the GraphQL query below.
 }) {
-	const {markdownRemark} = data; // data.markdownRemark holds our post data
-	const {frontmatter, html} = markdownRemark;
+	const { markdownRemark } = data; // data.markdownRemark holds our post data
+	const { frontmatter, html } = markdownRemark;
 	const [linksShown, setLinksShown] = useState(false);
 	return (
-		<Root bg={['gray.9', 'gray.8']}>
+		<Root bg={['gray.9']} color="gray.2">
 			<Seo title={frontmatter.title} keywords={[]} />
 
 			<BlogMobileNav
@@ -72,15 +74,19 @@ export default function BlogPostTemplate({
 				alignItems={['center', 'initial']}
 				justifyContent={['center', 'space-between']}
 				linksShown={linksShown}
+				bg="gray.8"
 				links={props => (
 					<BlogLinks
 						path={frontmatter.path}
 						discussions={Object.keys(frontmatter)
 							.filter(key => key.startsWith('discuss_on_'))
-							.map(key => frontmatter[key] && ({
-								text: key.slice('discuss_on_'.length),
-								url: frontmatter[key]
-							}))}
+							.map(
+								key =>
+									frontmatter[key] && {
+										text: key.slice('discuss_on_'.length),
+										url: frontmatter[key]
+									}
+							)}
 						next={
 							frontmatter.next_post && {
 								link: frontmatter.next_post,
@@ -101,12 +107,19 @@ export default function BlogPostTemplate({
 					Scroll horizontally <ArrowRight />
 				</Tip>
 			</SidebarNav>
-			<Article pr={[4, '22em']} pl={[4, 4, 5]} py={[4, 4, 3]} css={css`
-				${!linksShown && `
+			<Article
+				pr={[4, '22em']}
+				pl={[4, 4, 5]}
+				py={[4, 4, 3]}
+				css={css`
+					${!linksShown &&
+						`
 				overflow: scroll;
 				-webkit-overflow-scrolling: touch;
 				`}
-			`}>
+					line-height: 1.85em;
+				`}
+			>
 				<Article.Title>{frontmatter.title}</Article.Title>
 				<p>
 					Posted on <time>{frontmatter.created}</time>.
@@ -117,7 +130,7 @@ export default function BlogPostTemplate({
 					)}
 				</p>
 				<div
-					dangerouslySetInnerHTML={{__html: html}} // eslint-disable-line react/no-danger
+					dangerouslySetInnerHTML={{ __html: html }} // eslint-disable-line react/no-danger
 					className="blog-post-content"
 				/>
 				<Placeholder display={['none', 'flex']} />
@@ -128,7 +141,7 @@ export default function BlogPostTemplate({
 
 export const pageQuery = graphql`
 	query($path: String!) {
-		markdownRemark(frontmatter: {path: {eq: $path}}) {
+		markdownRemark(frontmatter: { path: { eq: $path } }) {
 			html
 			frontmatter {
 				created(formatString: "MMMM DD, YYYY")

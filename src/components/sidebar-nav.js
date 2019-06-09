@@ -1,7 +1,15 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
-import {gridArea, display, position, width, flex, right} from 'styled-system';
-import {Flex} from 'rebass';
+import styled, { css } from 'styled-components';
+import {
+	gridArea,
+	display,
+	position,
+	width,
+	flex,
+	right,
+	color
+} from 'styled-system';
+import { Flex } from 'rebass';
 
 const StickyLinks = styled.div`
 	@media screen and (min-width: ${props => props.theme.breakpoints[0]}) {
@@ -15,7 +23,15 @@ const Links = styled(Flex)`
 	background: ${props => props.theme.colors.gray[9]};
 	@supports (-webkit-backdrop-filter: blur(8px)) {
 		background ${props => props.theme.colors.gray[9]}88;
-		${props => props.linksShown? css`-webkit-backdrop-filter: blur(8px);`: css``}
+		${props =>
+			props.linksShown
+				? css`
+						-webkit-backdrop-filter: blur(8px);
+				  `
+				: css``}
+		@media screen and (min-width: ${props => props.theme.breakpoints[0]}) {
+			-webkit-backdrop-filter: blur(8px);
+		}
 	}
 	${gridArea}
 	${display}
@@ -23,9 +39,10 @@ const Links = styled(Flex)`
 	${right}
 	${width}
 	${flex}
+	${color}
 `;
 
-const SidebarNav = ({links, children, ...props}) => (
+const SidebarNav = ({ links, children, ...props }) => (
 	<Links
 		fontSize={[3, 2]}
 		flexDirection="column"
