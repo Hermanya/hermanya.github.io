@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const createPrismTheme = colors => createGlobalStyle`
 code[class*="language-"],

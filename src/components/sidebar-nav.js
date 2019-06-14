@@ -33,6 +33,7 @@ const Links = styled(Flex)`
 			-webkit-backdrop-filter: blur(8px);
 		}
 	}
+	z-index: 1;
 	${gridArea}
 	${display}
 	${position}

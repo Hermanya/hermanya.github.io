@@ -19,9 +19,12 @@ const Article = styled('article')`
 	@media only screen and (min-width: ${props => props.theme.breakpoints[0]}) {
 		column-width: 36ch;
 	}
-	text-align: justify;
+	/* text-align: justify; */
+	/* text-justify: inter-word; */
+	/* text-justify: distribute; */
 	column-gap: ${props => props.theme.space[5]}px;
 	max-height: 100vh;
+	text-rendering: optimizeLegibility;
 	${space};
 `;
 
@@ -31,6 +34,7 @@ Article.Title = styled.h1`
 	border-bottom: 0.1em solid ${props => props.theme.colors.orange[5]};
 	text-align: left;
 	line-height: 1.5;
+	color: ${props => props.theme.colors.red[3]};
 	${space};
 `;
 
@@ -103,13 +107,13 @@ export default function BlogPostTemplate({
 					/>
 				)}
 			>
-				<Tip color="gray.5" display={['none', 'flex']}>
+				<Tip color="teal.3" display={['none', 'flex']}>
 					Scroll horizontally <ArrowRight />
 				</Tip>
 			</SidebarNav>
 			<Article
 				pr={[4, '22em']}
-				pl={[4, 4, 5]}
+				pl={[4, 5]}
 				py={[4, 4, 3]}
 				css={css`
 					${!linksShown &&

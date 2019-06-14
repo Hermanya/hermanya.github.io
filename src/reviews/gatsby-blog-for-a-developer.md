@@ -6,7 +6,7 @@ description: "What gatsby plugins I used for my blog."
 discuss_on_github: "https://github.com/Hermanya/hermanya.github.io/issues/2"
 discuss_on_reddit: "https://www.reddit.com/r/gatsbyjs/comments/bvgfv0/review_of_the_plugins_i_used_to_build_my_blog/"
 discuss_on_spectrum: "https://spectrum.chat/gatsby-js/i-made-this/review-of-the-plugins-i-used-to-build-my-dev-blog~48d45e5d-9df0-48a9-8e08-44454122eb2d"
-next_post: "./atomic-layout-vs-styled-system"
+next_post: "/reviews/atomic-layout-vs-styled-system"
 next_post_title: "Atomic-layout vs styled-system"
 ---
 

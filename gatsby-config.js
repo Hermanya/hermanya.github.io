@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
 	siteMetadata: {
 		siteUrl: 'https://starikov.dev',
-		title: "Herman Starikov",
+		title: 'Herman Starikov',
 		description: `Hi! I'm a Web Developer in Toronto and these days I specialize in React.`,
 		author: '@hermanya',
 		bio: `If you are into React or modern JavaScript things, or just want to know what a Web Developer's life in Tronno is like, follow me on the social platform of your choice.`,
@@ -25,6 +25,19 @@ module.exports = {
 			resolve: `gatsby-transformer-remark`,
 			options: {
 				plugins: [
+					{
+						resolve: `@raae/gatsby-remark-oembed`,
+						options: {
+							// defaults to false
+							usePrefix: true,
+							providers: {
+								// Important to exclude providers
+								// that adds js to the page.
+								// If you do not need them.
+								exclude: ['Reddit']
+							}
+						}
+					},
 					{
 						resolve: `gatsby-remark-prettier`,
 						options: {
