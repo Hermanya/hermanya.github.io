@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 
-import {Flex, Text} from 'rebass';
-import {User, GitHub, Feather, Compass} from 'react-feather';
+import { Flex, Text } from 'rebass';
+import { User, GitHub, Feather, Compass } from 'react-feather';
 import styled from 'styled-components';
-import {gridArea, display, color} from 'styled-system';
+import { gridArea, display, color } from 'styled-system';
 
 const MobileNavContainer = styled(Flex)`
 	position: fixed;
@@ -12,7 +12,7 @@ const MobileNavContainer = styled(Flex)`
 	bottom: 0;
 	left: 0;
 	right: 0;
-	z-index: 1;
+	z-index: 3;
 	background: ${props => props.theme.colors.gray[9]}ee;
 	min-height: 3.5rem;
 	padding-bottom: env(safe-area-inset-bottom);
@@ -76,7 +76,7 @@ const MobileNav = props => (
 
 export default MobileNav;
 
-export const BlogMobileNav = ({linksShown, setLinksShown, ...props}) => (
+export const BlogMobileNav = ({ linksShown, setLinksShown, ...props }) => (
 	<MobileNavContainer {...props}>
 		<NavLink as="button" onClick={() => setLinksShown(!linksShown)}>
 			<Compass />
