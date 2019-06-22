@@ -1,7 +1,7 @@
 ---
 path: "/reviews/theming-styled-components-in-2019"
-created: "2019-07-14"
-updated: "2019-07-21"
+created: "2019-06-14"
+updated: "2019-06-21"
 title: "Theming Styled Components in 2019"
 description: "What are the options to make your styled-components more flexible"
 discuss_on_github: "https://github.com/Hermanya/hermanya.github.io/issues/3"
