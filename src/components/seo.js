@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import {StaticQuery, graphql} from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 
-function Seo({description, lang, meta, keywords, title}) {
+function Seo({ description, lang, meta, keywords, title }) {
 	return (
 		<StaticQuery
 			query={detailsQuery}
@@ -61,10 +61,6 @@ function Seo({description, lang, meta, keywords, title}) {
 							)
 							.concat(meta)}
 					>
-						<link
-							href="https://fonts.googleapis.com/css?family=Ubuntu+Mono"
-							rel="stylesheet"
-						/>
 						<link
 							href="https://unpkg.com/normalize.css@8.0.1/normalize.css"
 							rel="stylesheet"
