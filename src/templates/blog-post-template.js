@@ -108,7 +108,12 @@ export default function BlogPostTemplate({
 				)}
 			>
 				<Tip color="teal.3" display={['none', 'flex']}>
-					Scroll horizontally <ArrowRight />
+					<div>
+						Scroll horizontally
+						<br />
+						<small>Possibly holding [Shift]</small>
+					</div>
+					<ArrowRight />
 				</Tip>
 			</SidebarNav>
 			<Article
