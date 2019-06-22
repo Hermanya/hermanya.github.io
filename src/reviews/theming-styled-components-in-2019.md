@@ -5,6 +5,7 @@ updated: "2019-07-21"
 title: "Theming Styled Components in 2019"
 description: "What are the options to make your styled-components more flexible"
 discuss_on_github: "https://github.com/Hermanya/hermanya.github.io/issues/3"
+discuss_on_spectrum: "https://spectrum.chat/styled-components/general/theming-styled-components-in-2019~7daabb53-dcb6-4255-b68d-02e920011e45"
 previous_post: "/reviews/atomic-layout-vs-styled-system"
 previous_post_title: "Atomic-layout vs styled-system"
 ---
