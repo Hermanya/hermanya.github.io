@@ -1,6 +1,7 @@
 ---
 path: "/reviews/theming-styled-components-in-2019"
 created: "2019-07-14"
+updated: "2019-07-21"
 title: "Theming Styled Components in 2019"
 description: "What are the options to make your styled-components more flexible"
 discuss_on_github: "https://github.com/Hermanya/hermanya.github.io/issues/3"
@@ -25,7 +26,7 @@ const BrandLink = styled('a')`
 `
 ```
 
-This is a `BrandLink` React component which renders an `<a>` tag with palevioletred text. Palevioletred is a color.
+This is a `BrandLink` React component which renders an `<a>` tag with pale violet-red text.
 
 If I want to have another component that has the underline removed I can do this:
 
@@ -49,7 +50,9 @@ const theme = {
 }
 
 <ThemeProvider theme={theme}>
-  <BrandLink href="#">Themed</BrandLink>
+  <BrandLink href="#">
+    Themed
+  </BrandLink>
 </ThemeProvider>
 ```
 
@@ -82,7 +85,7 @@ const BrandLink = styled.a`
 `;
 ``` -->
 
-If you want your component to work without a theme, you need to provide a default theme in React's `defaultProps`:
+If you want your component to work without a `ThemeProvider`, you need to provide a default theme in React's `defaultProps`:
 
 ```js
 BrandLink.defaultProps = {
@@ -102,14 +105,15 @@ const BrandLink = styled.a`
 `;
 ```
 
-This is easier to write because it's shorter and the chances are that autocomplete for theme properties is better. But then changing this theme in runtime becomes a challenge. You can, however, start with this and do a global replace for `theme.` to `props => props.theme.` later 😉
+This is easier to write because it's shorter and the chances are that autocomplete for theme properties is better. But then changing this theme in runtime becomes a challenge. You can, however, start with this and do a global replace for `theme.` to `props => props.theme.` later 😉 when you actually need a dynamic theme.
 
 ## Styled System
 
-[Styled System] solves 2 problems I faced in styled-components.
+[Styled System] solves 3 problems I faced in styled-components.
 
 1. Writing `${props => props.theme.primary}` all the time is kind of a drag
-2. Exposing styling-related props
+2. Lack of conventions around theme object struction (take a look at [System UI])
+3. Exposing styling-related props
 
 
 ```js
@@ -125,7 +129,7 @@ BrandLink.defaultProps = {
 }
 ```
 
-The `${color}` part add 2 props to `BrandLink` 
+The `${color}` part adds 2 props to `BrandLink` 
 
 1. `color` same as the CSS property, but it maps to `theme.colors`
 2. `bg` which is short for `background` and it also maps to `theme.colors`
@@ -228,7 +232,7 @@ const BrandLink = styled.a`
 `;
 ```
 
-I would love to see an initiative similar to [System UI] but based on CSS variables. How amazing would it be, if there was [Stylish] but based on CSS variables? Super amazing IMHO.
+I would love to see an initiative similar to [System UI] but based on CSS variables. How amazing would it be, if there was [Stylish] but based on CSS variables? Super amazing 🤔
 
 ## Summary
 

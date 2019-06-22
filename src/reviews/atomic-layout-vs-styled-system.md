@@ -7,6 +7,8 @@ description: "In depth comparison of React CSS grid libraries."
 discuss_on_github: "https://github.com/kettanaito/atomic-layout/issues/144"
 previous_post: "/reviews/gatsby-blog-for-a-developer"
 previous_post_title: "Gatsby Blog for a Developer"
+next_post: "/reviews/theming-styled-components-in-2019"
+next_post_title: "Theming Styled Components in 2019"
 ---
 
 *This post was originally published [on GitHub](https://github.com/kettanaito/atomic-layout/issues/144).*
