@@ -1,6 +1,6 @@
 import React from 'react';
-import {Text} from 'rebass';
-import {css} from 'styled-components';
+import { Text } from 'rebass';
+import { css } from 'styled-components';
 
 const hightlightEnglish = (text, misspelledWords = [], keyWords = []) => {
 	const sentenses = text.match(/\(?[^.?!]+[.!?]\)?/g);
@@ -18,6 +18,19 @@ const hightlightEnglish = (text, misspelledWords = [], keyWords = []) => {
 				.trim()
 				.split(/\s/g)
 				.map((word, index) => {
+					if (keyWords.some(key => word.startsWith(key))) {
+						return (
+							<Text
+								key={`${String(sIndex)}-${String(index)}`}
+								as="span"
+								color="blue.4"
+								mr={1}
+							>
+								{word}
+							</Text>
+						);
+					}
+
 					if (/[A-Z]/.test(word[0]) && index !== 0) {
 						return (
 							<Text
@@ -33,19 +46,6 @@ const hightlightEnglish = (text, misspelledWords = [], keyWords = []) => {
 											props.theme.colors.red[3]};
 									`
 								}
-								mr={1}
-							>
-								{word}
-							</Text>
-						);
-					}
-
-					if (keyWords.some(key => word.startsWith(key))) {
-						return (
-							<Text
-								key={`${String(sIndex)}-${String(index)}`}
-								as="span"
-								color="blue.4"
 								mr={1}
 							>
 								{word}

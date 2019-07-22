@@ -6,9 +6,9 @@ module.exports = {
 	siteMetadata: {
 		siteUrl: 'https://starikov.dev',
 		title: 'Herman Starikov',
-		description: `Hi! I'm a Web Developer in Toronto and these days I specialize in React.`,
+		description: `Hi! I'm a React Developer in Toronto.`,
 		author: '@hermanya',
-		bio: `If you are into React or modern JavaScript things, or just want to know what a Web Developer's life in Tronno is like, follow me on the social platform of your choice.`,
+		bio: `If you are into React, Javascript, Web, Programming, or just want to know what life is like in Toronto, follow me on the social platform of your choice.`,
 		misspelledWords: ['Tronno'],
 		keyWords: ['React', 'cool', 'internet', 'apps']
 	},
