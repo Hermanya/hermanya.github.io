@@ -1,10 +1,10 @@
 import React from 'react';
-import {Flex, Box, Text} from 'rebass';
+import { Flex, Box, Text } from 'rebass';
 import Img from 'gatsby-image';
-import {gridArea, space, display} from 'styled-system';
-import styled, {css} from 'styled-components';
+import { gridArea, space, display } from 'styled-system';
+import styled, { css } from 'styled-components';
 
-import {ThreeD} from './thee-d';
+import { ThreeD } from './thee-d';
 import hightlightEnglish from './highlight-english';
 import GitHub from './github';
 import MobileNav from './mobile-nav';
@@ -31,11 +31,12 @@ export const Banner = styled(Flex)`
 		${props => props.theme.colors.blue[6]} 0%,
 		${props => props.theme.colors.purple[4]} 100%
 	);
+	align-items: flex-end;
 	${gridArea}
 	${display}
 `;
 
-const DescriptionAndBio = ({data}) => (
+const DescriptionAndBio = ({ data }) => (
 	<>
 		<Text lineHeight={1.25} fontWeight="normal">
 			<Flex as="h1" flexWrap="wrap">
@@ -58,7 +59,7 @@ const DescriptionAndBio = ({data}) => (
 	</>
 );
 
-export const Header = ({data, ...props}) => (
+export const Header = ({ data, ...props }) => (
 	<Banner {...props}>
 		<Box width={[0, 1 / 4, 1 / 4]} alignSelf="flex-end" mr={4}>
 			<Img
