@@ -1,9 +1,0 @@
-{
-	"extends": "react-app",
-	"env": { "browser": true },
-	"rules": {
-		"react/prop-types": 0,
-		"capitalized-comments": 0,
-		"object-curly-spacing": 0
-	}
-}
