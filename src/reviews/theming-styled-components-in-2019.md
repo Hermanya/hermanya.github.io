@@ -249,7 +249,3 @@ I hope you found this review useful and maybe even learned a thing or two. Let m
 [$xstyled]: https://github.com/smooth-code/xstyled/issues/6
 [System UI]: https://system-ui.com/theme
 [Stylish]: https://userstyles.org/
-
-PS:
-
-`oembed:https://twitter.com/mxstbr/status/1139541179421339648`
