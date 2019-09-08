@@ -17,7 +17,6 @@ const Board = styled.div`
   transition-timing-function: ease-in-out;
 `;
 const Mobile = styled.div`
-  padding-bottom: 54px;
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
@@ -31,6 +30,9 @@ const Mobile = styled.div`
   }
   @media screen and (min-width: ${props => props.theme.minimumTabSize * 4}px) {
     width: 25vw;
+  }
+  @media screen and (min-width: ${props => props.theme.minimumTabSize * 5}px) {
+    width: 20vw;
   }
   /* padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
     env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px); */
@@ -54,7 +56,7 @@ const ResponsiveReactApp: React.FC<{
     >
       <ViewPort>
         <Switch>
-          {children.map((_, index) => (
+          {children.flat().map((_, index) => (
             <Route
               exact
               path={`${paths[index] || index || ""}`}
@@ -65,15 +67,15 @@ const ResponsiveReactApp: React.FC<{
                       transform: `translateX(-${childSize *
                         Math.min(
                           index,
-                          children.length - compnentsPerScreen
+                          children.flat().length - compnentsPerScreen
                         )}px)`
                     }}
                   >
-                    {React.Children.map(children, (child, index) => {
+                    {children.flat().map((child, index) => {
                       return <Mobile key={index}>{child}</Mobile>;
                     })}
                   </Board>
-                  {compnentsPerScreen < children.length && (
+                  {compnentsPerScreen < children.flat().length && (
                     <TabBar
                       compnentsPerScreen={compnentsPerScreen}
                       paths={paths}

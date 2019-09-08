@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import * as _ from "styled-components/cssprop";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -9,10 +10,10 @@ import LandingPage from "./pages/LandingPage";
 const App = () => {
   return (
     <BrowserRouter>
-      <Redirect from="/" to="/about/me" />
       <Switch>
         {blogRoutes}
         <Route path="/about" component={LandingPage} />
+        <Redirect exact from="/" to="/about/me" />
       </Switch>
     </BrowserRouter>
   );

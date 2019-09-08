@@ -10,14 +10,20 @@ const posts = files.map(file =>
 fs.writeFileSync(
   `${__dirname}/../__generated__/blogRoutes.tsx`,
   `
-import React from 'react'
-import {Route} from 'react-router-dom'
+import React from 'react';
+import {Route, Redirect} from 'react-router-dom';
 import BlogPage from "../pages/BlogPage";
 
 ${posts
   .map((post, index) => {
     const componentName = `BlogPost${index}`;
-    return `import ${componentName} from '../components/__generated__/${componentName}'`;
+    const parts = post.split("---\n")[2].split("\n#");
+    return parts
+      .map(
+        (part, index) =>
+          `import ${componentName}Part${index} from '../components/__generated__/${componentName}Part${index}'`
+      )
+      .join("\n");
   })
   .join("\n")}
 
@@ -25,9 +31,16 @@ const blogRoutes = [${posts
     .map((post, index) => {
       const metadata = getMeta(post);
       const componentName = `BlogPost${index}`;
+      const parts = post.split("---\n")[2].split("\n#");
 
-      return `<Route path="${metadata.path}" key="${metadata.path}" render={() => <BlogPage 
-          postComponent={${componentName}}
+      return `
+        <Redirect exact from="${metadata.path}" to="${metadata.path}/part-0"/>,
+        <Route path="${metadata.path}" key="${
+        metadata.path
+      }" render={() => <BlogPage 
+          postComponents={[${parts
+            .map((part, partIndex) => `${componentName}Part${partIndex}`)
+            .join(",\n")}]}
           postPath={"${metadata.path}"}
           />} 
           

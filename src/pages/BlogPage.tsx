@@ -1,29 +1,33 @@
 import React from "react";
-import { Feather, Info } from "react-feather";
 import MoreFromTheBlog from "../components/blog/MoreFromTheBlog";
 import ResponsiveReactApp, { TabBarLink } from "../responsive-page";
 
 const BlogPage: React.FC<{
+  postComponents: any;
   postPath: any;
-  postComponent: any;
-}> = ({ postComponent: Post, postPath }) => {
+}> = ({ postComponents, postPath }) => {
   return (
     <ResponsiveReactApp
       tabs={
         <>
-          <TabBarLink to={postPath}>
-            <Info />
-            Post
-          </TabBarLink>
-          <TabBarLink to={postPath + "/other-posts"}>
-            <Feather />
-            More
-          </TabBarLink>
+          {postComponents.map((Part: any, index: number) => (
+            <TabBarLink to={`${postPath}/part-${index}`} key={index}>
+              Part {index + 1}
+            </TabBarLink>
+          ))}
+          <TabBarLink to={postPath + "/other-posts"}>More</TabBarLink>
         </>
       }
-      paths={[postPath, postPath + "/other-posts"]}
+      paths={[
+        ...postComponents.map(
+          (part: any, index: number) => `${postPath}/part-${index}`
+        ),
+        postPath + "/other-posts"
+      ]}
     >
-      <Post />
+      {postComponents.map((Part: any, index: number) => (
+        <Part key={index} />
+      ))}
       <MoreFromTheBlog exceptForPath={postPath} />
     </ResponsiveReactApp>
   );

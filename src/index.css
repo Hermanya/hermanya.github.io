@@ -1,27 +1,6 @@
-body {
-  margin: 0;
-  font-family: "system-ui", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-a {
-  color: #2f7cf6;
-  text-decoration: none;
-}
-a:visited {
-  color: #a35bd7;
-}
-a:hover,
-a:focus {
-  text-decoration: underline;
 }
 
 p {

@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const TabBarLink = styled(Link)`
   width: 64px;
   font-size: 0.7rem;
-  padding: 0.25rem 0.25rem 0;
+  letter-spacing: -0.022em;
   text-decoration: none;
   text-align: center;
   svg {
@@ -19,23 +19,22 @@ export const TabBarContainer = styled.div`
   position: fixed;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   bottom: 0;
   right: 50vw;
   transform: translateX(50%);
   z-index: 3;
   min-height: 3.5rem;
   padding-bottom: env(safe-area-inset-bottom);
-  backdrop-filter: saturate(180%) blur(2px);
-  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(180%) blur(3px);
+  background-color: rgba(255, 255, 255, 0.1);
   @media (prefers-color-scheme: dark) {
-    background: rgba(0, 0, 0, 0.3);
-    a {
-      color: #fff;
-    }
+    background: rgba(0, 0, 0, 0.7);
   }
-
+  border-radius: 0;
   width: 100vw;
   @media screen and (min-width: ${props => props.theme.minimumTabSize * 2}px) {
+    border-radius: 6px 6px 0 0;
     width: 50vw;
   }
   @media screen and (min-width: ${props => props.theme.minimumTabSize * 3}px) {
@@ -50,7 +49,7 @@ export const Active = styled.div`
   display: flex;
   a,
   a:hover {
-    opacity: 0.5;
+    color: var(--gray);
   }
 `;
 
@@ -60,17 +59,18 @@ const TabBar: React.FC<{
   paths: string[];
   pathname: string;
 }> = ({ children, compnentsPerScreen, paths, pathname }) => {
+  const kids = children.flat();
   const index = Math.min(
     paths.indexOf(pathname),
-    children.length - compnentsPerScreen
+    kids.length - compnentsPerScreen
   );
   return (
     <TabBarContainer>
-      {children.slice(0, index)}
-      {children.slice(index, index + compnentsPerScreen).map((child, index) => (
+      {kids.slice(0, index)}
+      {kids.slice(index, index + compnentsPerScreen).map((child, index) => (
         <Active key={`sublist-${index}`}>{child}</Active>
       ))}
-      {children.slice(index + compnentsPerScreen)}
+      {kids.slice(index + compnentsPerScreen)}
     </TabBarContainer>
   );
 };

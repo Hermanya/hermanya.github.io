@@ -1,17 +1,17 @@
 import React from "react";
-import ResponsiveReactApp, { TabBarLink } from "../responsive-page";
+import { BookOpen, Link2, Trello, User } from "react-feather";
 import About from "../components/landing/About";
-import PetProjects from "../components/landing/PetProjects";
-import Links from "../components/landing/Links";
-import { Info, Trello, Feather } from "react-feather";
 import Blog from "../components/landing/Blog";
+import Links from "../components/landing/Links";
+import PetProjects from "../components/landing/PetProjects";
+import ResponsiveReactApp, { TabBarLink } from "../responsive-page";
 const LandingPage = ({ match }: { match: any }) => {
   return (
     <ResponsiveReactApp
       tabs={
         <>
           <TabBarLink to={`${match.path}/me`}>
-            <Info />
+            <User />
             About
           </TabBarLink>
           <TabBarLink to={`${match.path}/projects`}>
@@ -19,11 +19,11 @@ const LandingPage = ({ match }: { match: any }) => {
             Pet Projects
           </TabBarLink>
           <TabBarLink to={`${match.path}/blog`}>
-            <Feather />
+            <BookOpen />
             Blog
           </TabBarLink>
           <TabBarLink to={`${match.path}/links`}>
-            <Info />
+            <Link2 />
             Links
           </TabBarLink>
         </>

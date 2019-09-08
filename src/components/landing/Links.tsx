@@ -21,13 +21,21 @@ const SubSection = styled.div`
   }
 `;
 
+const Label = styled.div`
+  font-size: 12px;
+  line-height: 2;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--gray);
+`;
+
 const Links = () => {
   return (
     <Container>
       <Title>Links</Title>
       <SubSections>
         <SubSection>
-          <Description>Programming</Description>
+          <Label>Programming</Label>
           <Link href="https://github.com/hermanya">GitHub</Link>
           <Link href="https://stackoverflow.com/users/7228427/herman-starikov">
             Stack Overflow
@@ -36,18 +44,18 @@ const Links = () => {
           <Link href="https://codepen.io/Hermanya">CodePen</Link>
         </SubSection>
         <SubSection>
-          <Description>Contact</Description>
+          <Label>Contact</Label>
           <Link href="mailto:hermanstarikov@gmail.com">Email</Link>
           <Link href="https://m.me/hermanhasawish">Messenger</Link>
           <Link href="http://t.me/hermanya">Telegram</Link>
         </SubSection>
         <SubSection>
-          <Description>For Hire</Description>
+          <Label>For Hire</Label>
           <Link href="https://linkedin.com/in/hermanstarikov">LinkedIn</Link>
           <Link href="https://starikov.dev/resume">Resume</Link>
         </SubSection>
         <SubSection>
-          <Description>Other</Description>
+          <Label>Other</Label>
           <Link href="https://instagram.com/hermanya">Instagram</Link>
           <Link href="https://facebook.com/hermanhasawish">Facebook</Link>
           <Link href="https://www.producthunt.com/@hermanhasawish/made">
