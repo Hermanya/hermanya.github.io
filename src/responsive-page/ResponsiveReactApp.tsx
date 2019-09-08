@@ -44,7 +44,7 @@ const ResponsiveReactApp: React.FC<{
   paths: string[];
   minimumTabSize?: number;
   routerProps?: any;
-}> = ({ children, tabs, minimumTabSize = 320, paths }) => {
+}> = ({ children, tabs, minimumTabSize = 350, paths }) => {
   const size = useWindowSize();
   const compnentsPerScreen = (size.width / minimumTabSize) | 0;
   const childSize = size.width / compnentsPerScreen;
